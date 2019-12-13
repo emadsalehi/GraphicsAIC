@@ -1,0 +1,63 @@
+spine -> Root
+spine.001 -> Hips
+spine.002 -> Spine_01
+spine.003 -> spine_02
+spine.004 -> Spine_03
+spine.005 -> Neck
+spine.006 -> Head
+brow.B.L -> Eyebrows
+eye.R -> Eyes
+shoulder.L -> Clavicle_L
+upper_arm.L -> Shoulder_L
+upper_arm.L.001
+forearm.L -> Elbow_L
+forearm.L.001
+hand.L -> Hand_L
+palm.03.L -> Finger_01
+f_ring.01.L -> Finger_02
+f_ring.02.L -> Finger_03
+f_ring.03.L -> Finger_04
+palm.01.L -> IndexFinger_01
+f_index.01.L -> IndexFinger_02
+f_index.02.L -> IndexFinger_03
+f_index.03.L -> IndexFinger_04
+thumb.01.L -> Thumb_01
+thumb.01.L.001
+thumb.02.L -> Thumb_02
+thumb.03.L -> Thumb_03
+
+shoulder.R -> Clavicle_R
+upper_arm.R -> Shoulder_R
+upper_arm.R.001
+forearm.R -> Elbow_R
+forearm.R.001
+hand.R -> Hand_R
+palm.03.R -> Finger_01.001
+f_ring.01.R -> Finger_02.001
+f_ring.02.R -> Finger_03.001
+f_ring.03.R -> Finger_04.001
+palm.01.R -> IndexFinger_01.001
+f_index.01.R -> IndexFinger_02.001
+f_index.02.R -> IndexFinger_03.001
+f_index.03.R -> IndexFinger_04.001
+thumb.01.R -> Thumb_01.001
+thumb.01.R.001
+thumb.02.R -> Thumb_02.001
+thumb.03.R -> Thumb_03.001
+
+thigh.L -> UpperLeg_L
+thigh.L.001
+shin.L -> LowerLeg_L
+shin.L.001
+foot.L -> Ankle_L
+toe.L -> Toes_L
+heel.02.L -> Ball_L
+
+thigh.R -> UpperLeg_R
+thigh.R.001
+shin.R -> LowerLeg_R
+shin.R.001
+foot.R -> Ankle_R
+toe.R -> Toes_R
+heel.02.R -> Ball_R
+
