@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 544}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
     y: 0
     width: 1280
     height: 647
-  m_MinSize: {x: 950, y: 544}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 494}
   m_MaxSize: {x: 18008, y: 14044}
   vertical: 0
-  controlID: 31
+  controlID: 104
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -285,10 +285,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -666.6667
-    m_HBaseRangeMax: 666.6667
-    m_VBaseRangeMin: -666.6667
-    m_VBaseRangeMax: 666.6667
+    m_HBaseRangeMin: -1000
+    m_HBaseRangeMax: 1000
+    m_VBaseRangeMin: -1000
+    m_VBaseRangeMax: 1000
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -321,10 +321,10 @@ MonoBehaviour:
       width: 2730.2368
       height: 1278.8304
     m_MinimalGUI: 1
-  m_defaultScale: 0.21675
+  m_defaultScale: 0.1445
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 1
-  m_LastWindowPixelSize: {x: 925.5, y: 459}
+  m_LastWindowPixelSize: {x: 617, y: 306}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 00000000000000000000
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.8875388, y: 0.9517286, z: -1.6210058}
+    m_Target: {x: 0, y: 0, z: 0}
     speed: 2
     m_Value: {x: 1.8875388, y: 0.9517286, z: -1.6210058}
   m_RenderMode: 0
@@ -396,13 +396,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.0111098075, y: 0.9885096, z: -0.11950447, w: -0.09189751}
+    m_Target: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
     speed: 2
-    m_Value: {x: -0.011247636, y: 0.98832875, z: -0.120987035, w: -0.0918807}
+    m_Value: {x: -0.0111098075, y: 0.9885096, z: -0.11950446, w: -0.09189751}
   m_Size:
-    m_Target: 8.012203
+    m_Target: 3.9987347
     speed: 2
-    m_Value: 7.712203
+    m_Value: 3.6987348
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -531,20 +531,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/PolygonSciFiSpace/Prefabs/Environment
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/PolygonSciFiSpace/Prefabs/Environment
+  - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: D:\My Job\AIC2020\Test\TestAIC2
+  m_LastProjectPath: D:\My Job\AIC2020\Project\GraphicsAIC\UnityProject\AIC
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 224.00067}
-    m_SelectedIDs: 52460000
-    m_LastClickedID: 18002
-    m_ExpandedIDs: 0000000082340000b83c0000ce45000024460000504600006046000000ca9a3b
+    scrollPos: {x: 0, y: 7}
+    m_SelectedIDs: 82340000
+    m_LastClickedID: 13442
+    m_ExpandedIDs: 000000008234000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -616,7 +616,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 8}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -683,23 +683,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 6664fdffdca8ffff1aa9ffff1ca9ffff06420000
+      m_SelectedIDs: 26420000
+      m_LastClickedID: 16934
+      m_ExpandedIDs: 1ca9fffff241000006420000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Post-process Volume
-        m_OriginalName: Post-process Volume
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 16896
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 9}
       m_SearchString: 
