@@ -1,14 +1,16 @@
 ﻿<Properties StartupConfiguration="{B2B58FB2-4462-6B0C-A872-40DD957E5FE0}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Instantiation.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CameraController.cs">
     <Files>
-      <File FileName="Assets/Instantiation.cs" Line="31" Column="1" />
+      <File FileName="Assets/Instantiation.cs" Line="30" Column="1" />
+      <File FileName="Assets/MapInitializer.cs" Line="23" Column="1" />
+      <File FileName="Assets/CameraController.cs" Line="20" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="New Unity Project" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Instantiation.cs" selected="True" />
+              <Node name="CameraController.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -17,7 +19,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="fec8b7cd-905f-4684-bac2-cbba19ba603c" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="98b94e34-f7c7-41b2-aca3-0e8713a138f5" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
