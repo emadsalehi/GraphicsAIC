@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
         Debug.Log("hei: " + Screen.height);
         Debug.Log("wid: " + Screen.width);
         Debug.Log("aspec: " + aspectRatio);
-        transform.position = new Vector3(pos.x + camera.orthographicSize * aspectRatio, pos.y + camera.orthographicSize, pos.z);
+        //transform.position = new Vector3(pos.x + camera.orthographicSize * aspectRatio, pos.y + camera.orthographicSize, pos.z);
 
     }
     // Update is called once per frame
