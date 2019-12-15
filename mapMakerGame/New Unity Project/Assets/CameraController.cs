@@ -11,10 +11,10 @@ public class CameraController : MonoBehaviour
         float aspectRatio = (float)Screen.width / Screen.height;
         Vector3 pos = transform.position;
         Camera camera = GetComponent<Camera>();
-        Debug.Log("or: " +camera.orthographicSize);
-        Debug.Log("hei: " + Screen.height);
-        Debug.Log("wid: " + Screen.width);
-        Debug.Log("aspec: " + aspectRatio);
+        //Debug.Log("or: " +camera.orthographicSize);
+        //Debug.Log("hei: " + Screen.height);
+        //Debug.Log("wid: " + Screen.width);
+        //Debug.Log("aspec: " + aspectRatio);
         //transform.position = new Vector3(pos.x + camera.orthographicSize * aspectRatio, pos.y + camera.orthographicSize, pos.z);
 
     }

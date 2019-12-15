@@ -12,21 +12,20 @@ public class Instantiation : MonoBehaviour
     public GameObject menuGameObject;
     public Button finishButton; 
     public Camera mainCamera;
-    GameObject[,] cells;
+    public GameObject[,] cells;
+    public bool isIngame = false;
+    public Text selectPathText;
     // Start is called before the first frame update
     public void makeMap()
     {
         int HeightSize = int.Parse(HeightText.text.ToString());
         int WidthSize = int.Parse(WidthText.text.ToString());
-        int scale = 0;
         if (HeightSize < WidthSize)
         {
-            mainCamera.orthographicSize =(int)  (1.1 * WidthSize) / 2;
-            scale = WidthSize / 2;
+            mainCamera.orthographicSize =(int)  (WidthSize) / 2;
         } else
         {
-            mainCamera.orthographicSize =(int) (1.1 * HeightSize) / 2;
-            scale = HeightSize / 2;
+            mainCamera.orthographicSize =(int)  (HeightSize) / 2;
         }
         Vector3 cameraLocation = mainCamera.transform.position;
         float aspectRatio = (float)Screen.width / Screen.height;
@@ -43,8 +42,10 @@ public class Instantiation : MonoBehaviour
           
             }
         }
+        selectPathText.gameObject.SetActive(true);
         finishButton.gameObject.SetActive(true);
         menuGameObject.gameObject.SetActive(false);
+        isIngame = true;
     }
 
     // Update is called once per frame
