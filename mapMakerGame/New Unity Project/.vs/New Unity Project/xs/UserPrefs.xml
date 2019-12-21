@@ -1,28 +1,29 @@
 ﻿<Properties StartupConfiguration="{B2B58FB2-4462-6B0C-A872-40DD957E5FE0}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MouseController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/CameraController.cs">
     <Files>
-      <File FileName="Assets/Instantiation.cs" Line="48" Column="25" />
-      <File FileName="Assets/CameraController.cs" Line="17" Column="46" />
-      <File FileName="Assets/MouseController.cs" Line="89" Column="52" />
+      <File FileName="Assets/scripts/MapController.cs" Line="40" Column="10" />
+      <File FileName="Assets/scripts/jsonClasses.cs" Line="14" Column="19" />
+      <File FileName="Assets/scripts/Instantiation.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/MouseController.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/CameraController.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="New Unity Project" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="MouseController.cs" selected="True" />
+              <Node name="scripts" expanded="True">
+                <Node name="CameraController.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="2e56ac42-6d43-47f4-a581-5b4c44b6f104" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="cd90e43c-2ae2-4c36-8d6c-bd468488d4e5" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

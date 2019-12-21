@@ -20,13 +20,13 @@ public class MouseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             GameObject gameObject = GameObject.Find("GameController");
             Instantiation instantiation = gameObject.GetComponent<Instantiation>();
@@ -53,7 +53,7 @@ public class MouseController : MonoBehaviour
                     //scale = HeightSize / 2;
                 }
                 Vector3 mousePosition = Input.mousePosition;
-                Vector3 cellPos = new Vector3(mousePosition.x / cellsize, mousePosition.y / cellsize , 0);
+                Vector3 cellPos = new Vector3(mousePosition.x / cellsize, mousePosition.y / cellsize, 0);
                 if (cellPos.x < WidthSize && cellPos.y < HeightSize)
                 {
                     cellSelected(cellPos, instantiation, new Vector2(HeightSize, WidthSize));
@@ -61,7 +61,7 @@ public class MouseController : MonoBehaviour
             }
             else
             {
-                
+
             }
         }
 
@@ -74,16 +74,37 @@ public class MouseController : MonoBehaviour
                 GameObject[,] cells = instantiation.cells;
                 Path lastPath = mapController.map.paths[mapController.map.paths.Count - 1];
                 Cell lastPathCell = lastPath.cells[lastPath.cells.Count - 1];
-                if (lastPathCell.column != 0)
+                if (lastPathCell.col != 0)
                 {
-                    int newPathCellColumn = lastPathCell.column - 1;
-                    int newPathCellRow = lastPathCell.row;
-                    Cell newPathCell = new Cell(newPathCellRow, newPathCellColumn);
-                    Destroy(cells[lastPathCell.column - 1, lastPathCell.row]);
-                    Quaternion rot = Quaternion.Euler(0, 0, 0);
-                    cells[lastPathCell.column - 1, lastPathCell.row] = Instantiate(
-                        active_road, new Vector3(newPathCellRow + 0.5f, newPathCellColumn + 0.5f, -0.1f), rot);
-                    mapController.map.paths[mapController.map.paths.Count - 1].cells.Add(newPathCell);
+                    bool isCleared = false;
+                    if (lastPath.cells.Count >= 2)
+                    {
+                        Cell lastPathCell2 = lastPath.cells[lastPath.cells.Count - 2];
+                        if (lastPathCell2.col + 1 == lastPathCell.col)
+                        {
+                            Debug.Log("inhere");
+                            isCleared = true;
+                            Quaternion rot1 = Quaternion.Euler(0, 0, 0);
+                            Debug.Log("now" + ", " + lastPathCell.col);
+                            mapController.map.paths[mapController.map.paths.Count - 1].cells.RemoveAt(lastPath.cells.Count - 1);
+                            Destroy(cells[lastPathCell.col, lastPathCell.row]);
+                            cells[lastPathCell.col, lastPathCell.row] =
+                                Instantiate(emptyCell, new Vector3(lastPathCell.row + 0.5f, lastPathCell.col + 0.5f, -0.1f), rot1);
+                            Debug.Log(lastPathCell2.col + ", " + lastPathCell.col);
+
+                        }
+                    }
+                    if (!isCleared)
+                    {
+                        int newPathCellColumn = lastPathCell.col - 1;
+                        int newPathCellRow = lastPathCell.row;
+                        Cell newPathCell = new Cell(newPathCellRow, newPathCellColumn);
+                        Destroy(cells[lastPathCell.col - 1, lastPathCell.row]);
+                        Quaternion rot = Quaternion.Euler(0, 0, 0);
+                        cells[lastPathCell.col - 1, lastPathCell.row] = Instantiate(
+                            active_road, new Vector3(newPathCellRow + 0.5f, newPathCellColumn + 0.5f, -0.1f), rot);
+                        mapController.map.paths[mapController.map.paths.Count - 1].cells.Add(newPathCell);
+                    }
                 }
             }
         }
@@ -91,22 +112,43 @@ public class MouseController : MonoBehaviour
         {
             if (isFirstRoadCellSelected)
             {
-                
+
                 Instantiation instantiation = gameObject.GetComponent<Instantiation>();
                 MapController mapController = GetComponent<MapController>();
                 GameObject[,] cells = instantiation.cells;
                 Path lastPath = mapController.map.paths[mapController.map.paths.Count - 1];
                 Cell lastPathCell = lastPath.cells[lastPath.cells.Count - 1];
-                if (lastPathCell.column != mapController.map.column - 1)
+                if (lastPathCell.col != mapController.map.column - 1)
                 {
-                    int newPathCellColumn = lastPathCell.column + 1;
-                    int newPathCellRow = lastPathCell.row;
-                    Cell newPathCell = new Cell(newPathCellRow, newPathCellColumn);
-                    Destroy(cells[lastPathCell.column + 1, lastPathCell.row]);
-                    Quaternion rot = Quaternion.Euler(0, 0, 0);
-                    cells[lastPathCell.column + 1, lastPathCell.row] = Instantiate(
-                        active_road, new Vector3(newPathCellRow + 0.5f, newPathCellColumn + 0.5f, -0.1f), rot);
-                    mapController.map.paths[mapController.map.paths.Count - 1].cells.Add(newPathCell);
+                    bool isCleared = false;
+                    if (lastPath.cells.Count >= 2)
+                    {
+                        Cell lastPathCell2 = lastPath.cells[lastPath.cells.Count - 2];
+                        if (lastPathCell2.col - 1 == lastPathCell.col)
+                        {
+                            Debug.Log("inhere");
+                            isCleared = true;
+                            Quaternion rot1 = Quaternion.Euler(0, 0, 0);
+                            Debug.Log("now" + ", " + lastPathCell.col);
+                            mapController.map.paths[mapController.map.paths.Count - 1].cells.RemoveAt(lastPath.cells.Count - 1);
+                            Destroy(cells[lastPathCell.col, lastPathCell.row]);
+                            cells[lastPathCell.col, lastPathCell.row] =
+                                Instantiate(emptyCell, new Vector3(lastPathCell.row + 0.5f, lastPathCell.col + 0.5f, -0.1f), rot1);
+                            Debug.Log(lastPathCell2.col + ", " + lastPathCell.col);
+
+                        }
+                    }
+                    if (!isCleared)
+                    {
+                        int newPathCellColumn = lastPathCell.col + 1;
+                        int newPathCellRow = lastPathCell.row;
+                        Cell newPathCell = new Cell(newPathCellRow, newPathCellColumn);
+                        Destroy(cells[lastPathCell.col + 1, lastPathCell.row]);
+                        Quaternion rot = Quaternion.Euler(0, 0, 0);
+                        cells[lastPathCell.col + 1, lastPathCell.row] = Instantiate(
+                            active_road, new Vector3(newPathCellRow + 0.5f, newPathCellColumn + 0.5f, -0.1f), rot);
+                        mapController.map.paths[mapController.map.paths.Count - 1].cells.Add(newPathCell);
+                    }
                 }
             }
         }
@@ -121,14 +163,35 @@ public class MouseController : MonoBehaviour
                 Cell lastPathCell = lastPath.cells[lastPath.cells.Count - 1];
                 if (lastPathCell.row != 0)
                 {
-                    int newPathCellColumn = lastPathCell.column;
-                    int newPathCellRow = lastPathCell.row - 1;
-                    Cell newPathCell = new Cell(newPathCellRow, newPathCellColumn);
-                    Destroy(cells[lastPathCell.column, lastPathCell.row - 1]);
-                    Quaternion rot = Quaternion.Euler(0, 0, 0);
-                    cells[lastPathCell.column , lastPathCell.row - 1] = Instantiate(
-                        active_road, new Vector3(newPathCellRow + 0.5f, newPathCellColumn + 0.5f, -0.1f), rot);
-                    mapController.map.paths[mapController.map.paths.Count - 1].cells.Add(newPathCell);
+                    bool isCleared = false;
+                    if (lastPath.cells.Count >= 2)
+                    {
+                        Cell lastPathCell2 = lastPath.cells[lastPath.cells.Count - 2];
+                        if (lastPathCell2.row + 1 == lastPathCell.row)
+                        { 
+                            Debug.Log("inhere");
+                            isCleared = true;
+                            Quaternion rot1 = Quaternion.Euler(0, 0, 0);
+                            Debug.Log("now" + ", " + lastPathCell.col);
+                            mapController.map.paths[mapController.map.paths.Count - 1].cells.RemoveAt(lastPath.cells.Count - 1);
+                            Destroy(cells[lastPathCell.col, lastPathCell.row]);
+                            cells[lastPathCell.col, lastPathCell.row] =
+                                Instantiate(emptyCell, new Vector3(lastPathCell.row + 0.5f, lastPathCell.col + 0.5f, -0.1f), rot1);
+                            Debug.Log(lastPathCell2.col + ", " + lastPathCell.col);
+
+                        }
+                    }
+                    if (!isCleared)
+                    {
+                        int newPathCellColumn = lastPathCell.col;
+                        int newPathCellRow = lastPathCell.row - 1;
+                        Cell newPathCell = new Cell(newPathCellRow, newPathCellColumn);
+                        Destroy(cells[lastPathCell.col, lastPathCell.row - 1]);
+                        Quaternion rot = Quaternion.Euler(0, 0, 0);
+                        cells[lastPathCell.col, lastPathCell.row - 1] = Instantiate(
+                            active_road, new Vector3(newPathCellRow + 0.5f, newPathCellColumn + 0.5f, -0.1f), rot);
+                        mapController.map.paths[mapController.map.paths.Count - 1].cells.Add(newPathCell);
+                    }
                 }
             }
         }
@@ -141,23 +204,44 @@ public class MouseController : MonoBehaviour
                 GameObject[,] cells = instantiation.cells;
                 Path lastPath = mapController.map.paths[mapController.map.paths.Count - 1];
                 Cell lastPathCell = lastPath.cells[lastPath.cells.Count - 1];
-                if (lastPathCell.column != mapController.map.row - 1)
+                if (lastPathCell.col != mapController.map.row - 1)
                 {
-                    int newPathCellColumn = lastPathCell.column;
-                    int newPathCellRow = lastPathCell.row + 1;
-                    Cell newPathCell = new Cell(newPathCellRow, newPathCellColumn);
-                    Destroy(cells[lastPathCell.column, lastPathCell.row + 1]);
-                    Quaternion rot = Quaternion.Euler(0, 0, 0);
-                    cells[lastPathCell.column, lastPathCell.row + 1] = Instantiate(
-                        active_road, new Vector3(newPathCellRow + 0.5f, newPathCellColumn + 0.5f, -0.1f), rot);
-                    mapController.map.paths[mapController.map.paths.Count - 1].cells.Add(newPathCell);
+                    bool isCleared = false;
+                    if (lastPath.cells.Count >= 2)
+                    {
+                        Cell lastPathCell2 = lastPath.cells[lastPath.cells.Count - 2];
+                        if (lastPathCell2.row - 1 == lastPathCell.row)
+                        {
+                            Debug.Log("inhere");
+                            isCleared = true;
+                            Quaternion rot1 = Quaternion.Euler(0, 0, 0);
+                            Debug.Log("now" + ", " + lastPathCell.col);
+                            mapController.map.paths[mapController.map.paths.Count - 1].cells.RemoveAt(lastPath.cells.Count - 1);
+                            Destroy(cells[lastPathCell.col, lastPathCell.row]);
+                            cells[lastPathCell.col, lastPathCell.row] =
+                                Instantiate(emptyCell, new Vector3(lastPathCell.row + 0.5f, lastPathCell.col + 0.5f, -0.1f), rot1);
+                            Debug.Log(lastPathCell2.col + ", " + lastPathCell.col);
+
+                        }
+                    }
+                    if (!isCleared)
+                    {
+                        int newPathCellColumn = lastPathCell.col;
+                        int newPathCellRow = lastPathCell.row + 1;
+                        Cell newPathCell = new Cell(newPathCellRow, newPathCellColumn);
+                        Destroy(cells[lastPathCell.col, lastPathCell.row + 1]);
+                        Quaternion rot = Quaternion.Euler(0, 0, 0);
+                        cells[lastPathCell.col, lastPathCell.row + 1] = Instantiate(
+                            active_road, new Vector3(newPathCellRow + 0.5f, newPathCellColumn + 0.5f, -0.1f), rot);
+                        mapController.map.paths[mapController.map.paths.Count - 1].cells.Add(newPathCell);
+                    }
                 }
             }
         }
 
     }
 
-    private void cellSelected( Vector3 cellPos, Instantiation instantiation, Vector2 Size)
+    private void cellSelected(Vector3 cellPos, Instantiation instantiation, Vector2 Size)
     {
         int cellX = (int)cellPos.x;
         int cellY = (int)cellPos.y;
@@ -169,7 +253,7 @@ public class MouseController : MonoBehaviour
             {
                 Quaternion rot = Quaternion.Euler(0, 0, 0);
                 Destroy(cells[cellY, cellX]);
-                cells[cellY, cellX] = (GameObject)Instantiate(tower, 
+                cells[cellY, cellX] = (GameObject)Instantiate(tower,
                     new Vector3(cellX + 0.5f, cellY + 0.5f, -0.1f), rot);
                 numOfTowers++;
                 mapController.addKing(new King(cellX, cellY));
@@ -178,9 +262,11 @@ public class MouseController : MonoBehaviour
             {
                 selectPathText.text = "SELECT PATHS ";
             }
-            
 
-        } else {
+
+        }
+        else
+        {
             if (!isFirstRoadCellSelected)
             {
                 isFirstRoadCellSelected = true;
@@ -194,7 +280,8 @@ public class MouseController : MonoBehaviour
                     int lastPathId = mapController.map.paths.Count;
                     newPath = new Path(activeRoadCells, lastPathId);
                 }
-                else {
+                else
+                {
                     newPath = new Path(activeRoadCells, 0);
                 }
                 mapController.addPath(newPath);
