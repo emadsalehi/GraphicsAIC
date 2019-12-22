@@ -38,9 +38,9 @@ public class MapController : MonoBehaviour
         Path lastPath = map.paths[map.paths.Count - 1];
         foreach (Cell cell in lastPath.cells)
         {
-            Debug.Log("cell rowfirst: " + cell.row + ", " + cell.column);
+            Debug.Log("cell rowfirst: " + cell.row + ", " + cell.col);
             int row = cell.row;
-            int column = cell.column;
+            int column = cell.col;
             Destroy(cells[column, row]);
             Quaternion rot = Quaternion.Euler(0, 0, 0);
             cells[column, row] = Instantiate(road, new Vector3(row + 0.5f, column + 0.5f,-0.2f), rot);

@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6ddc11a-8616-4dc1-afad-3d18f17fadc6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/dfs.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/dfs.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.New Unity Project/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.New Unity Project/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.New Unity Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.New Unity Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/New Unity Project/xs/UserPrefs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/New Unity Project/xs/UserPrefs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/New Unity Project/xs/project-cache/Assembly-CSharp-Debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/New Unity Project/xs/project-cache/Assembly-CSharp-Debug.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/55023e-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/55023e-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentMaximizeLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/assetDatabase3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,6 +19,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.vs/New Unity Project/xs/project-cache/Assembly-CSharp-Debug.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/StateCache/Hierarchy/55023e-mainStage.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/Instantiation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnityPackages/JsonNetSample/JsonNetSample.cs" root0="FORCE_HIGHLIGHTING" />
@@ -87,6 +91,13 @@
       <updated>1576442896937</updated>
       <workItem from="1576442900748" duration="1395000" />
       <workItem from="1576489062620" duration="10399000" />
+      <workItem from="1576610834053" duration="143000" />
+      <workItem from="1576916932055" duration="153000" />
+      <workItem from="1576917088947" duration="21000" />
+      <workItem from="1576917127657" duration="12000" />
+      <workItem from="1576917182461" duration="25000" />
+      <workItem from="1576917277887" duration="183000" />
+      <workItem from="1576917463520" duration="1000" />
     </task>
     <servers />
   </component>
@@ -96,6 +107,10 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="WindowStateProjectService">
+    <state x="320" y="137" key="Rider.ProjectTemplateDialog.Size" timestamp="1576917446182">
+      <screen x="0" y="23" width="1440" height="799" />
+    </state>
+    <state x="320" y="137" key="Rider.ProjectTemplateDialog.Size/0.23.1440.799@0.23.1440.799" timestamp="1576917446182" />
     <state x="378" y="44" key="RiderGenerateDialog" timestamp="1576506464966">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
