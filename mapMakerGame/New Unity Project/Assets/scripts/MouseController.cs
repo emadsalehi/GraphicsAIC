@@ -292,4 +292,10 @@ public class MouseController : MonoBehaviour
             }
         }
     }
+
+    public void quitApp()
+    {
+        Debug.Log("W");
+        Application.Quit();
+    }
 }
