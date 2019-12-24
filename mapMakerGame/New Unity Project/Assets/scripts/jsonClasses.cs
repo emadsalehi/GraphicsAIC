@@ -8,10 +8,10 @@ public class King
     public King(int row, int column)
     {
         this.row = row;
-        this.column = column;
+        this.col = column;
     }
     public int row { get; set; }
-    public int column { get; set; }
+    public int col { get; set; }
 }
 [System.Serializable]
 public class Cell
@@ -19,10 +19,10 @@ public class Cell
     public Cell(int row, int column)
     {
         this.row = row;
-        this.column = column;
+        this.col = column;
     }
     public int row { get; set; }
-    public int column { get; set; }
+    public int col { get; set; }
 }
 [System.Serializable]
 public class Path
@@ -53,7 +53,7 @@ public class Map
 public class MapJson
 {
     public int row;
-    public int column;
+    public int col;
     public List<string> Kings { get; set; }
     public List<string> paths { get; set; }
 }
