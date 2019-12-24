@@ -78,3 +78,7 @@ crashlytics-build.properties
 
 
 *.meta
+
+UnityProject/AIC/Assets/Scripts/Log/.idea/.idea.Log.dir/.idea/
+
+UnityProject/AIC/Assets/Scripts/Log/.idea/.idea.Log.dir/
