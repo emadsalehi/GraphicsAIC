@@ -26,7 +26,7 @@ public class MapRenderer : MonoBehaviour
         }
     }
 
-    public void RenderMap(GameInit map, string packName)
+    public void RenderMap(InitMap map, string packName)
     {
         SetTileLocations(map);
         PathTile tilePack = Array.Find(mainTiles, item => item.name == packName);
@@ -42,27 +42,7 @@ public class MapRenderer : MonoBehaviour
             {
                 if(tileLocation[i, j])
                 {
-                    float xPos = (j + 0.5f) * TileSize;
-                    float zPos = (i + 0.5f) * TileSize;
-                    TileInfo tileInfo = FindTileInfo(i, j, map.Row, map.Col);
-                    switch(tileInfo.type)
-                    {
-                        case TileType.STRAIGHT:
-                            Instantiate(tilePack.straightTile, new Vector3(xPos, 0, zPos), tileInfo.rotation);
-                            break;
-                        case TileType.CORNER:
-                            Instantiate(tilePack.cornerTile, new Vector3(xPos, 0, zPos), tileInfo.rotation);
-                            break;
-                        case TileType.INTERSECTION:
-                            Instantiate(tilePack.intersectionTile, new Vector3(xPos, 0, zPos), tileInfo.rotation);
-                            break;
-                        case TileType.THREEWAY:
-                            Instantiate(tilePack.threeWayTile, new Vector3(xPos, 0, zPos), tileInfo.rotation);
-                            break;
-                        default:
-                            Instantiate(tilePack.junk, new Vector3(xPos, 0, zPos), tileInfo.rotation);
-                            break;
-                    }
+                    CreatePathTile(tilePack, i, j, map.Row, map.Col);
                 }
                 else
                 {
@@ -75,7 +55,7 @@ public class MapRenderer : MonoBehaviour
         
     }
 
-    private void SetTileLocations(GameInit map)
+    private void SetTileLocations(InitMap map)
     {
         tileLocation = new bool[map.Row, map.Col];
         foreach(InitPath path in map.Paths)
@@ -85,7 +65,6 @@ public class MapRenderer : MonoBehaviour
                 tileLocation[cell.Row, cell.Col] = true;
             }
         } 
-
     }
 
     private TileInfo FindTileInfo(int row, int col, int rowSize, int colSize)
@@ -137,6 +116,30 @@ public class MapRenderer : MonoBehaviour
         return neighbor;
     }
 
+    private void CreatePathTile(PathTile tilePack, int row, int col, int rowSize, int colSize)
+    {
+        float xPos = (col + 0.5f) * TileSize;
+        float zPos = (row + 0.5f) * TileSize;
+        TileInfo tileInfo = FindTileInfo(row, col, rowSize, colSize);
+        switch (tileInfo.type)
+        {
+            case TileType.STRAIGHT:
+                Instantiate(tilePack.straightTile, new Vector3(xPos, 0, zPos), tileInfo.rotation);
+                break;
+            case TileType.CORNER:
+                Instantiate(tilePack.cornerTile, new Vector3(xPos, 0, zPos), tileInfo.rotation);
+                break;
+            case TileType.INTERSECTION:
+                Instantiate(tilePack.intersectionTile, new Vector3(xPos, 0, zPos), tileInfo.rotation);
+                break;
+            case TileType.THREEWAY:
+                Instantiate(tilePack.threeWayTile, new Vector3(xPos, 0, zPos), tileInfo.rotation);
+                break;
+            default:
+                Instantiate(tilePack.junk, new Vector3(xPos, 0, zPos), tileInfo.rotation);
+                break;
+        }
+    }
 
 }
 
