@@ -46,6 +46,7 @@ public class PlayerUnit
     public int Row { get; set; }
     public int Col { get; set; }
     public int Hp { get; set; }
+    public int TypeId { get; set; }
     public string Level { get; set; }
 }
 
