@@ -33,15 +33,11 @@ public class TurnPlayer
 public class PlayerEvent
 {
     public bool IsAlive { get; set; }
+    public int Hp { get; set; }
     public int Ap { get; set; }
-    public List<PlayerHand> Hand { get; set; }
+    public int[] Hand { get; set; }
     public List<PlayerUnit> Units { get; set; }
     public List<PlayerMapSpell> MapSpells { get; set; }
-}
-
-public class PlayerHand
-{
-    public string TypeId { get; set; }
 }
 
 public class PlayerUnit
@@ -55,6 +51,7 @@ public class PlayerUnit
 
 public class PlayerMapSpell
 {
+    public int SpellId { get; set; }
     public MapSpellCenter Center { get; set; }
     public int Range { get; set; }
     public int TypeId { get; set; }
@@ -67,6 +64,18 @@ public class MapSpellCenter
 }
 
 public class GameInit
+{
+    public InitMap Map { get; set; }
+    public InitConstants Constants { get; set; }
+}
+
+public class InitConstants
+{
+    public int MaxHp { get; set; }
+    public int ApThreshold { get; set; }
+}
+
+public class InitMap
 {
     public int Row { get; set; }
     public int Col { get; set; }
@@ -94,7 +103,7 @@ public class PathCell
     public int Col { get; set; }
 }
 
-public class logReader : MonoBehaviour
+public class LogReader : MonoBehaviour
 {
     public Game game;
     // Start is called before the first frame update
@@ -104,9 +113,19 @@ public class logReader : MonoBehaviour
         {
             string json = r.ReadToEnd();
             game = JsonConvert.DeserializeObject<Game>(json);
-            Debug.Log(game.Init.Col);
-
+            Debug.Log(game.Turns[0].PlayerTurnEvents[0].TurnEvent.Hand);
         }
+    }
+
+    public Game ReadLog()
+    {
+        Game gameLog;
+        using (StreamReader r = new StreamReader("Assets/Scripts/Log/log.json"))
+        {
+            string json = r.ReadToEnd();
+            gameLog = JsonConvert.DeserializeObject<Game>(json);
+        }
+        return gameLog;
     }
 
     // Update is called once per frame
