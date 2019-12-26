@@ -33,6 +33,7 @@ public class TurnPlayer
 public class PlayerEvent
 {
     public bool IsAlive { get; set; }
+    public int Hp { get; set; }
     public int Ap { get; set; }
     public int[] Hand { get; set; }
     public List<PlayerUnit> Units { get; set; }
@@ -50,6 +51,7 @@ public class PlayerUnit
 
 public class PlayerMapSpell
 {
+    public int SpellId { get; set; }
     public MapSpellCenter Center { get; set; }
     public int Range { get; set; }
     public int TypeId { get; set; }
@@ -62,6 +64,18 @@ public class MapSpellCenter
 }
 
 public class GameInit
+{
+    public InitMap Map { get; set; }
+    public InitConstants Constants { get; set; }
+}
+
+public class InitConstants
+{
+    public int MaxHp { get; set; }
+    public int ApThreshold { get; set; }
+}
+
+public class InitMap
 {
     public int Row { get; set; }
     public int Col { get; set; }
@@ -99,7 +113,6 @@ public class LogReader : MonoBehaviour
         {
             string json = r.ReadToEnd();
             game = JsonConvert.DeserializeObject<Game>(json);
-
             Debug.Log(game.Turns[0].PlayerTurnEvents[0].TurnEvent.Hand);
         }
     }

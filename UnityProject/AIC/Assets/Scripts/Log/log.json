@@ -1,8 +1,13 @@
 {
   "init": {
-    "row": 8,
-    "col": 5,
-    "kings": [
+    "constants": {
+      "maxHp": 200,
+      "apThreshold": 50
+    },
+    "map": {
+      "row": 8,
+      "col": 5,
+      "kings": [
       {
         "row": 1,
         "col": 1,
@@ -27,8 +32,8 @@
         "pId": 3,
         "name": "player4"
       }
-    ],
-    "paths": [
+      ],
+      "paths": [
       {
         "pathId": 0,
         "cells": [
@@ -99,7 +104,8 @@
           }
         ]
       }
-    ]
+      ]
+    }
   },
   "turns": [
     {
@@ -110,6 +116,7 @@
           "turnEvent": {
             "isAlive": true,
             "ap": 100,
+            "hp": 150,
             "hand": [1, 3, 5, 7, 9],
             "units": [
               {
@@ -122,6 +129,7 @@
             ],
             "mapSpells": [
               {
+                "spellId": 4,
                 "center": {
                   "row": 5,
                   "col": 3
@@ -136,6 +144,7 @@
           "pId": 1,
           "turnEvent": {
             "isAlive": true,
+            "hp": 100,
             "ap": 80,
             "hand": [2, 5, 6, 9, 1],
             "units": [
@@ -154,6 +163,7 @@
           "pId": 2,
           "turnEvent": {
             "isAlive": true,
+            "hp": 90,
             "ap": 50,
             "hand": [2, 5, 6, 9, 0],
             "units": [
@@ -191,6 +201,7 @@
           "pId": 0,
           "turnEvent": {
             "isAlive": true,
+            "hp": 140,
             "ap": 70,
             "hand": [1, 3, 5, 7, 9],
             "units": [
@@ -204,6 +215,7 @@
             ],
             "mapSpells": [
               {
+                "spellId": 2,
                 "center": {
                   "row": 5,
                   "col": 3
@@ -218,6 +230,7 @@
           "pId": 1,
           "turnEvent": {
             "isAlive": false,
+            "hp": 120,
             "ap": 90,
             "hand": [2, 5, 6, 9, 1],
             "units": [
@@ -236,6 +249,7 @@
           "pId": 2,
           "turnEvent": {
             "isAlive": true,
+            "hp": 100,
             "ap": 70,
             "hand": [2, 5, 6, 9, 0],
             "units": [
