@@ -27,8 +27,9 @@ public class MapRenderer : MonoBehaviour
     }
 
     public void RenderMap(InitMap map, string packName)
+
     {
-        SetTileLocations(map);
+        SetTileLocations(gameInit);
         PathTile tilePack = Array.Find(mainTiles, item => item.name == packName);
         if (tilePack == null)
         {
@@ -36,13 +37,14 @@ public class MapRenderer : MonoBehaviour
             return;
         }
         
-        for (int i = 0; i < map.Row; ++i)
+        for (int i = 0; i < gameInit.Map.Row; ++i)
         {
-            for (int j = 0; j < map.Col; ++j)
+            for (int j = 0; j < gameInit.Map.Col; ++j)
             {
                 if(tileLocation[i, j])
                 {
                     CreatePathTile(tilePack, i, j, map.Row, map.Col);
+
                 }
                 else
                 {
@@ -56,9 +58,10 @@ public class MapRenderer : MonoBehaviour
     }
 
     private void SetTileLocations(InitMap map)
+
     {
-        tileLocation = new bool[map.Row, map.Col];
-        foreach(InitPath path in map.Paths)
+        tileLocation = new bool[gameInit.Map.Row, gameInit.Map.Col];
+        foreach(InitPath path in gameInit.Map.Paths)
         {
             foreach(PathCell cell in path.Cells)
             {

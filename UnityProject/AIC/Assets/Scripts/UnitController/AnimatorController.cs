@@ -6,8 +6,9 @@ public class AnimatorController : MonoBehaviour
 {
     private bool isDeploy; 
     private Animator animator;
-    private float turnTime;
     private float speed;
+
+    public float turnTime;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class AnimatorController : MonoBehaviour
 
     public void Deploy(){
         animator.speed = speed;
-        animator.SetBool("isDeploy" , true);
+        animator.SetBool("Deploy" , true);
     }
 
     public void StopMove(){
@@ -41,7 +42,7 @@ public class AnimatorController : MonoBehaviour
         animator.speed = speed * 4 / 3;
     }
 
-    public void StartMove(){
+    public void StartMoving(){
         animator.speed = speed;
         animator.SetBool("StartMove" , true);
     }

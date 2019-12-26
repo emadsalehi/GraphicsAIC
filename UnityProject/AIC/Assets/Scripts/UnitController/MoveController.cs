@@ -2,27 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move : MonoBehaviour
+public class MoveController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool isMoving; 
-    public bool isRotating;
-    public float turnTime; 
-    public bool isMovingAfterRotate;
-    public Vector3 direction;
-    public float valueOfRotate;
-    public float speed = 1.0f;
-    
+    private bool isMoving; 
+    private bool isRotating;
+    private bool isMovingAfterRotate;
+    private Vector3 direction;
+    private float valueOfRotate;
+    private float speed = 1.0f;
 
-    void StartMoving(Vector3 direction){
-        this.direction = direction / direction.magnitude;
+    public float turnTime;
+
+    public void StartMoving(){
         isMoving = true;
         isRotating = false; 
         isMovingAfterRotate = false;
 
     }
     
-    void StartMovingAfterRotate(Vector3 direction)
+    public void StartMovingAfterRotate(Vector3 direction)
     {
         this.direction = direction / direction.magnitude;
         isMovingAfterRotate = true;
@@ -30,14 +29,14 @@ public class Move : MonoBehaviour
         isMoving = false;     
     }
     
-    void StopEveryThing()
+    public void StopEveryThing()
     {
         isMoving = false;
         isRotating = false;
         isMovingAfterRotate = false;
     }
     
-    void StartRotating(float degree)
+    public void StartRotating(float degree)
     {
         isMoving = false;
         isRotating = true;
