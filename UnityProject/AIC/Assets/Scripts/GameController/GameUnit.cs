@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameUnit : MonoBehaviour
+public class GameUnit
 {
     public GameObject unit;
     public int id;

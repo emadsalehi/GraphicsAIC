@@ -26,9 +26,9 @@ public class MapRenderer : MonoBehaviour
         }
     }
 
-    public void RenderMap(GameInit map, string packName)
+    public void RenderMap(GameInit gameInit, string packName)
     {
-        SetTileLocations(map);
+        SetTileLocations(gameInit);
         PathTile tilePack = Array.Find(mainTiles, item => item.name == packName);
         if (tilePack == null)
         {
@@ -36,15 +36,15 @@ public class MapRenderer : MonoBehaviour
             return;
         }
         
-        for (int i = 0; i < map.Row; ++i)
+        for (int i = 0; i < gameInit.Map.Row; ++i)
         {
-            for (int j = 0; j < map.Col; ++j)
+            for (int j = 0; j < gameInit.Map.Col; ++j)
             {
                 if(tileLocation[i, j])
                 {
                     float xPos = (j + 0.5f) * TileSize;
                     float zPos = (i + 0.5f) * TileSize;
-                    TileInfo tileInfo = FindTileInfo(i, j, map.Row, map.Col);
+                    TileInfo tileInfo = FindTileInfo(i, j, gameInit.Map.Row, gameInit.Map.Col);
                     switch(tileInfo.type)
                     {
                         case TileType.STRAIGHT:
@@ -75,10 +75,10 @@ public class MapRenderer : MonoBehaviour
         
     }
 
-    private void SetTileLocations(GameInit map)
+    private void SetTileLocations(GameInit gameInit)
     {
-        tileLocation = new bool[map.Row, map.Col];
-        foreach(InitPath path in map.Paths)
+        tileLocation = new bool[gameInit.Map.Row, gameInit.Map.Col];
+        foreach(InitPath path in gameInit.Map.Paths)
         {
             foreach(PathCell cell in path.Cells)
             {
