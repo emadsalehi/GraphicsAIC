@@ -99,11 +99,7 @@ public class LogReader : MonoBehaviour
         {
             string json = r.ReadToEnd();
             game = JsonConvert.DeserializeObject<Game>(json);
-<<<<<<< HEAD
             Debug.Log(game.Turns[0].PlayerTurnEvents[0].TurnEvent.Hand);
-=======
-            Debug.Log(game.Turns[1].TurnNum);
->>>>>>> 149b01d92ecdbe780794a07131dbf52fe8999c9c
         }
     }
 
