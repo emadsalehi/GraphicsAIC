@@ -26,7 +26,7 @@ public class MapRenderer : MonoBehaviour
         }
     }
 
-    public void RenderMap(InitMap map, string packName)
+    public void RenderMap(GameInit gameInit, string packName)
 
     {
         SetTileLocations(gameInit);
@@ -43,7 +43,7 @@ public class MapRenderer : MonoBehaviour
             {
                 if(tileLocation[i, j])
                 {
-                    CreatePathTile(tilePack, i, j, map.Row, map.Col);
+                    CreatePathTile(tilePack, i, j, gameInit.Map.Row, gameInit.Map.Col);
 
                 }
                 else
@@ -57,7 +57,7 @@ public class MapRenderer : MonoBehaviour
         
     }
 
-    private void SetTileLocations(InitMap map)
+    private void SetTileLocations(GameInit gameInit)
 
     {
         tileLocation = new bool[gameInit.Map.Row, gameInit.Map.Col];
