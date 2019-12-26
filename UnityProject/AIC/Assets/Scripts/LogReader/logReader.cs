@@ -117,6 +117,17 @@ public class LogReader : MonoBehaviour
         }
     }
 
+    public Game ReadLog()
+    {
+        Game gameLog;
+        using (StreamReader r = new StreamReader("Assets/Scripts/Log/log.json"))
+        {
+            string json = r.ReadToEnd();
+            gameLog = JsonConvert.DeserializeObject<Game>(json);
+        }
+        return gameLog;
+    }
+
     // Update is called once per frame
     void Update()
     {
