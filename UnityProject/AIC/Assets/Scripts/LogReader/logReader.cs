@@ -93,17 +93,14 @@ public class LogReader : MonoBehaviour
 {
     public Game game;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         using (StreamReader r = new StreamReader("Assets/Scripts/Log/log.json"))
         {
             string json = r.ReadToEnd();
             game = JsonConvert.DeserializeObject<Game>(json);
-<<<<<<< HEAD
+
             Debug.Log(game.Turns[0].PlayerTurnEvents[0].TurnEvent.Hand);
-=======
-            Debug.Log(game.Turns[1].TurnNum);
->>>>>>> 149b01d92ecdbe780794a07131dbf52fe8999c9c
         }
     }
 
