@@ -34,14 +34,9 @@ public class PlayerEvent
 {
     public bool IsAlive { get; set; }
     public int Ap { get; set; }
-    public List<PlayerHand> Hand { get; set; }
+    public int[] Hand { get; set; }
     public List<PlayerUnit> Units { get; set; }
     public List<PlayerMapSpell> MapSpells { get; set; }
-}
-
-public class PlayerHand
-{
-    public string TypeId { get; set; }
 }
 
 public class PlayerUnit
@@ -104,8 +99,7 @@ public class logReader : MonoBehaviour
         {
             string json = r.ReadToEnd();
             game = JsonConvert.DeserializeObject<Game>(json);
-            Debug.Log(game.Init.Col);
-
+            Debug.Log(game.Turns[0].PlayerTurnEvents[0].TurnEvent.Hand);
         }
     }
 
