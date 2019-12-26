@@ -94,18 +94,17 @@ public class PathCell
     public int Col { get; set; }
 }
 
-public class logReader : MonoBehaviour
+public class LogReader : MonoBehaviour
 {
     public Game game;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         using (StreamReader r = new StreamReader("Assets/Scripts/Log/log.json"))
         {
             string json = r.ReadToEnd();
             game = JsonConvert.DeserializeObject<Game>(json);
-            Debug.Log(game.Init.Col);
-
+            Debug.Log(game.Turns[1].TurnNum);
         }
     }
 

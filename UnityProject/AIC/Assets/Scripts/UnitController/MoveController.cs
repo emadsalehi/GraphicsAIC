@@ -5,12 +5,11 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool isMoving ; 
+    public bool isMoving; 
     public bool isRotating;
-    public float turnTime ; 
+    public float turnTime; 
     public bool isMovingAfterRotate;
-    
-    public Vector3 direction ; 
+    public Vector3 direction;
     public float valueOfRotate;
     public float speed = 1.0f;
     
@@ -18,7 +17,7 @@ public class Move : MonoBehaviour
     void StartMoving(Vector3 direction){
         this.direction = direction / direction.magnitude;
         isMoving = true;
-        isRotating = false ; 
+        isRotating = false; 
         isMovingAfterRotate = false;
 
     }
@@ -49,21 +48,21 @@ public class Move : MonoBehaviour
     void Start()
     {
 
-        // Calculate the journey length.
     }
 
     // Update is called once per frame
     void Update()
     {
         if (isMoving){
-            transform.position += direction * speed * Time.deltaTime / turnTime;
+            transform.position += direction * (speed * Time.deltaTime) / turnTime;
         }
-        if (isRotating){
+        if (isRotating)
+        {
             transform.Rotate(0, valueOfRotate * Time.deltaTime, 0);
         }  
         if (isMovingAfterRotate)
         {
-            transform.position += direction * speed * Time.deltaTime / (turnTime * 3 / 4);
+            transform.position += direction * (speed * Time.deltaTime) / (turnTime * 3 / 4);
         }      
     }
 }

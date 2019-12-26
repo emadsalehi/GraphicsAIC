@@ -82,3 +82,15 @@ crashlytics-build.properties
 UnityProject/AIC/Assets/Scripts/Log/.idea/.idea.Log.dir/.idea/
 
 UnityProject/AIC/Assets/Scripts/Log/.idea/.idea.Log.dir/
+
+*.iml
+
+UnityProject/AIC/.idea/.idea.AIC/.idea/
+
+UnityProject/AIC/.idea/.idea.Assembly-CSharp.dir/.idea/
+
+UnityProject/AIC/.idea/.idea.Assembly-CSharp-Editor.dir/.idea/
+
+UnityProject/AIC/ProjectSettings/
+
+UnityProject/.vscode/
