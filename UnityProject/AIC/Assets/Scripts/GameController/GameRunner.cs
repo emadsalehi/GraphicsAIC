@@ -18,7 +18,7 @@ public class GameRunner : MonoBehaviour
     void Start()
     {
         Game game = gameObject.GetComponent<LogReader>().ReadLog();
-        // TODO Call MakeMap in maker with log init
+        GetComponent<MapRenderer>().RenderMap(game.Init, "FirstTile");
         LogParser logParser = gameObject.GetComponent<LogParser>();
         logParser.TurnTime = turnTime;
         logParser.ParseLog(game);

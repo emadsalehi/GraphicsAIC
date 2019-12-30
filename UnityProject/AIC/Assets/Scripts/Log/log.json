@@ -38,6 +38,10 @@
         "pathId": 0,
         "cells": [
           {
+            "row": 1,
+            "col": 1
+          },
+          {
             "row": 2,
             "col": 1
           },
@@ -78,6 +82,10 @@
       {
         "pathId": 1,
         "cells": [
+          {
+            "row": 1,
+            "col": 1
+          },
           {
             "row": 2,
             "col": 1
