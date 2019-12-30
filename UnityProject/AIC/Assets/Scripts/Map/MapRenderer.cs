@@ -27,10 +27,10 @@ public class MapRenderer : MonoBehaviour
     }
 
     public void RenderMap(GameInit gameInit, string packName)
-
     {
         SetTileLocations(gameInit);
         PathTile tilePack = Array.Find(mainTiles, item => item.name == packName);
+        ScaleTilePack(tilePack);
         if (tilePack == null)
         {
             Debug.LogError("Tile Set \' " + name + "\' not found!");
@@ -162,12 +162,24 @@ public class MapRenderer : MonoBehaviour
         }
     }
 
+    private void ScaleTilePack(PathTile tilePack)
+    {
+        Vector3 localScale = new Vector3(TileSize / tilePack.PackSize, 0, TileSize / tilePack.PackSize);
+        tilePack.straightTile.transform.localScale = localScale;
+        tilePack.cornerTile.transform.localScale = localScale;
+        tilePack.intersectionTile.transform.localScale = localScale;
+        tilePack.threeWayTile.transform.localScale = localScale;
+        tilePack.junk.transform.localScale = localScale;
+    }
+
 }
 
 [System.Serializable]
 public class PathTile
 {
     public string name;
+    [Range(1, 10)]
+    public int PackSize = 5;
     public GameObject straightTile;
     public GameObject cornerTile;
     public GameObject intersectionTile;
