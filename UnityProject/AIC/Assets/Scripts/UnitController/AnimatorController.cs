@@ -40,11 +40,13 @@ public class AnimatorController : MonoBehaviour
 
     public void MoveAfterRotate() {
         animator.speed = speed * 4 / 3;
+        animator.SetBool("Move" , true);
+
     }
 
     public void StartMoving(){
         animator.speed = speed;
-        animator.SetBool("StartMove" , true);
+        animator.SetBool("Move" , true);
     }
 
     public void Die(){
@@ -54,10 +56,10 @@ public class AnimatorController : MonoBehaviour
 
     public void Restart(){
         isDeploy = false;
-        animator.SetBool("isDeploy" , isDeploy);
+        animator.SetBool("Deploy" , isDeploy);
         animator.SetBool("Stop" , isDeploy);
         animator.SetBool("Rotate" , isDeploy);
-        animator.SetBool("StartMove" , isDeploy);
+        animator.SetBool("Move" , isDeploy);
         animator.SetBool("Die" , isDeploy);
         
     }
