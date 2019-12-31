@@ -7,9 +7,15 @@ public class MapRenderer : MonoBehaviour
 {
     [Range(1, 5)]
     public int TileSize = 1;
+    public int StartY = 20;
+    public float StartVelocity = 20f;
+    public float NextDelay = 1.0f;
     public PathTile[] mainTiles;
     public GameObject[] junckTiles;
+
     private bool[,] tileLocation;
+    private Queue<GameObject> mapElements = new Queue<GameObject>();
+    private float deltaTileTime = 0;
 
     public static MapRenderer instance;
 
@@ -24,6 +30,23 @@ public class MapRenderer : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+    }
+
+    void Update()
+    {
+        
+        if (deltaTileTime <= NextDelay)
+        {
+            deltaTileTime += Time.deltaTime;
+            return;
+        }
+        if (mapElements.Count == 0)
+        {
+            return;
+        }
+        deltaTileTime = 0;
+        mapElements.Dequeue().GetComponent<Rigidbody>().velocity = new Vector3(0, StartVelocity, 0);
+        
     }
 
     public void RenderMap(GameInit gameInit, string packName)
@@ -50,7 +73,7 @@ public class MapRenderer : MonoBehaviour
                 {
                     float xPos = (j + 0.5f) * TileSize;
                     float zPos = (i + 0.5f) * TileSize;
-                    Instantiate(tilePack.junk, new Vector3(xPos, 0, zPos), Quaternion.identity);
+                    mapElements.Enqueue(Instantiate(tilePack.junk, new Vector3(xPos, StartY, zPos), Quaternion.identity));
                 }
             }
         }
@@ -145,19 +168,19 @@ public class MapRenderer : MonoBehaviour
         switch (tileInfo.type)
         {
             case TileType.STRAIGHT:
-                Instantiate(tilePack.straightTile, new Vector3(xPos, 0, zPos), tileInfo.rotation);
+                mapElements.Enqueue(Instantiate(tilePack.straightTile, new Vector3(xPos, StartY, zPos), tileInfo.rotation));
                 break;
             case TileType.CORNER:
-                Instantiate(tilePack.cornerTile, new Vector3(xPos, 0, zPos), tileInfo.rotation);
+                mapElements.Enqueue(Instantiate(tilePack.cornerTile, new Vector3(xPos, StartY, zPos), tileInfo.rotation));
                 break;
             case TileType.INTERSECTION:
-                Instantiate(tilePack.intersectionTile, new Vector3(xPos, 0, zPos), tileInfo.rotation);
+                mapElements.Enqueue(Instantiate(tilePack.intersectionTile, new Vector3(xPos, StartY, zPos), tileInfo.rotation));
                 break;
             case TileType.THREEWAY:
-                Instantiate(tilePack.threeWayTile, new Vector3(xPos, 0, zPos), tileInfo.rotation);
+                mapElements.Enqueue(Instantiate(tilePack.threeWayTile, new Vector3(xPos, StartY, zPos), tileInfo.rotation));
                 break;
             default:
-                Instantiate(tilePack.junk, new Vector3(xPos, 0, zPos), tileInfo.rotation);
+                mapElements.Enqueue(Instantiate(tilePack.junk, new Vector3(xPos, StartY, zPos), tileInfo.rotation));
                 break;
         }
     }
@@ -170,6 +193,11 @@ public class MapRenderer : MonoBehaviour
         tilePack.intersectionTile.transform.localScale = localScale;
         tilePack.threeWayTile.transform.localScale = localScale;
         tilePack.junk.transform.localScale = localScale;
+    }
+
+    public bool IsAnimationFinished()
+    {
+        return (mapElements.Count == 0) && (StartY / StartVelocity <= deltaTileTime);
     }
 
 }
