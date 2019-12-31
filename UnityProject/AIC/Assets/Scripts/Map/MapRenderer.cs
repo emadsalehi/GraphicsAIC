@@ -32,7 +32,7 @@ public class MapRenderer : MonoBehaviour
         }
     }
 
-    void Update()
+    public void anim()
     {
         
         if (deltaTileTime <= NextDelay)
@@ -45,7 +45,7 @@ public class MapRenderer : MonoBehaviour
             return;
         }
         deltaTileTime = 0;
-        mapElements.Dequeue().GetComponent<Rigidbody>().velocity = new Vector3(0, StartVelocity, 0);
+        mapElements.Dequeue().GetComponent<Rigidbody>().velocity = new Vector3(0, -1 * StartVelocity, 0);
         
     }
 
@@ -187,7 +187,7 @@ public class MapRenderer : MonoBehaviour
 
     private void ScaleTilePack(PathTile tilePack)
     {
-        Vector3 localScale = new Vector3(TileSize / tilePack.PackSize, 0, TileSize / tilePack.PackSize);
+        Vector3 localScale = new Vector3(TileSize / (float)tilePack.PackSize, TileSize / (float)tilePack.PackSize, TileSize / (float)tilePack.PackSize);
         tilePack.straightTile.transform.localScale = localScale;
         tilePack.cornerTile.transform.localScale = localScale;
         tilePack.intersectionTile.transform.localScale = localScale;

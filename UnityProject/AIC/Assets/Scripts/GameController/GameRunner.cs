@@ -29,6 +29,7 @@ public class GameRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetComponent<MapRenderer>().anim();
         while (UnitActions[unitActionsPointer].Time <= time)
         {
             UnitAction unitAction = UnitActions[unitActionsPointer];
