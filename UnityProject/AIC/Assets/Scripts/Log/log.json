@@ -190,6 +190,7 @@
           "pId": 3,
           "turnEvent": {
             "isAlive": false,
+            "hp": 60,
             "ap": 10,
             "hand": [3, 4, 6, 9, 0]
           }

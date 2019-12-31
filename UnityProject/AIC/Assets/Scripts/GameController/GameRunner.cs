@@ -8,110 +8,120 @@ public class GameRunner : MonoBehaviour
     public int unitNumbers = 9;
     public List<GameObject> playerGameObjects;
     
-    private List<UnitAction> UnitActions;
-    private List<SpellAction> SpellActions;
-    private float time = 0.0f;
-    private int unitActionsPointer = 0;
-    private int spellActionsPointer = 0;
-    private GameUnitFactory GameUnitFactory = new GameUnitFactory();
+    private List<UnitAction> _unitActions;
+    private List<SpellAction> _spellActions;
+    private float _time = 0.0f;
+    private int _unitActionsPointer = 0;
+    private int _spellActionsPointer = 0;
+    private LogParser _logParser;
+    private GameUnitFactory _gameUnitFactory;
+    
     // Start is called before the first frame update
     void Start()
     {
-        Game game = gameObject.GetComponent<LogReader>().ReadLog();
+        var game = gameObject.GetComponent<LogReader>().ReadLog();
         GetComponent<MapRenderer>().RenderMap(game.Init, "FirstTile");
-        LogParser logParser = gameObject.GetComponent<LogParser>();
-        logParser.TurnTime = turnTime;
-        logParser.ParseLog(game);
-        UnitActions = logParser.UnitActions;
-        SpellActions = logParser.SpellActions;
+        _logParser = gameObject.GetComponent<LogParser>();
+        _logParser.TurnTime = turnTime;
+        _logParser.ParseLog(game);
+        _unitActions = _logParser.UnitActions;
+        _spellActions = _logParser.SpellActions;
+        _gameUnitFactory = new GameUnitFactory();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<MapRenderer>().anim();
-        while (UnitActions[unitActionsPointer].Time <= time)
+        while (_unitActions[_unitActionsPointer].Time <= _time)
         {
-            UnitAction unitAction = UnitActions[unitActionsPointer];
-            if (unitAction.ActionType == UnitActionType.StartMove)
+            var unitAction = _unitActions[_unitActionsPointer];
+            switch (unitAction.ActionType)
             {
-                GameObject unit = GameUnitFactory.FindById(unitAction.UnitId);
-                MoveController moveController = unit.GetComponent<MoveController>();
-                AnimatorController animatorController = unit.GetComponent<AnimatorController>();
-                moveController.turnTime = turnTime;
-                animatorController.SetTurnTime(turnTime);
-                animatorController.Restart();
-                animatorController.StartMoving();
-                moveController.StartMoving();
-            } 
-            else if (unitAction.ActionType == UnitActionType.MoveAfterRotate)
-            {
-                GameObject unit = GameUnitFactory.FindById(unitAction.UnitId);
-                MoveController moveController = unit.GetComponent<MoveController>();
-                AnimatorController animatorController = unit.GetComponent<AnimatorController>();
-                moveController.turnTime = turnTime;
-                animatorController.SetTurnTime(turnTime);
-                animatorController.Restart();
-                animatorController.MoveAfterRotate();
-                moveController.StartMovingAfterRotate(new Vector3(unitAction.Col, 0, unitAction.Row));
-            }
-            else if (unitAction.ActionType == UnitActionType.Rotate)
-            {
-                GameObject unit = GameUnitFactory.FindById(unitAction.UnitId);
-                if (unit == null)
+                case UnitActionType.StartMove:
                 {
-                    unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.Value]
-                        , new Vector3(unitAction.Row, 0, unitAction.Col), Quaternion.identity);
-                    GameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
-                    unit.GetComponent<AnimatorController>().Deploy();
+                    var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    var moveController = unit.GetComponent<MoveController>();
+                    var animatorController = unit.GetComponent<AnimatorController>();
+                    moveController.turnTime = turnTime;
+                    animatorController.SetTurnTime(turnTime);
+                    animatorController.Restart();
+                    animatorController.StartMoving();
+                    moveController.StartMoving();
+                    break;
                 }
-                MoveController moveController = unit.GetComponent<MoveController>();
-                AnimatorController animatorController = unit.GetComponent<AnimatorController>();
-                moveController.turnTime = turnTime;
-                animatorController.SetTurnTime(turnTime);
-                animatorController.Restart();
-                animatorController.Rotate();
-                moveController.StartRotating(unitAction.Value - unit.transform.rotation.y);
-            }
-            else if (unitAction.ActionType == UnitActionType.StopMove)
-            {
-                GameObject unit = GameUnitFactory.FindById(unitAction.UnitId);
-                if (unit == null)
+                case UnitActionType.MoveAfterRotate:
                 {
-                    unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.Value]
-                        , new Vector3(unitAction.Row, 0, unitAction.Col), Quaternion.identity);
-                    GameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
-                    unit.GetComponent<AnimatorController>().Deploy();
+                    var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    var moveController = unit.GetComponent<MoveController>();
+                    var animatorController = unit.GetComponent<AnimatorController>();
+                    moveController.turnTime = turnTime;
+                    animatorController.SetTurnTime(turnTime);
+                    animatorController.Restart();
+                    animatorController.MoveAfterRotate();
+                    moveController.StartMovingAfterRotate(new Vector3(unitAction.Col, 0, unitAction.Row));
+                    break;
                 }
-                MoveController moveController = unit.GetComponent<MoveController>();
-                AnimatorController animatorController = unit.GetComponent<AnimatorController>();
-                moveController.turnTime = turnTime;
-                animatorController.SetTurnTime(turnTime);
-                animatorController.Restart();
-                animatorController.StopMove();
-                moveController.StopEveryThing();
-                // TODO enable attack effect on unit
-                // TODO rotate to defender unit and look at it
+                case UnitActionType.Rotate:
+                {
+                    var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    if (unit == null)
+                    {
+                        unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.Value]
+                            , new Vector3(unitAction.Row, 0, unitAction.Col), Quaternion.identity);
+                        _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
+                        unit.GetComponent<AnimatorController>().Deploy();
+                    }
+                    var moveController = unit.GetComponent<MoveController>();
+                    var animatorController = unit.GetComponent<AnimatorController>();
+                    moveController.turnTime = turnTime;
+                    animatorController.SetTurnTime(turnTime);
+                    animatorController.Restart();
+                    animatorController.Rotate();
+                    moveController.StartRotating(unitAction.Value - unit.transform.rotation.y);
+                    break;
+                }
+                case UnitActionType.StopMove:
+                {
+                    var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    if (unit == null)
+                    {
+                        unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.Value]
+                            , new Vector3(unitAction.Row, 0, unitAction.Col), Quaternion.identity);
+                        _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
+                        unit.GetComponent<AnimatorController>().Deploy();
+                    }
+                    var moveController = unit.GetComponent<MoveController>();
+                    var animatorController = unit.GetComponent<AnimatorController>();
+                    moveController.turnTime = turnTime;
+                    animatorController.SetTurnTime(turnTime);
+                    animatorController.Restart();
+                    animatorController.StopMove();
+                    moveController.StopEveryThing();
+                    // TODO enable attack effect on unit
+                    // TODO rotate to defender unit and look at it
+                    break;
+                }
+                case UnitActionType.Die:
+                {
+                    GameObject unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    MoveController moveController = unit.GetComponent<MoveController>();
+                    var animatorController = unit.GetComponent<AnimatorController>();
+                    moveController.turnTime = turnTime;
+                    animatorController.SetTurnTime(turnTime);
+                    animatorController.Restart();
+                    animatorController.Die();
+                    moveController.StopEveryThing();
+                    // TODO destroy by effect
+                    // TODO destroy Game Object
+                    // TODO Play Die sound
+                    break;
+                }
             }
-            else if (unitAction.ActionType == UnitActionType.Die)
-            {
-                GameObject unit = GameUnitFactory.FindById(unitAction.UnitId);
-                MoveController moveController = unit.GetComponent<MoveController>();
-                AnimatorController animatorController = unit.GetComponent<AnimatorController>();
-                moveController.turnTime = turnTime;
-                animatorController.SetTurnTime(turnTime);
-                animatorController.Restart();
-                animatorController.Die();
-                moveController.StopEveryThing();
-                // TODO destroy by effect
-                // TODO destroy Game Object
-                // TODO Play Die sound
-            }
-            unitActionsPointer++;
+            _unitActionsPointer++;
         }
-        while (SpellActions[spellActionsPointer].Time <= time)
+        while (_spellActions[_spellActionsPointer].Time <= _time)
         {
-            SpellAction spellAction = SpellActions[spellActionsPointer];
+            var spellAction = _spellActions[_spellActionsPointer];
             // TODO create GameSpellFactory
             if (spellAction.ActionType == SpellActionType.Pick)
             { 
@@ -121,14 +131,14 @@ public class GameRunner : MonoBehaviour
             {
                 // TODO remove spell and stop it
             }
-            spellActionsPointer++;
+            _spellActionsPointer++;
         }
-        time += Time.deltaTime;
+        _time += Time.deltaTime;
     }
 
     public void ChangeTurnTime(float turnTime)
     {
         this.turnTime = turnTime;
-        // TODO 
+        // TODO change turn time of all components
     }
 }

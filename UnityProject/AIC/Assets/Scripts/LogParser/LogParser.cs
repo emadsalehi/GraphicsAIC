@@ -73,32 +73,35 @@ public class LogParser : MonoBehaviour
 
     public void ParseLog(Game game)
     {
+        unitActions = new List<UnitAction>();
+        spellActions = new List<SpellAction>();
         LoadUnitActions(game);
         LoadSpellActions(game);
     }
 
     private void LoadUnitActions(Game game)
     {
-        UnitFactory unitFactory = new UnitFactory();
-        List<GameTurn> turns = game.Turns;
+        var unitFactory = new UnitFactory();
+        var turns = game.Turns;
 
-        foreach (GameTurn turn in turns)
+        foreach (var turn in turns)
         {
-            foreach (TurnPlayer turnPlayer in turn.PlayerTurnEvents)
+            foreach (var turnPlayer in turn.PlayerTurnEvents)
             {
-                foreach (PlayerUnit playerUnit in turnPlayer.TurnEvent.Units)
+                if (turnPlayer.TurnEvent.Units == null) continue;
+                foreach (var playerUnit in turnPlayer.TurnEvent.Units)
                 {
                     unitFactory.AddUnitDetail(turnPlayer.PId, playerUnit, turn.TurnNum);
                 }
             }
         }
         
-        foreach (UnitDetails unitDetails in unitFactory.unitDetailsList)
+        foreach (var unitDetails in unitFactory.unitDetailsList)
         {
-            List<int> dir = new List<int> {1, 0};
-            List<int> currentDir = new List<int> {0, 0};
-            UnitActionType lastActionType = UnitActionType.Deploy;
-            for (int i = 0; i < unitDetails.unitEvents.Count - 1; i++)
+            var dir = new List<int> {1, 0};
+            var currentDir = new List<int> {0, 0};
+            var lastActionType = UnitActionType.Deploy;
+            for (var i = 0; i < unitDetails.unitEvents.Count - 1; i++)
             {
                 currentDir[0] = unitDetails.unitEvents[i + 1].row - unitDetails.unitEvents[i].row;
                 currentDir[1] = unitDetails.unitEvents[i + 1].col - unitDetails.unitEvents[i].col;
@@ -106,15 +109,13 @@ public class LogParser : MonoBehaviour
                 {
                     if (lastActionType != UnitActionType.StopMove)
                     {
-                        int targetUnitId = 0;
-                        List<TurnAttack> turnAttacks = game.Turns[i + unitDetails.startTurn].TurnAttacks;
-                        foreach (TurnAttack turnAttack in turnAttacks)
+                        var targetUnitId = 0;
+                        var turnAttacks = game.Turns[i + unitDetails.startTurn].TurnAttacks;
+                        foreach (var turnAttack in turnAttacks)
                         {
-                            if (turnAttack.AttackerId == unitDetails.id)
-                            {
-                                targetUnitId = turnAttack.DefenderId;
-                                break;
-                            }
+                            if (turnAttack.AttackerId != unitDetails.id) continue;
+                            targetUnitId = turnAttack.DefenderId;
+                            break;
                         }
                         lastActionType = UnitActionType.StopMove;
                         unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), 0, unitDetails.id
@@ -127,20 +128,21 @@ public class LogParser : MonoBehaviour
                     if (lastActionType == UnitActionType.StopMove || lastActionType == UnitActionType.Deploy)
                     {
                         lastActionType = UnitActionType.MoveAfterRotate;
-                        int rotationValue = 0;
-                        if (currentDir[0] == 1 && currentDir[1] == 0)
+                        var rotationValue = 0;
+                        switch (currentDir[0])
                         {
-                            rotationValue = 0;
-                        } else if (currentDir[0] == 0 && currentDir[1] == 1)
-                        {
-                            rotationValue = 90;
-                        } else if (currentDir[0] == -1 && currentDir[1] == 0)
-                        {
-                            rotationValue = 180;
-                        }
-                        else
-                        {
-                            rotationValue = 270;
+                            case 1 when currentDir[1] == 0:
+                                rotationValue = 0;
+                                break;
+                            case 0 when currentDir[1] == 1:
+                                rotationValue = 90;
+                                break;
+                            case -1 when currentDir[1] == 0:
+                                rotationValue = 180;
+                                break;
+                            default:
+                                rotationValue = 270;
+                                break;
                         }
                         unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), rotationValue, unitDetails.id
                             , unitDetails.pId, 0, 0, 0, UnitActionType.Rotate));
@@ -151,20 +153,21 @@ public class LogParser : MonoBehaviour
                     {
                         if (dir[0] != currentDir[0] || dir[1] != currentDir[1] || i == 0)
                         {
-                            int rotationValue = 0;
-                            if (currentDir[0] == 1 && currentDir[1] == 0)
+                            var rotationValue = 0;
+                            switch (currentDir[0])
                             {
-                                rotationValue = 0;
-                            } else if (currentDir[0] == 0 && currentDir[1] == 1)
-                            {
-                                rotationValue = 90;
-                            } else if (currentDir[0] == -1 && currentDir[1] == 0)
-                            {
-                                rotationValue = 180;
-                            }
-                            else
-                            {
-                                rotationValue = 270;
+                                case 1 when currentDir[1] == 0:
+                                    rotationValue = 0;
+                                    break;
+                                case 0 when currentDir[1] == 1:
+                                    rotationValue = 90;
+                                    break;
+                                case -1 when currentDir[1] == 0:
+                                    rotationValue = 180;
+                                    break;
+                                default:
+                                    rotationValue = 270;
+                                    break;
                             }
                             unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), rotationValue, unitDetails.id
                                 , unitDetails.pId, 0, 0, 0, UnitActionType.Rotate));
@@ -191,21 +194,23 @@ public class LogParser : MonoBehaviour
 
     private void LoadSpellActions(Game game)
     {
-        SpellFactory spellFactory = new SpellFactory() ;
-        List<GameTurn> turns = game.Turns;
-        foreach (GameTurn turn in turns)
+        var spellFactory = new SpellFactory() ;
+        var turns = game.Turns;
+        foreach (var turn in turns)
         {
-            foreach (TurnPlayer turnPlayer in turn.PlayerTurnEvents)  
+            foreach (var turnPlayer in turn.PlayerTurnEvents)
             {
-                foreach (PlayerMapSpell playerMapSpell in turnPlayer.TurnEvent.MapSpells )
+                if (turnPlayer.TurnEvent.MapSpells == null) continue;
+                foreach (var playerMapSpell in turnPlayer.TurnEvent.MapSpells)
                 {
 
-                    spellFactory.AddSpellDetails(turnPlayer.PId , playerMapSpell , turn.TurnNum , playerMapSpell.Center.Row , playerMapSpell.Center.Col , playerMapSpell.TypeId , playerMapSpell.Range);
+                    spellFactory.AddSpellDetails(turnPlayer.PId, playerMapSpell, turn.TurnNum,
+                        playerMapSpell.Center.Row, playerMapSpell.Center.Col, playerMapSpell.TypeId,
+                        playerMapSpell.Range);
                 }
-
             }    
         }
-        foreach (SpellDetails spellDetails in spellFactory.spellDetailsList)
+        foreach (var spellDetails in spellFactory.spellDetailsList)
         {
             spellActions.Add(new SpellAction(turnTime * spellDetails.startTurn , spellDetails.id , spellDetails.row ,
              spellDetails.col, spellDetails.range ,SpellActionType.Put , spellDetails.id));

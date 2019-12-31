@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GameUnitFactory
 {
-    private List<GameUnit> gameUnits = new List<GameUnit>();
+    private List<GameUnit> _gameUnits = new List<GameUnit>();
     
     public GameObject FindById(int id)
     {
-        foreach (GameUnit gameUnit in gameUnits)
+        foreach (var gameUnit in _gameUnits)
             if (gameUnit.id == id)
                 return gameUnit.unit;
         return null;
@@ -16,6 +16,6 @@ public class GameUnitFactory
 
     public void AddGameUnit(int id, GameObject gameObject)
     {
-        gameUnits.Add(new GameUnit(gameObject, id));
+        _gameUnits.Add(new GameUnit(gameObject, id));
     }
 }

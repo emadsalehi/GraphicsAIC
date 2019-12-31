@@ -106,17 +106,6 @@ public class PathCell
 
 public class LogReader : MonoBehaviour
 {
-    public Game game;
-    // Start is called before the first frame update
-    void Start()
-    {
-        // using (StreamReader r = new StreamReader("Assets/Scripts/Log/log.json"))
-        // {
-        //     string json = r.ReadToEnd();
-        //     game = JsonConvert.DeserializeObject<Game>(json);
-        //     Debug.Log(game.Turns[0].PlayerTurnEvents[0].TurnEvent.Hand);
-        // }
-    }
 
     public Game ReadLog()
     {
