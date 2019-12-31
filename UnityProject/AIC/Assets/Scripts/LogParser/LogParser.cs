@@ -22,9 +22,11 @@ public class UnitAction
     public int TargetUnitId { get; set; }
     public int Row { get; set; }
     public int Col { get; set; }
+    public int TypeId { get; set; }
     public UnitActionType ActionType { get; set; }
 
-    public UnitAction (float time, int value, int unitId, int pId, int row, int col, int targetUnitId, UnitActionType actionType)
+    public UnitAction (float time, int value, int unitId, int pId, int row
+        , int col, int targetUnitId, int typeId, UnitActionType actionType)
     {
         Time = time;
         Value = value;
@@ -34,6 +36,7 @@ public class UnitAction
         Row = row;
         Col = col;
         TargetUnitId = targetUnitId;
+        TypeId = typeId;
     }
 }
 
@@ -119,8 +122,7 @@ public class LogParser : MonoBehaviour
                         }
                         lastActionType = UnitActionType.StopMove;
                         unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), 0, unitDetails.id
-                            , unitDetails.pId, 0, 0, targetUnitId,
-                            UnitActionType.StopMove));
+                            , unitDetails.pId, 0, 0, targetUnitId, unitDetails.typeId, UnitActionType.StopMove));
                     }
                 }
                 else
@@ -145,9 +147,9 @@ public class LogParser : MonoBehaviour
                                 break;
                         }
                         unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), rotationValue, unitDetails.id
-                            , unitDetails.pId, 0, 0, 0, UnitActionType.Rotate));
+                            , unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.Rotate));
                         unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i) + turnTime / 4, 0, unitDetails.id
-                            , unitDetails.pId, currentDir[0], currentDir[1], 0, UnitActionType.MoveAfterRotate));
+                            , unitDetails.pId, currentDir[0], currentDir[1], 0, unitDetails.typeId, UnitActionType.MoveAfterRotate));
                     }
                     else
                     {
@@ -170,15 +172,15 @@ public class LogParser : MonoBehaviour
                                     break;
                             }
                             unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), rotationValue, unitDetails.id
-                                , unitDetails.pId, 0, 0, 0, UnitActionType.Rotate));
+                                , unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.Rotate));
                             unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i) + turnTime / 4, 0, unitDetails.id
-                                , unitDetails.pId, currentDir[0], currentDir[1], 0, UnitActionType.MoveAfterRotate));
+                                , unitDetails.pId, currentDir[0], currentDir[1], 0, unitDetails.typeId, UnitActionType.MoveAfterRotate));
                             lastActionType = UnitActionType.MoveAfterRotate;
                         }
                         else
                         {
                             unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), 0, unitDetails.id
-                                , unitDetails.pId, 0, 0, 0, UnitActionType.StartMove));
+                                , unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.StartMove));
                             lastActionType = UnitActionType.StartMove;
                         }
                     }
@@ -187,7 +189,7 @@ public class LogParser : MonoBehaviour
                 dir[1] = currentDir[1];
             }
             unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + unitDetails.unitEvents.Count - 1)
-                , 0, unitDetails.id, unitDetails.pId, 0, 0, 0, UnitActionType.Die));
+                , 0, unitDetails.id, unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.Die));
         }
         unitActions = unitActions.OrderBy(o => o.Time).ToList();
     }

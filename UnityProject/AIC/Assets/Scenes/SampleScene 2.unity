@@ -677,9 +677,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af42c249b135b1949b5f81f4dcc39400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TileSize: 1
+  TileSize: 3
+  StartY: 0
+  StartVelocity: 20
+  NextDelay: 1
   mainTiles:
   - name: FirstTile
+    PackSize: 5
     straightTile: {fileID: 8171272200362836876, guid: 5a23790b365c731438e64e0d3d195283,
       type: 3}
     cornerTile: {fileID: 6783192074152676186, guid: 896a8b5d79dd9994a891e8f2c184eff0,
@@ -755,16 +759,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monk
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 3da871e81960e3042ba4c5545b09968f,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: d66d5b527ce96274a94852f096d1ef35, type: 2}
-    - target: {fileID: -4398263085341632636, guid: 3da871e81960e3042ba4c5545b09968f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 06d40dc2e1401784eb420a0d2d5d7235, type: 2}
     - target: {fileID: -4216859302048453862, guid: 3da871e81960e3042ba4c5545b09968f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -820,6 +814,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 3da871e81960e3042ba4c5545b09968f,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d66d5b527ce96274a94852f096d1ef35, type: 2}
+    - target: {fileID: -4398263085341632636, guid: 3da871e81960e3042ba4c5545b09968f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 06d40dc2e1401784eb420a0d2d5d7235, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da871e81960e3042ba4c5545b09968f, type: 3}
 --- !u!1001 &1050695779
@@ -1531,7 +1535,7 @@ MonoBehaviour:
       motionGridSize: 64
       colorBlindnessType: 0
       colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_Resources: {fileID: 0}
   m_ShowToolkit: 1
   m_ShowCustomSorter: 1
   breakBeforeColorGrading: 0

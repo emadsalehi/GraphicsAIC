@@ -41,12 +41,7 @@ public class MoveController : MonoBehaviour
         isMoving = false;
         isRotating = true;
         isMovingAfterRotate = false;
-        valueOfRotate = degree / (turnTime / 4);
-    }
-
-    void Start()
-    {
-
+        valueOfRotate = degree / (turnTime * 4 / 14);
     }
 
     // Update is called once per frame
@@ -61,7 +56,7 @@ public class MoveController : MonoBehaviour
         }  
         if (isMovingAfterRotate)
         {
-            transform.position += direction * (speed * Time.deltaTime) / (turnTime * 3 / 4);
+            transform.position += direction * (speed * Time.deltaTime) / (turnTime * 10 / 14);
         }      
     }
 }

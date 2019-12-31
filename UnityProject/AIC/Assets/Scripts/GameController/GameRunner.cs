@@ -32,13 +32,14 @@ public class GameRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        while (_unitActions[_unitActionsPointer].Time <= _time)
+        while (_unitActionsPointer < _unitActions.Count && _unitActions[_unitActionsPointer].Time <= _time)
         {
             var unitAction = _unitActions[_unitActionsPointer];
             switch (unitAction.ActionType)
             {
                 case UnitActionType.StartMove:
                 {
+                    Debug.LogError("StartMove");
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
@@ -51,6 +52,7 @@ public class GameRunner : MonoBehaviour
                 }
                 case UnitActionType.MoveAfterRotate:
                 {
+                    Debug.LogError("StartMoveAfterRotate");
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
@@ -66,11 +68,13 @@ public class GameRunner : MonoBehaviour
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     if (unit == null)
                     {
-                        unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.Value]
+                        Debug.LogError("Deploy");
+                        unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
                             , new Vector3(unitAction.Row, 0, unitAction.Col), Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().Deploy();
                     }
+                    Debug.LogError("Rotate");
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     moveController.turnTime = turnTime;
@@ -85,11 +89,13 @@ public class GameRunner : MonoBehaviour
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     if (unit == null)
                     {
-                        unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.Value]
+                        Debug.LogError("Deploy2");
+                        unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
                             , new Vector3(unitAction.Row, 0, unitAction.Col), Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().Deploy();
                     }
+                    Debug.LogError("Attack");
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     moveController.turnTime = turnTime;
@@ -103,6 +109,7 @@ public class GameRunner : MonoBehaviour
                 }
                 case UnitActionType.Die:
                 {
+                    Debug.LogError("Die");
                     GameObject unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     MoveController moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
@@ -119,7 +126,7 @@ public class GameRunner : MonoBehaviour
             }
             _unitActionsPointer++;
         }
-        while (_spellActions[_spellActionsPointer].Time <= _time)
+        while (_spellActionsPointer < _spellActions.Count && _spellActions[_spellActionsPointer].Time <= _time)
         {
             var spellAction = _spellActions[_spellActionsPointer];
             // TODO create GameSpellFactory
