@@ -148,7 +148,7 @@ public class LogParser : MonoBehaviour
                         }
                         unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), rotationValue, unitDetails.id
                             , unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.Rotate));
-                        unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i) + turnTime / 4, 0, unitDetails.id
+                        unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i) + turnTime * (4.0f / 14.0f), 0, unitDetails.id
                             , unitDetails.pId, currentDir[0], currentDir[1], 0, unitDetails.typeId, UnitActionType.MoveAfterRotate));
                     }
                     else
@@ -173,7 +173,7 @@ public class LogParser : MonoBehaviour
                             }
                             unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), rotationValue, unitDetails.id
                                 , unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.Rotate));
-                            unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i) + turnTime / 4, 0, unitDetails.id
+                            unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i) + turnTime * (4.0f / 14.0f), 0, unitDetails.id
                                 , unitDetails.pId, currentDir[0], currentDir[1], 0, unitDetails.typeId, UnitActionType.MoveAfterRotate));
                             lastActionType = UnitActionType.MoveAfterRotate;
                         }
