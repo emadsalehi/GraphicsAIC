@@ -38,6 +38,10 @@
         "pathId": 0,
         "cells": [
           {
+            "row": 1,
+            "col": 1
+          },
+          {
             "row": 2,
             "col": 1
           },
@@ -78,6 +82,10 @@
       {
         "pathId": 1,
         "cells": [
+          {
+            "row": 1,
+            "col": 1
+          },
           {
             "row": 2,
             "col": 1
@@ -121,6 +129,7 @@
             "units": [
               {
                 "id": 0,
+                "typeId": 4,
                 "row": 2,
                 "col": 1,
                 "hp": 100,
@@ -146,17 +155,7 @@
             "isAlive": true,
             "hp": 100,
             "ap": 80,
-            "hand": [2, 5, 6, 9, 1],
-            "units": [
-              {
-                "typeId": 7,
-                "id": 1,
-                "row": 2,
-                "col": 4,
-                "hp": 80,
-                "level": "2"
-              }
-            ]
+            "hand": [2, 5, 6, 9, 1]
           }
         },
         {
@@ -165,32 +164,17 @@
             "isAlive": true,
             "hp": 90,
             "ap": 50,
-            "hand": [2, 5, 6, 9, 0],
-            "units": [
-              {
-                "typeId": 9,
-                "id": 2,
-                "row": 4,
-                "col": 1,
-                "hp": 30,
-                "level": "1"
-              }
-            ]
+            "hand": [2, 5, 6, 9, 0]
           }
         },
         {
           "pId": 3,
           "turnEvent": {
             "isAlive": false,
+            "hp": 60,
             "ap": 10,
             "hand": [3, 4, 6, 9, 0]
           }
-        }
-      ],
-      "turnAttacks": [
-        {
-          "attackerId": 0,
-          "defenderId": 2
         }
       ]
     },
@@ -207,8 +191,8 @@
             "units": [
               {
                 "id": 0,
-                "row": 3,
-                "col": 1,
+                "row": 2,
+                "col": 2,
                 "hp": 80,
                 "level": "1"
               }
@@ -232,17 +216,7 @@
             "isAlive": false,
             "hp": 120,
             "ap": 90,
-            "hand": [2, 5, 6, 9, 1],
-            "units": [
-              {
-                "typeId": 7,
-                "id": 1,
-                "row": 3,
-                "col": 4,
-                "hp": 80,
-                "level": "2"
-              }
-            ]
+            "hand": [2, 5, 6, 9, 1]
           }
         },
         {
@@ -251,17 +225,7 @@
             "isAlive": true,
             "hp": 100,
             "ap": 70,
-            "hand": [2, 5, 6, 9, 0],
-            "units": [
-              {
-                "typeId": 9,
-                "id": 2,
-                "row": 3,
-                "col": 1,
-                "hp": 30,
-                "level": "1"
-              }
-            ]
+            "hand": [2, 5, 6, 9, 0]
           }
         },
         {
@@ -271,12 +235,6 @@
             "ap": 10,
             "hand": [3, 4, 6, 9, 8]
           }
-        }
-      ],
-      "turnAttacks": [
-        {
-          "attackerId": 0,
-          "defenderId": 2
         }
       ]
     }

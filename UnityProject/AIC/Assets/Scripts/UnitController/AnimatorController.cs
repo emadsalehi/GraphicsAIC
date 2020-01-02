@@ -6,8 +6,8 @@ public class AnimatorController : MonoBehaviour
 {
     private bool isDeploy; 
     private Animator animator;
-    private float turnTime;
     private float speed;
+    private float turnTime;
 
     void Start()
     {
@@ -22,41 +22,57 @@ public class AnimatorController : MonoBehaviour
         animator.speed = speed;
     }
 
-    public void Deploy(){
+    public void Deploy()
+    {
+        if (animator == null)
+            animator = GetComponent<Animator>();
         animator.speed = speed;
-        animator.SetBool("isDeploy" , true);
+        animator.SetBool("Deploy" , true);
     }
 
     public void StopMove(){
+        if (animator == null)
+            animator = GetComponent<Animator>();
         animator.speed = speed;
         animator.SetBool("Stop", true);
     }
 
     public void Rotate(){
-        animator.speed = speed * 4;
+        if (animator == null)
+            animator = GetComponent<Animator>();
+        animator.speed = speed;
         animator.SetBool("Rotate" , true);
     }
 
     public void MoveAfterRotate() {
-        animator.speed = speed * 4 / 3;
+        if (animator == null)
+            animator = GetComponent<Animator>();
+        animator.speed = speed;
+        animator.SetBool("Move" , true);
     }
 
-    public void StartMove(){
+    public void StartMoving(){
+        if (animator == null)
+            animator = GetComponent<Animator>();
         animator.speed = speed;
-        animator.SetBool("StartMove" , true);
+        animator.SetBool("Move" , true);
     }
 
     public void Die(){
+        if (animator == null)
+            animator = GetComponent<Animator>();
         animator.speed = speed;
         animator.SetBool("Die" , true);
     }
 
     public void Restart(){
+        if (animator == null)
+            animator = GetComponent<Animator>();
         isDeploy = false;
-        animator.SetBool("isDeploy" , isDeploy);
+        animator.SetBool("Deploy" , isDeploy);
         animator.SetBool("Stop" , isDeploy);
         animator.SetBool("Rotate" , isDeploy);
-        animator.SetBool("StartMove" , isDeploy);
+        animator.SetBool("Move" , isDeploy);
         animator.SetBool("Die" , isDeploy);
         
     }

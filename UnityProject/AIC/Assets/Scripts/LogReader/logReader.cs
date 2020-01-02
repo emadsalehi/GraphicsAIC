@@ -46,6 +46,7 @@ public class PlayerUnit
     public int Row { get; set; }
     public int Col { get; set; }
     public int Hp { get; set; }
+    public int TypeId { get; set; }
     public string Level { get; set; }
 }
 
@@ -105,15 +106,16 @@ public class PathCell
 
 public class LogReader : MonoBehaviour
 {
-    public Game game;
-    // Start is called before the first frame update
-    void Start()
+
+    public Game ReadLog()
     {
+        Game gameLog;
         using (StreamReader r = new StreamReader("Assets/Scripts/Log/log.json"))
         {
             string json = r.ReadToEnd();
-            game = JsonConvert.DeserializeObject<Game>(json);
+            gameLog = JsonConvert.DeserializeObject<Game>(json);
         }
+        return gameLog;
     }
 
     // Update is called once per frame

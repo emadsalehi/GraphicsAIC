@@ -20,7 +20,7 @@ public class UnitFactory
 
         if (!found)
         {
-            UnitDetails unitDetails = new UnitDetails(pId, playerUnit.Id, turnNum);
+            UnitDetails unitDetails = new UnitDetails(pId, playerUnit.Id, turnNum, playerUnit.TypeId);
             unitDetails.unitEvents.Add(new UnitEvent(playerUnit.Row, playerUnit.Col));
             unitDetailsList.Add(unitDetails);
         }
