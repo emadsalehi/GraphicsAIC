@@ -1,24 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.VFX;
-public class dfsdf : MonoBehaviour
+
+public class AttackEffectController : MonoBehaviour
 {
     public GameObject particleSystemGameObject;
     public float offsetLocationX;
     public float offsetLocationY;
     public float offsetLocationZ;
-    public float distance;
     public Vector3 destination;
-    public GameObject target;
 
-    private ParticleSystem particeSystem;
-
-
+    private GameObject target;
+    private ParticleSystem particleSystem;
+    private bool attackEnable = false;
 
     public void SetTarget(GameObject target)
     {
-        if (target!=null){
+        if (target != null){
             this.target = target;
         }
     }
@@ -26,34 +24,33 @@ public class dfsdf : MonoBehaviour
     void Start()
     {   
         particleSystemGameObject.transform.position += new Vector3(offsetLocationX, offsetLocationY, offsetLocationZ);
-        particeSystem = particleSystemGameObject.GetComponent<ParticleSystem>();
-        if (target!=null){
-
-        destination = target.transform.position;
+        particleSystem = particleSystemGameObject.GetComponent<ParticleSystem>();
+        StopParticleSystem();
+        if (target != null){
+            destination = target.transform.position;
         }
-        
-	}
+    }
   
 
     public void StopParticleSystem() {
-        particeSystem.Stop();
+        particleSystem.Stop();
+        attackEnable = false;
     }
 
-    public void PlayParticleSystem(Vector3 destination) {
-        if (target!=null){
-            destination -= particleSystemGameObject.transform.position;
-            // distance = destination.magnitude;
-            // var main = particeSystem.main;
-            // float speed = main.startSpeed.Evaluate(0.0f);
-            // main.startLifetime = distance / speed;
-            particeSystem.Play();
+    public void PlayParticleSystem(GameObject target)
+    {
+        this.target = target;
+        if (this.target != null){
+            destination = transform.position - particleSystemGameObject.transform.position;
+            particleSystem.Play();
+            attackEnable = true;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (target!=null){
+        if (attackEnable) {
             Vector3 tp = target.transform.position;
             particleSystemGameObject.transform.LookAt(tp);
         }

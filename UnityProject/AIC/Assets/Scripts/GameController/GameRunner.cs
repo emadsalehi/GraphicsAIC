@@ -39,7 +39,7 @@ public class GameRunner : MonoBehaviour
             {
                 case UnitActionType.StartMove:
                 {
-                    Debug.LogError("StartMove");
+                    Debug.Log("StartMove");
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
@@ -48,11 +48,16 @@ public class GameRunner : MonoBehaviour
                     animatorController.Restart();
                     animatorController.StartMoving();
                     moveController.StartMoving();
+                    var attackEffectController = unit.GetComponent<AttackEffectController>();
+                    if (attackEffectController != null)
+                    {
+                        attackEffectController.StopParticleSystem();
+                    }
                     break;
                 }
                 case UnitActionType.MoveAfterRotate:
                 {
-                    Debug.LogError("StartMoveAfterRotate");
+                    Debug.Log("StartMoveAfterRotate");
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
@@ -68,13 +73,13 @@ public class GameRunner : MonoBehaviour
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     if (unit == null)
                     {
-                        Debug.LogError("Deploy");
+                        Debug.Log("Deploy");
                         unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
                             , new Vector3(unitAction.Row, 0, unitAction.Col), Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().Deploy();
                     }
-                    Debug.LogError("Rotate");
+                    Debug.Log("Rotate");
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     moveController.turnTime = turnTime;
@@ -89,13 +94,13 @@ public class GameRunner : MonoBehaviour
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     if (unit == null)
                     {
-                        Debug.LogError("Deploy2");
+                        Debug.Log("Deploy2");
                         unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
                             , new Vector3(unitAction.Row, 0, unitAction.Col), Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().Deploy();
                     }
-                    Debug.LogError("Attack");
+                    Debug.Log("Attack");
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     moveController.turnTime = turnTime;
@@ -103,13 +108,17 @@ public class GameRunner : MonoBehaviour
                     animatorController.Restart();
                     animatorController.StopMove();
                     moveController.StopEveryThing();
-                    // TODO enable attack effect on unit
                     // TODO rotate to defender unit and look at it
+                    var attackEffectController = unit.GetComponent<AttackEffectController>();
+                    if (attackEffectController != null)
+                    {
+                        attackEffectController.PlayParticleSystem(_gameUnitFactory.FindById(unitAction.TargetUnitId));
+                    }
                     break;
                 }
                 case UnitActionType.Die:
                 {
-                    Debug.LogError("Die");
+                    Debug.Log("Die");
                     GameObject unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     MoveController moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
