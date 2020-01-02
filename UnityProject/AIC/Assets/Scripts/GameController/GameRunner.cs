@@ -1,9 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameRunner : MonoBehaviour
 {
+    private class UIPlayer
+    {
+        public int PId { get; set; }
+        public int Hp { get; set; }
+        public int Ap { get; set; }
+        public int[] Hand { get; set; }
+        public bool isAlive { get; set; }
+    }
+
     public float turnTime = 2.0f;
     public int unitNumbers = 9;
     public List<GameObject> playerGameObjects;
@@ -11,15 +21,20 @@ public class GameRunner : MonoBehaviour
     private List<UnitAction> _unitActions;
     private List<SpellAction> _spellActions;
     private float _time = 0.0f;
+    private int turnNumber = 0;
+    private List<GameTurn> gameTurns;
     private int _unitActionsPointer = 0;
     private int _spellActionsPointer = 0;
     private LogParser _logParser;
     private GameUnitFactory _gameUnitFactory;
+    private bool test = false;
     
     // Start is called before the first frame update
     void Start()
     {
         var game = gameObject.GetComponent<LogReader>().ReadLog();
+        gameTurns = game.Turns;
+        Debug.Log(game.Init.Map.Col);
         GetComponent<MapRenderer>().RenderMap(game.Init, "FirstTile");
         _logParser = gameObject.GetComponent<LogParser>();
         _logParser.TurnTime = turnTime;
@@ -32,12 +47,12 @@ public class GameRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        while (_unitActionsPointer < _unitActions.Count && _unitActions[_unitActionsPointer].Time <= _time)
+        if (!test)
         {
-            var unitAction = _unitActions[_unitActionsPointer];
-            switch (unitAction.ActionType)
+            while (_unitActionsPointer < _unitActions.Count && _unitActions[_unitActionsPointer].Time <= _time)
             {
-                case UnitActionType.StartMove:
+                var unitAction = _unitActions[_unitActionsPointer];
+                switch (unitAction.ActionType)
                 {
                     Debug.Log("StartMove");
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
@@ -55,7 +70,13 @@ public class GameRunner : MonoBehaviour
                     }
                     break;
                 }
-                case UnitActionType.MoveAfterRotate:
+                _unitActionsPointer++;
+            }
+            while (_spellActionsPointer < _spellActions.Count && _spellActions[_spellActionsPointer].Time <= _time)
+            {
+                var spellAction = _spellActions[_spellActionsPointer];
+                // TODO create GameSpellFactory
+                if (spellAction.ActionType == SpellActionType.Pick)
                 {
                     Debug.Log("StartMoveAfterRotate");
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
@@ -68,7 +89,7 @@ public class GameRunner : MonoBehaviour
                     moveController.StartMovingAfterRotate(new Vector3(unitAction.Col, 0, unitAction.Row));
                     break;
                 }
-                case UnitActionType.Rotate:
+                else
                 {
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     if (unit == null)
@@ -133,28 +154,41 @@ public class GameRunner : MonoBehaviour
                     break;
                 }
             }
-            _unitActionsPointer++;
-        }
-        while (_spellActionsPointer < _spellActions.Count && _spellActions[_spellActionsPointer].Time <= _time)
-        {
-            var spellAction = _spellActions[_spellActionsPointer];
-            // TODO create GameSpellFactory
-            if (spellAction.ActionType == SpellActionType.Pick)
-            { 
-                // TODO place spell and play it
-            }
-            else
-            {
-                // TODO remove spell and stop it
-            }
-            _spellActionsPointer++;
         }
         _time += Time.deltaTime;
+        int newTurn = (int)Math.Truncate(_time / turnTime);
+        if ( newTurn != turnNumber)
+        {
+            turnNumber = newTurn;
+            FireUIEvents(gameTurns, turnNumber);
+        }
+        
     }
 
     public void ChangeTurnTime(float turnTime)
     {
         this.turnTime = turnTime;
         // TODO change turn time of all components
+    }
+
+    public void FireUIEvents(List<GameTurn> gameTurns, int turnNumber)
+    {
+        Debug.Log(turnNumber);
+        var turn = gameTurns[turnNumber];
+        gameObject.BroadcastMessage("UpdateTurnNumber", turnNumber);
+        List<UIPlayer> playersStatus = new List<UIPlayer>();
+        foreach (TurnPlayer tp in turn.PlayerTurnEvents)  {
+            UIPlayer player = new UIPlayer();
+            player.Ap = tp.TurnEvent.Ap;
+            player.Hand = tp.TurnEvent.Hand;
+            player.Hp = tp.TurnEvent.Hp;
+            player.isAlive = tp.TurnEvent.IsAlive;
+            player.PId = tp.PId;
+            playersStatus.Add(player);
+        }
+        gameObject.BroadcastMessage("UpdatePlayersStatus", playersStatus);
+
+        
+
     }
 }
