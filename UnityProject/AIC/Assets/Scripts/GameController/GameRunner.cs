@@ -27,7 +27,6 @@ public class GameRunner : MonoBehaviour
     private int _spellActionsPointer = 0;
     private LogParser _logParser;
     private GameUnitFactory _gameUnitFactory;
-    private bool test = false;
     
     // Start is called before the first frame update
     void Start()
@@ -47,12 +46,12 @@ public class GameRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!test)
+        while (_unitActionsPointer < _unitActions.Count && _unitActions[_unitActionsPointer].Time <= _time)
         {
-            while (_unitActionsPointer < _unitActions.Count && _unitActions[_unitActionsPointer].Time <= _time)
+            var unitAction = _unitActions[_unitActionsPointer];
+            switch (unitAction.ActionType)
             {
-                var unitAction = _unitActions[_unitActionsPointer];
-                switch (unitAction.ActionType)
+                case UnitActionType.StartMove:
                 {
                     Debug.Log("StartMove");
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
@@ -70,13 +69,7 @@ public class GameRunner : MonoBehaviour
                     }
                     break;
                 }
-                _unitActionsPointer++;
-            }
-            while (_spellActionsPointer < _spellActions.Count && _spellActions[_spellActionsPointer].Time <= _time)
-            {
-                var spellAction = _spellActions[_spellActionsPointer];
-                // TODO create GameSpellFactory
-                if (spellAction.ActionType == SpellActionType.Pick)
+                case UnitActionType.MoveAfterRotate:
                 {
                     Debug.Log("StartMoveAfterRotate");
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
@@ -89,7 +82,7 @@ public class GameRunner : MonoBehaviour
                     moveController.StartMovingAfterRotate(new Vector3(unitAction.Col, 0, unitAction.Row));
                     break;
                 }
-                else
+                case UnitActionType.Rotate:
                 {
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     if (unit == null)
@@ -154,6 +147,21 @@ public class GameRunner : MonoBehaviour
                     break;
                 }
             }
+            _unitActionsPointer++;
+        }
+        while (_spellActionsPointer < _spellActions.Count && _spellActions[_spellActionsPointer].Time <= _time)
+        {
+            var spellAction = _spellActions[_spellActionsPointer];
+            // TODO create GameSpellFactory
+            if (spellAction.ActionType == SpellActionType.Pick)
+            { 
+                // TODO place spell and play it
+            }
+            else
+            {
+                // TODO remove spell and stop it
+            }
+            _spellActionsPointer++;
         }
         _time += Time.deltaTime;
         int newTurn = (int)Math.Truncate(_time / turnTime);
@@ -162,7 +170,6 @@ public class GameRunner : MonoBehaviour
             turnNumber = newTurn;
             FireUIEvents(gameTurns, turnNumber);
         }
-        
     }
 
     public void ChangeTurnTime(float turnTime)
