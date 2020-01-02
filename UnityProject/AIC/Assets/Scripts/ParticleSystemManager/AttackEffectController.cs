@@ -5,11 +5,8 @@ using UnityEngine;
 public class AttackEffectController : MonoBehaviour
 {
     public GameObject particleSystemGameObject;
-    public float offsetLocationX;
-    public float offsetLocationY;
-    public float offsetLocationZ;
-    public Vector3 destination;
 
+    private Vector3 destination;
     private GameObject target;
     private ParticleSystem particleSystem;
     private bool attackEnable = false;
@@ -23,7 +20,6 @@ public class AttackEffectController : MonoBehaviour
 
     void Start()
     {   
-        particleSystemGameObject.transform.position += new Vector3(offsetLocationX, offsetLocationY, offsetLocationZ);
         particleSystem = particleSystemGameObject.GetComponent<ParticleSystem>();
         StopParticleSystem();
         if (target != null){

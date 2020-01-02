@@ -123,6 +123,7 @@ public class GameRunner : MonoBehaviour
                     animatorController.StopMove();
                     moveController.StopEveryThing();
                     // TODO rotate to defender unit and look at it
+                    // TODO play attack sound
                     var attackEffectController = unit.GetComponent<AttackEffectController>();
                     if (attackEffectController != null)
                     {
