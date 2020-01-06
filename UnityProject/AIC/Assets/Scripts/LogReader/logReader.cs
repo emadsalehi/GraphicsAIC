@@ -111,7 +111,7 @@ public class LogReader : MonoBehaviour
     public Game ReadLog()
     {
         Game gameLog;
-        using (StreamReader r = new StreamReader("Assets/Scripts/Log/graphic1.json"))
+        using (StreamReader r = new StreamReader("Assets/Scripts/Log/log.json"))
         {
             string json = r.ReadToEnd();
             gameLog = JsonConvert.DeserializeObject<Game>(json);
