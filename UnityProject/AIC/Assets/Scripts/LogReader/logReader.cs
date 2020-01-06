@@ -66,7 +66,8 @@ public class MapSpellCenter
 
 public class GameInit
 {
-    public InitMap Map { get; set; }
+    public InitMap GraphicMap { get; set; }
+    public int MaxAP { get; set; }
     public InitConstants Constants { get; set; }
 }
 
@@ -110,7 +111,7 @@ public class LogReader : MonoBehaviour
     public Game ReadLog()
     {
         Game gameLog;
-        using (StreamReader r = new StreamReader("Assets/Scripts/Log/log.json"))
+        using (StreamReader r = new StreamReader("Assets/Scripts/Log/graphic1.json"))
         {
             string json = r.ReadToEnd();
             gameLog = JsonConvert.DeserializeObject<Game>(json);

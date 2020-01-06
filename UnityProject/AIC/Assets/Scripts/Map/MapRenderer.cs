@@ -60,13 +60,13 @@ public class MapRenderer : MonoBehaviour
             return;
         }
         
-        for (int i = 0; i < gameInit.Map.Row; ++i)
+        for (int i = 0; i < gameInit.GraphicMap.Row; ++i)
         {
-            for (int j = 0; j < gameInit.Map.Col; ++j)
+            for (int j = 0; j < gameInit.GraphicMap.Col; ++j)
             {
                 if(tileLocation[i, j])
                 {
-                    CreatePathTile(tilePack, i, j, gameInit.Map.Row, gameInit.Map.Col);
+                    CreatePathTile(tilePack, i, j, gameInit.GraphicMap.Row, gameInit.GraphicMap.Col);
 
                 }
                 else
@@ -83,8 +83,8 @@ public class MapRenderer : MonoBehaviour
     private void SetTileLocations(GameInit gameInit)
 
     {
-        tileLocation = new bool[gameInit.Map.Row, gameInit.Map.Col];
-        foreach(InitPath path in gameInit.Map.Paths)
+        tileLocation = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
+        foreach(InitPath path in gameInit.GraphicMap.Paths)
         {
             foreach(PathCell cell in path.Cells)
             {

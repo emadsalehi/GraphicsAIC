@@ -33,7 +33,7 @@ public class GameRunner : MonoBehaviour
     {
         var game = gameObject.GetComponent<LogReader>().ReadLog();
         gameTurns = game.Turns;
-        Debug.Log(game.Init.Map.Col);
+        Debug.Log(game.Init.GraphicMap.Col);
         GetComponent<MapRenderer>().RenderMap(game.Init, "FirstTile");
         _logParser = gameObject.GetComponent<LogParser>();
         _logParser.TurnTime = turnTime;
