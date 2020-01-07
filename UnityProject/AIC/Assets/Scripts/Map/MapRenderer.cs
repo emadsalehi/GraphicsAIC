@@ -17,6 +17,7 @@ public class MapRenderer : MonoBehaviour
 
     private bool[,] tileLocation;
     private bool[,] kingLocation;
+    private bool[,] availableLoc;
     //private bool[,] junkLocation;
     private Queue<KingTower> kingTowerqueue;
     private Queue<GameObject> mapElements = new Queue<GameObject>();
@@ -74,6 +75,8 @@ public class MapRenderer : MonoBehaviour
         {
             for (int j = 0; j < gameInit.GraphicMap.Col; ++j)
             {
+                if (availableLoc[i, j])
+                    continue;
                 if(tileLocation[i, j])
                 {
                     CreatePathTile(tilePack, i, j, gameInit.GraphicMap.Row, gameInit.GraphicMap.Col);
@@ -109,6 +112,7 @@ public class MapRenderer : MonoBehaviour
     {
         tileLocation = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
         kingLocation = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
+        availableLoc = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
         //junkLocation = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
 
         foreach(InitPath path in gameInit.GraphicMap.Paths)
@@ -121,9 +125,14 @@ public class MapRenderer : MonoBehaviour
 
         foreach (InitKing king in gameInit.GraphicMap.Kings)
         {
-            
+            for(int i = -1; i < 2; ++i)
+            {
+                for(int j = -1; j < 2; ++j)
+                {
+                    availableLoc[king.Row + i, king.Col + j] = true;
+                }
+            }
             kingLocation[king.Row, king.Col] = true;
-            Debug.LogWarning("Found King in " + king.Row + " /// " + king.Col + ":" + kingLocation[king.Row, king.Col]);
         }
         /*
         for(int i = 0; i < gameInit.GraphicMap.Row; ++i)
