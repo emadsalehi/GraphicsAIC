@@ -6,7 +6,7 @@ public class SpellFactory
 {
     public List<SpellDetails> spellDetailsList = new List<SpellDetails>();
 
-    public void AddSpellDetails (int PId , PlayerMapSpell playerMapSpell , int turnTime , int row , int col ,int id , int range)
+    public void AddSpellDetails (int PId , PlayerMapSpell playerMapSpell , int turnTime ,int id)
     {
         bool found = false;
         foreach (SpellDetails spellDetails in spellDetailsList)
@@ -19,7 +19,7 @@ public class SpellFactory
             }
         }
         if (!found){
-            SpellDetails spellDetails = new SpellDetails(PId , id ,range, row , col , turnTime);
+            SpellDetails spellDetails = new SpellDetails(PId , id, playerMapSpell.UnitIds , turnTime);
             spellDetailsList.Add(spellDetails);
         }
         

@@ -53,15 +53,8 @@ public class PlayerUnit
 public class PlayerMapSpell
 {
     public int SpellId { get; set; }
-    public MapSpellCenter Center { get; set; }
-    public int Range { get; set; }
+    public List<int> UnitIds {get; set;}
     public int TypeId { get; set; }
-}
-
-public class MapSpellCenter
-{
-    public int Row { get; set; }
-    public int Col { get; set; }
 }
 
 public class GameInit
@@ -111,7 +104,7 @@ public class LogReader : MonoBehaviour
     public Game ReadLog()
     {
         Game gameLog;
-        using (StreamReader r = new StreamReader("Assets/Scripts/Log/log.json"))
+        using (StreamReader r = new StreamReader("Assets/Scripts/Log/graphic2.json"))
         {
             string json = r.ReadToEnd();
             gameLog = JsonConvert.DeserializeObject<Game>(json);

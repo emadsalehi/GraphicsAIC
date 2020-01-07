@@ -5,17 +5,23 @@ using UnityEngine;
 
 public class MapRenderer : MonoBehaviour
 {
+    public bool Animation = false;
     [Range(1, 5)]
     public int TileSize = 1;
     public int StartY = 20;
     public float StartVelocity = 20f;
     public float NextDelay = 1.0f;
+    public KingTower[] Towers = new KingTower[4];
     public PathTile[] mainTiles;
-    public GameObject[] junckTiles;
+    public JunkTile[] junckTiles;
 
     private bool[,] tileLocation;
+    private bool[,] kingLocation;
+    //private bool[,] junkLocation;
+    private Queue<KingTower> kingTowerqueue;
     private Queue<GameObject> mapElements = new Queue<GameObject>();
     private float deltaTileTime = 0;
+    private System.Random random = new System.Random();
 
     public static MapRenderer instance;
 
@@ -32,9 +38,12 @@ public class MapRenderer : MonoBehaviour
         }
     }
 
-    public void anim()
+    void Update()
     {
-        
+        if (!Animation)
+        {
+            return;
+        }
         if (deltaTileTime <= NextDelay)
         {
             deltaTileTime += Time.deltaTime;
@@ -51,7 +60,8 @@ public class MapRenderer : MonoBehaviour
 
     public void RenderMap(GameInit gameInit, string packName)
     {
-        SetTileLocations(gameInit);
+        kingTowerqueue = new Queue<KingTower>(Towers);
+        SetLocations(gameInit);
         PathTile tilePack = Array.Find(mainTiles, item => item.name == packName);
         ScaleTilePack(tilePack);
         if (tilePack == null)
@@ -67,30 +77,63 @@ public class MapRenderer : MonoBehaviour
                 if(tileLocation[i, j])
                 {
                     CreatePathTile(tilePack, i, j, gameInit.GraphicMap.Row, gameInit.GraphicMap.Col);
-
                 }
+
                 else
                 {
-                    float xPos = (j + 0.5f) * TileSize;
-                    float zPos = (i + 0.5f) * TileSize;
-                    mapElements.Enqueue(Instantiate(tilePack.junk, new Vector3(xPos, StartY, zPos), Quaternion.identity));
+                    JunkTile tempTile = junckTiles[random.Next(junckTiles.Length)];
+                    ScaleJunkTile(tempTile);
+                    float xPos = (j) * TileSize;
+                    float zPos = (i) * TileSize;
+                    mapElements.Enqueue(Instantiate(tempTile.gameObject, new Vector3(xPos, StartY, zPos), Quaternion.identity));
                 }
             }
         }
-        
+        for (int i = 0; i < gameInit.GraphicMap.Row; ++i)
+        {
+            for (int j = 0; j < gameInit.GraphicMap.Col; ++j)
+            {
+                if(kingLocation[i, j])
+                {
+                    Debug.LogWarning("Found King in " + i + " " + j + ":" + kingLocation[i, j]);
+                    float xPos = (j) * TileSize;
+                    float zPos = (i) * TileSize;
+                    mapElements.Enqueue(Instantiate(ScaleKingTower(kingTowerqueue.Dequeue()).tower, new Vector3(xPos, StartY, zPos), Quaternion.identity));
+                }
+            }
+        }
+
     }
 
-    private void SetTileLocations(GameInit gameInit)
-
+    private void SetLocations(GameInit gameInit)
     {
         tileLocation = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
+        kingLocation = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
+        //junkLocation = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
+
         foreach(InitPath path in gameInit.GraphicMap.Paths)
         {
             foreach(PathCell cell in path.Cells)
             {
                 tileLocation[cell.Row, cell.Col] = true;
             }
-        } 
+        }
+
+        foreach (InitKing king in gameInit.GraphicMap.Kings)
+        {
+            
+            kingLocation[king.Row, king.Col] = true;
+            Debug.LogWarning("Found King in " + king.Row + " /// " + king.Col + ":" + kingLocation[king.Row, king.Col]);
+        }
+        /*
+        for(int i = 0; i < gameInit.GraphicMap.Row; ++i)
+        {
+            for(int j = 0; j < gameInit.GraphicMap.Col; ++j)
+            {
+                junkLocation[i, j] = !(tileLocation[i, j] || kingLocation[i, j]);
+            }
+        }
+        */
     }
 
     private TileInfo FindTileInfo(int row, int col, int rowSize, int colSize)
@@ -136,12 +179,12 @@ public class MapRenderer : MonoBehaviour
 
         if (col > 0 && row < rowSize - 1 && tileLocation[row + 1, col] && tileLocation[row, col - 1])
             return new TileInfo(TileType.CORNER, Quaternion.identity);
-        if (col > 0 && row > 0 && tileLocation[row - 1, col] && tileLocation[row, col - 1])
+        if (col > 0 && row > 0 && tileLocation[row + 1, col] && tileLocation[row, col + 1])
             return new TileInfo(TileType.CORNER, Quaternion.Euler(0, 90, 0));
         if (col < colSize - 1 && row > 0 && tileLocation[row - 1, col] && tileLocation[row, col + 1])
             return new TileInfo(TileType.CORNER, Quaternion.Euler(0, 180, 0));
         if (col < colSize - 1 && row < rowSize - 1 && tileLocation[row - 1, col] && tileLocation[row, col - 1])
-            return new TileInfo(TileType.CORNER, Quaternion.Euler(0, 180, 0));
+            return new TileInfo(TileType.CORNER, Quaternion.Euler(0, 270, 0));
 
         return new TileInfo(TileType.INVALID, Quaternion.identity);
     }
@@ -162,8 +205,8 @@ public class MapRenderer : MonoBehaviour
 
     private void CreatePathTile(PathTile tilePack, int row, int col, int rowSize, int colSize)
     {
-        float xPos = (col + 0.5f) * TileSize;
-        float zPos = (row + 0.5f) * TileSize;
+        float xPos = (col) * TileSize;
+        float zPos = (row) * TileSize;
         TileInfo tileInfo = FindTileInfo(row, col, rowSize, colSize);
         switch (tileInfo.type)
         {
@@ -195,9 +238,20 @@ public class MapRenderer : MonoBehaviour
         tilePack.junk.transform.localScale = localScale;
     }
 
+    private void ScaleJunkTile(JunkTile junk)
+    {
+        junk.gameObject.transform.localScale = new Vector3(TileSize / (float)junk.size, TileSize / (float)junk.size, TileSize / (float)junk.size);
+    }
+
+    private KingTower ScaleKingTower(KingTower tower)
+    {
+        tower.tower.transform.localScale = new Vector3(3 * TileSize / (float)tower.size, 3 * TileSize / (float)tower.size, 3 * TileSize / (float)tower.size);
+        return tower;
+    }
+
     public bool IsAnimationFinished()
     {
-        return (mapElements.Count == 0) && (StartY / StartVelocity <= deltaTileTime);
+        return Animation && (mapElements.Count == 0) && (StartY / StartVelocity <= deltaTileTime);
     }
 
 }
@@ -234,4 +288,18 @@ public class TileInfo
         this.rotation = rotation;
     }
     
+}
+
+[System.Serializable]
+public class JunkTile
+{
+    public GameObject gameObject;
+    public int size;
+}
+
+[System.Serializable]
+public class KingTower
+{
+    public int size;
+    public GameObject tower;
 }

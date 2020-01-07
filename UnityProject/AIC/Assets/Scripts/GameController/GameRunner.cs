@@ -17,7 +17,7 @@ public class GameRunner : MonoBehaviour
     public float turnTime = 2.0f;
     public int unitNumbers = 9;
     public List<GameObject> playerGameObjects;
-    
+
     private List<UnitAction> _unitActions;
     private List<SpellAction> _spellActions;
     private float _time = 0.0f;
@@ -27,7 +27,7 @@ public class GameRunner : MonoBehaviour
     private int _spellActionsPointer = 0;
     private LogParser _logParser;
     private GameUnitFactory _gameUnitFactory;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +67,7 @@ public class GameRunner : MonoBehaviour
                     {
                         attackEffectController.StopParticleSystem();
                     }
+
                     break;
                 }
                 case UnitActionType.MoveAfterRotate:
@@ -89,10 +90,12 @@ public class GameRunner : MonoBehaviour
                     {
                         Debug.Log("Deploy");
                         unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
-                            , new Vector3(unitAction.Col, 0, unitAction.Row), Quaternion.identity);
+                            , new Vector3(unitAction.Col, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row),
+                            Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().Deploy();
                     }
+
                     Debug.Log("Rotate");
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
@@ -110,10 +113,11 @@ public class GameRunner : MonoBehaviour
                     {
                         Debug.Log("Deploy2");
                         unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
-                            , new Vector3(unitAction.Col, 0, unitAction.Row), Quaternion.identity);
+                            , new Vector3(unitAction.Col, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row), Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().DeployAttack();
                     }
+
                     Debug.Log("Attack");
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
@@ -129,6 +133,7 @@ public class GameRunner : MonoBehaviour
                     {
                         attackEffectController.PlayParticleSystem(_gameUnitFactory.FindById(unitAction.TargetUnitId));
                     }
+
                     break;
                 }
                 case UnitActionType.Die:
@@ -148,25 +153,29 @@ public class GameRunner : MonoBehaviour
                     break;
                 }
             }
+
             _unitActionsPointer++;
         }
+
         while (_spellActionsPointer < _spellActions.Count && _spellActions[_spellActionsPointer].Time <= _time)
         {
             var spellAction = _spellActions[_spellActionsPointer];
             // TODO create GameSpellFactory
-            if (spellAction.ActionType == SpellActionType.Pick)
-            { 
+            if (spellAction.ActionType == SpellActionType.Put)
+            {
                 // TODO place spell and play it
             }
             else
             {
                 // TODO remove spell and stop it
             }
+
             _spellActionsPointer++;
         }
+
         _time += Time.deltaTime;
-        int newTurn = (int)Math.Truncate(_time / turnTime);
-        if ( newTurn != turnNumber)
+        int newTurn = (int) Math.Truncate(_time / turnTime);
+        if (newTurn != turnNumber)
         {
             turnNumber = newTurn;
             FireUIEvents(gameTurns, turnNumber);
@@ -185,7 +194,8 @@ public class GameRunner : MonoBehaviour
         var turn = gameTurns[turnNumber];
         gameObject.BroadcastMessage("UpdateTurnNumber", turnNumber);
         List<UIPlayer> playersStatus = new List<UIPlayer>();
-        foreach (TurnPlayer tp in turn.PlayerTurnEvents)  {
+        foreach (TurnPlayer tp in turn.PlayerTurnEvents)
+        {
             UIPlayer player = new UIPlayer();
             player.Ap = tp.TurnEvent.Ap;
             player.Hand = tp.TurnEvent.Hand;
@@ -194,9 +204,7 @@ public class GameRunner : MonoBehaviour
             player.PId = tp.PId;
             playersStatus.Add(player);
         }
+
         gameObject.BroadcastMessage("UpdatePlayersStatus", playersStatus);
-
-        
-
     }
 }
