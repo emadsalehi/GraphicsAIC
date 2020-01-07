@@ -5338,10 +5338,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af42c249b135b1949b5f81f4dcc39400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animation: 0
   TileSize: 1
   StartY: 0
   StartVelocity: 0
-  NextDelay: 1
+  NextDelay: 0
+  Towers:
+  - size: 5
+    tower: {fileID: 5882530070701293937, guid: f6ec8281fb17eb942a3a0abcb245c4cc, type: 3}
+  - size: 5
+    tower: {fileID: 1678229149526741512, guid: ad1f3a5837df619468ab5697cb0c95c2, type: 3}
+  - size: 5
+    tower: {fileID: 1201054798532428082, guid: 6d4d710489106414b91517adedf62992, type: 3}
+  - size: 5
+    tower: {fileID: 3456139906394301268, guid: f1899673ca36fcd47ba7f11b6724b61a, type: 3}
   mainTiles:
   - name: FirstTile
     PackSize: 5
@@ -5354,7 +5364,10 @@ MonoBehaviour:
     threeWayTile: {fileID: 3503446413196513783, guid: b5c29d6683f5e6a449c9b6dd91383827,
       type: 3}
     junk: {fileID: 1425354528379504238, guid: 4a3e6401dd259a34c914cd640723df78, type: 3}
-  junckTiles: []
+  junckTiles:
+  - gameObject: {fileID: 1425354528379504238, guid: 4a3e6401dd259a34c914cd640723df78,
+      type: 3}
+    size: 5
 --- !u!4 &773089482
 Transform:
   m_ObjectHideFlags: 0
@@ -5399,7 +5412,7 @@ MonoBehaviour:
   - {fileID: 1596961240}
   - {fileID: 1596961240}
   - {fileID: 1596961240}
-  - {fileID: 1596961240}
+  - {fileID: 1006169336}
   - {fileID: 1438606018}
   - {fileID: 1596961240}
   - {fileID: 1596961240}
@@ -5408,6 +5421,7 @@ MonoBehaviour:
   - {fileID: 1596961240}
   - {fileID: 1596961240}
   - {fileID: 1596961240}
+  - {fileID: 1006169336}
   - {fileID: 1596961240}
   - {fileID: 1596961240}
   - {fileID: 1596961240}
@@ -5416,6 +5430,7 @@ MonoBehaviour:
   - {fileID: 1596961240}
   - {fileID: 1596961240}
   - {fileID: 1596961240}
+  - {fileID: 1006169336}
   - {fileID: 1596961240}
   - {fileID: 1596961240}
   - {fileID: 1596961240}
@@ -5424,9 +5439,7 @@ MonoBehaviour:
   - {fileID: 1596961240}
   - {fileID: 1596961240}
   - {fileID: 1596961240}
-  - {fileID: 1596961240}
-  - {fileID: 1596961240}
-  - {fileID: 1596961240}
+  - {fileID: 1006169336}
   - {fileID: 1438606018}
   - {fileID: 1596961240}
   - {fileID: 1596961240}
