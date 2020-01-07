@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8941125556859789954}
   - component: {fileID: 5157051952181079210}
   - component: {fileID: 4949777625341109291}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pack3_ThreeWay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,6 +72,10 @@ PrefabInstance:
     - target: {fileID: 1607759695684960, guid: 5e40b3435a2413d4d9e22dd132d4f79e, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Floor_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607759695684960, guid: 5e40b3435a2413d4d9e22dd132d4f79e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4145866895571982, guid: 5e40b3435a2413d4d9e22dd132d4f79e, type: 3}
       propertyPath: m_LocalPosition.x

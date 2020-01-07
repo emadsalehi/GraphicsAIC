@@ -17,4 +17,10 @@ public class LoadLog : MonoBehaviour
         
     }
 
+    public void loadLogMenu()
+    {
+        mainMenu.SetActive(!mainMenu.activeSelf);
+        selectLog.SetActive(!selectLog.activeSelf);
+    }
+
 }
