@@ -53,15 +53,8 @@ public class PlayerUnit
 public class PlayerMapSpell
 {
     public int SpellId { get; set; }
-    public MapSpellCenter Center { get; set; }
-    public int Range { get; set; }
+    public List<int> UnitIds {get; set;}
     public int TypeId { get; set; }
-}
-
-public class MapSpellCenter
-{
-    public int Row { get; set; }
-    public int Col { get; set; }
 }
 
 public class GameInit

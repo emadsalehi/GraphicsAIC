@@ -161,7 +161,7 @@ public class GameRunner : MonoBehaviour
         {
             var spellAction = _spellActions[_spellActionsPointer];
             // TODO create GameSpellFactory
-            if (spellAction.ActionType == SpellActionType.Pick)
+            if (spellAction.ActionType == SpellActionType.Put)
             {
                 // TODO place spell and play it
             }

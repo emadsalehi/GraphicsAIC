@@ -6,19 +6,15 @@ public class SpellDetails
 {
     public int pId;
     public int id;
-    public int range;
-    public int row; 
-    public int col;
+    public List<int> unitIds;
     public int startTurn;
     public int aliveTurns = 0; 
     
-    public SpellDetails(int pId ,int id ,int range ,int row ,int col ,int startTurn)
+    public SpellDetails(int pId ,int id ,List<int> unitIds ,int startTurn)
     {
         this.pId = pId;
         this.id = id;
-        this.range = range;
-        this.row = row;
-        this.col = col;
+        this.unitIds = unitIds;
         this.startTurn = startTurn;
     }
 }
