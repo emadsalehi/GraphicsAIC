@@ -66,7 +66,8 @@ public class MapSpellCenter
 
 public class GameInit
 {
-    public InitMap Map { get; set; }
+    public InitMap GraphicMap { get; set; }
+    public int MaxAP { get; set; }
     public InitConstants Constants { get; set; }
 }
 

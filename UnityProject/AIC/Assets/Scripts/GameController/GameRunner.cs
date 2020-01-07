@@ -33,7 +33,7 @@ public class GameRunner : MonoBehaviour
     {
         var game = gameObject.GetComponent<LogReader>().ReadLog();
         gameTurns = game.Turns;
-        Debug.Log(game.Init.Map.Col);
+        Debug.Log(game.Init.GraphicMap.Col);
         GetComponent<MapRenderer>().RenderMap(game.Init, "FirstTile");
         _logParser = gameObject.GetComponent<LogParser>();
         _logParser.TurnTime = turnTime;
@@ -89,7 +89,7 @@ public class GameRunner : MonoBehaviour
                     {
                         Debug.Log("Deploy");
                         unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
-                            , new Vector3(unitAction.Row, 0, unitAction.Col), Quaternion.identity);
+                            , new Vector3(unitAction.Col, 0, unitAction.Row), Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().Deploy();
                     }
@@ -100,7 +100,7 @@ public class GameRunner : MonoBehaviour
                     animatorController.SetTurnTime(turnTime);
                     animatorController.Restart();
                     animatorController.Rotate();
-                    moveController.StartRotating(unitAction.Value - unit.transform.rotation.y);
+                    moveController.StartRotating(unitAction.Value - unit.transform.eulerAngles.y);
                     break;
                 }
                 case UnitActionType.StopMove:
@@ -110,9 +110,9 @@ public class GameRunner : MonoBehaviour
                     {
                         Debug.Log("Deploy2");
                         unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
-                            , new Vector3(unitAction.Row, 0, unitAction.Col), Quaternion.identity);
+                            , new Vector3(unitAction.Col, 0, unitAction.Row), Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
-                        unit.GetComponent<AnimatorController>().Deploy();
+                        unit.GetComponent<AnimatorController>().DeployAttack();
                     }
                     Debug.Log("Attack");
                     var moveController = unit.GetComponent<MoveController>();
@@ -181,7 +181,7 @@ public class GameRunner : MonoBehaviour
 
     public void FireUIEvents(List<GameTurn> gameTurns, int turnNumber)
     {
-        Debug.Log(turnNumber);
+        //Debug.Log(turnNumber);
         var turn = gameTurns[turnNumber];
         gameObject.BroadcastMessage("UpdateTurnNumber", turnNumber);
         List<UIPlayer> playersStatus = new List<UIPlayer>();

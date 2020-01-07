@@ -129,7 +129,6 @@ public class LogParser : MonoBehaviour
                 {
                     if (lastActionType == UnitActionType.StopMove || lastActionType == UnitActionType.Deploy)
                     {
-                        lastActionType = UnitActionType.MoveAfterRotate;
                         var rotationValue = 0;
                         switch (currentDir[0])
                         {
@@ -147,13 +146,14 @@ public class LogParser : MonoBehaviour
                                 break;
                         }
                         unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), rotationValue, unitDetails.id
-                            , unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.Rotate));
-                        unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i) + turnTime * (4.0f / 14.0f), 0, unitDetails.id
+                            , unitDetails.pId, unitDetails.unitEvents[i].row, unitDetails.unitEvents[i].col, 0, unitDetails.typeId, UnitActionType.Rotate));
+                        unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i) + turnTime / 3.5f, 0, unitDetails.id
                             , unitDetails.pId, currentDir[0], currentDir[1], 0, unitDetails.typeId, UnitActionType.MoveAfterRotate));
+                        lastActionType = UnitActionType.MoveAfterRotate;
                     }
                     else
                     {
-                        if (dir[0] != currentDir[0] || dir[1] != currentDir[1] || i == 0)
+                        if (dir[0] != currentDir[0] || dir[1] != currentDir[1])
                         {
                             var rotationValue = 0;
                             switch (currentDir[0])
@@ -173,7 +173,7 @@ public class LogParser : MonoBehaviour
                             }
                             unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), rotationValue, unitDetails.id
                                 , unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.Rotate));
-                            unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i) + turnTime * (4.0f / 14.0f), 0, unitDetails.id
+                            unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i) + turnTime / 3.5f, 0, unitDetails.id
                                 , unitDetails.pId, currentDir[0], currentDir[1], 0, unitDetails.typeId, UnitActionType.MoveAfterRotate));
                             lastActionType = UnitActionType.MoveAfterRotate;
                         }
