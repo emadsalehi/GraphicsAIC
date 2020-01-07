@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5530733646162816549}
   - component: {fileID: 3422205163792617517}
   - component: {fileID: 4917783838056386620}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6204260183250879834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.12, z: 0}
+  m_LocalPosition: {x: 0, y: -0.103, z: 0}
   m_LocalScale: {x: 5, y: 0.2, z: 5}
   m_Children: []
   m_Father: {fileID: 3822238770700909947}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 3822238770700909947}
   - component: {fileID: 2836114518141988376}
   - component: {fileID: 2786357128674077746}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pack1_corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,8 +153,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 0.2, z: 5}
-  m_Center: {x: 0, y: -0.1, z: 0}
+  m_Size: {x: 5.051179, y: 0.20000002, z: 5}
+  m_Center: {x: 0.025589466, y: -0.10000001, z: 0}
 --- !u!1 &7338911692926295543
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 4737371043297134900}
   - component: {fileID: 1291504508908656109}
   - component: {fileID: 2518966534381419764}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Env_Road_Arrow_02_SF
   m_TagString: Untagged
   m_Icon: {fileID: 0}

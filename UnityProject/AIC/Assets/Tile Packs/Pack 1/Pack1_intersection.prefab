@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8026705515205230877}
   - component: {fileID: 6927100712065177971}
   - component: {fileID: 4115811354965360713}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 3238797181000210727}
   - component: {fileID: 6060225597418409261}
   - component: {fileID: 1771169960919375603}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pack1_intersection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,8 +153,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 0.2, z: 5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.9038963, y: 0.20000003, z: 5}
+  m_Center: {x: 0.04805185, y: -0.15, z: 0}
 --- !u!1001 &8160841273303028243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -165,6 +165,10 @@ PrefabInstance:
     - target: {fileID: 1419820751816708, guid: 12262e0b4d93a3644b3a4567715d3a75, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_Median_01_SF
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419820751816708, guid: 12262e0b4d93a3644b3a4567715d3a75, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4942185554565792, guid: 12262e0b4d93a3644b3a4567715d3a75, type: 3}
       propertyPath: m_LocalPosition.x

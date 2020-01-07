@@ -163,11 +163,23 @@ public class GameRunner : MonoBehaviour
             // TODO create GameSpellFactory
             if (spellAction.ActionType == SpellActionType.Put)
             {
-                // TODO place spell and play it
+                foreach (var sid in spellAction.UnitIds)
+                {
+                    GameObject unit = _gameUnitFactory.FindById(sid);
+                    SpellEffectController sec = unit.GetComponent<SpellEffectController>();
+                    if (sec != null)
+                        sec.StartSpell(spellAction.TypeId);
+                }
             }
             else
             {
-                // TODO remove spell and stop it
+                foreach (var sid in spellAction.UnitIds)
+                {
+                    GameObject unit = _gameUnitFactory.FindById(sid);
+                    SpellEffectController sec = unit.GetComponent<SpellEffectController>();
+                    if (sec != null)
+                        sec.StopSpell(spellAction.TypeId);
+                }
             }
 
             _spellActionsPointer++;
