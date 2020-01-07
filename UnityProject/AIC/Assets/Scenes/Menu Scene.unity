@@ -1974,7 +1974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &895084211
 Transform:
   m_ObjectHideFlags: 0
@@ -3188,7 +3188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1759882906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3684,7 +3684,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1660081635}
-        m_MethodName: OnClickLoadLog
+        m_MethodName: loadLogMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
