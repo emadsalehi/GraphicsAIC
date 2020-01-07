@@ -43,19 +43,15 @@ public class UnitAction
 public class SpellAction{
     public float Time { get; set; }
     public int TypeId { get; set; }
-    public int Row { get; set; }
-    public int Col { get; set; }
-    public int Range{ get; set; }
+    public List<int> UnitIds { get; set; } 
     public SpellActionType ActionType { get; set; }
     public int SpellId{get; set; }
     
-    public SpellAction(float time ,int typeId ,int row ,int col ,int range, SpellActionType spellActionType, int spellId )
+    public SpellAction(float time ,int typeId ,List<int> unitIds , SpellActionType spellActionType, int spellId )
     {
         Time = time;
         TypeId = typeId;
-        Row = row;
-        Col = col;
-        Range = range;
+        UnitIds = unitIds;
         ActionType = spellActionType;
         SpellId = spellId;
 
@@ -205,19 +201,15 @@ public class LogParser : MonoBehaviour
                 if (turnPlayer.TurnEvent.MapSpells == null) continue;
                 foreach (var playerMapSpell in turnPlayer.TurnEvent.MapSpells)
                 {
-
-                    spellFactory.AddSpellDetails(turnPlayer.PId, playerMapSpell, turn.TurnNum,
-                        playerMapSpell.Center.Row, playerMapSpell.Center.Col, playerMapSpell.TypeId,
-                        playerMapSpell.Range);
+                    spellFactory.AddSpellDetails(turnPlayer.PId, playerMapSpell, turn.TurnNum, playerMapSpell.SpellId);
                 }
             }    
         }
         foreach (var spellDetails in spellFactory.spellDetailsList)
         {
-            spellActions.Add(new SpellAction(turnTime * spellDetails.startTurn , spellDetails.id , spellDetails.row ,
-             spellDetails.col, spellDetails.range ,SpellActionType.Put , spellDetails.id));
+            spellActions.Add(new SpellAction(turnTime * spellDetails.startTurn , spellDetails.id , spellDetails.unitIds ,SpellActionType.Put , spellDetails.id));
             spellActions.Add(new SpellAction(turnTime * (spellDetails.startTurn + spellDetails.aliveTurns) ,
-             spellDetails.id , spellDetails.row , spellDetails.col, spellDetails.range ,SpellActionType.Pick , spellDetails.id ));
+             spellDetails.id , spellDetails.unitIds ,SpellActionType.Pick , spellDetails.id ));
 
         }
 
