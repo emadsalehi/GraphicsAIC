@@ -5406,7 +5406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94a5e7cc990438940966277cc71e7d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnTime: 2
+  turnTime: 1.5
   unitNumbers: 9
   playerGameObjects:
   - {fileID: 1596961240}

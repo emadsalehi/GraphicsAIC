@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4807510765407610470}
   - component: {fileID: 4806778132356873642}
   m_Layer: 0
-  m_Name: FX_SpaceClouds
+  m_Name: Poison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4582,8 +4582,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7cc206aef1ebf4d4191fa53be931a7e8, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 0b88a4fdc0688e041abe30f4212f8a4e, type: 2}
+  - {fileID: 2100000, guid: 0b88a4fdc0688e041abe30f4212f8a4e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
