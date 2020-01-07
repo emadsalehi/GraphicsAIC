@@ -40,7 +40,7 @@ public class MapRenderer : MonoBehaviour
 
     void Update()
     {
-        if(!Animation)
+        if (!Animation)
         {
             return;
         }
@@ -91,11 +91,15 @@ public class MapRenderer : MonoBehaviour
         }
         for (int i = 0; i < gameInit.GraphicMap.Row; ++i)
         {
-            for (int j = 0; j < gameInit.GraphicMap.Col && kingLocation[i, j]; ++j)
+            for (int j = 0; j < gameInit.GraphicMap.Col; ++j)
             {
-                float xPos = (j) * TileSize;
-                float zPos = (i) * TileSize;
-                mapElements.Enqueue(Instantiate(ScaleKingTower(kingTowerqueue.Dequeue()).tower, new Vector3(xPos, StartY, zPos), Quaternion.identity));
+                if(kingLocation[i, j])
+                {
+                    Debug.LogWarning("Found King in " + i + " " + j + ":" + kingLocation[i, j]);
+                    float xPos = (j) * TileSize;
+                    float zPos = (i) * TileSize;
+                    mapElements.Enqueue(Instantiate(ScaleKingTower(kingTowerqueue.Dequeue()).tower, new Vector3(xPos, StartY, zPos), Quaternion.identity));
+                }
             }
         }
 
@@ -117,7 +121,9 @@ public class MapRenderer : MonoBehaviour
 
         foreach (InitKing king in gameInit.GraphicMap.Kings)
         {
+            
             kingLocation[king.Row, king.Col] = true;
+            Debug.LogWarning("Found King in " + king.Row + " /// " + king.Col + ":" + kingLocation[king.Row, king.Col]);
         }
         /*
         for(int i = 0; i < gameInit.GraphicMap.Row; ++i)
@@ -173,12 +179,12 @@ public class MapRenderer : MonoBehaviour
 
         if (col > 0 && row < rowSize - 1 && tileLocation[row + 1, col] && tileLocation[row, col - 1])
             return new TileInfo(TileType.CORNER, Quaternion.identity);
-        if (col > 0 && row > 0 && tileLocation[row - 1, col] && tileLocation[row, col - 1])
+        if (col > 0 && row > 0 && tileLocation[row + 1, col] && tileLocation[row, col + 1])
             return new TileInfo(TileType.CORNER, Quaternion.Euler(0, 90, 0));
         if (col < colSize - 1 && row > 0 && tileLocation[row - 1, col] && tileLocation[row, col + 1])
             return new TileInfo(TileType.CORNER, Quaternion.Euler(0, 180, 0));
         if (col < colSize - 1 && row < rowSize - 1 && tileLocation[row - 1, col] && tileLocation[row, col - 1])
-            return new TileInfo(TileType.CORNER, Quaternion.Euler(0, 180, 0));
+            return new TileInfo(TileType.CORNER, Quaternion.Euler(0, 270, 0));
 
         return new TileInfo(TileType.INVALID, Quaternion.identity);
     }
@@ -239,7 +245,7 @@ public class MapRenderer : MonoBehaviour
 
     private KingTower ScaleKingTower(KingTower tower)
     {
-        tower.tower.transform.localScale = new Vector3(TileSize / (float)tower.size, TileSize / (float)tower.size, TileSize / (float)tower.size);
+        tower.tower.transform.localScale = new Vector3(3 * TileSize / (float)tower.size, 3 * TileSize / (float)tower.size, 3 * TileSize / (float)tower.size);
         return tower;
     }
 
