@@ -22,7 +22,7 @@ public enum SpellActionType
 
 public class UnitAction
 {
-    public float Time { get; }
+    public float Time { get; set; }
     public int Value { get; set; }
     public int UnitId { get; set; }
     public int PId { get; set; }

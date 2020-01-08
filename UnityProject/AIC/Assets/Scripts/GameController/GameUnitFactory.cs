@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameUnitFactory
@@ -8,14 +9,16 @@ public class GameUnitFactory
     
     public GameObject FindById(int id)
     {
-        foreach (var gameUnit in _gameUnits)
-            if (gameUnit.id == id)
-                return gameUnit.unit;
-        return null;
+        return (from gameUnit in _gameUnits where gameUnit.id == id select gameUnit.unit).FirstOrDefault();
     }
 
     public void AddGameUnit(int id, GameObject gameObject)
     {
         _gameUnits.Add(new GameUnit(gameObject, id));
+    }
+
+    public List<GameObject> GetAllUnits()
+    {
+        return _gameUnits.Select(gameUnit => gameUnit.unit).ToList();
     }
 }

@@ -21,6 +21,7 @@ public class GameRunner : MonoBehaviour
     private List<UnitAction> _unitActions;
     private List<SpellAction> _spellActions;
     private float _time = 0.0f;
+    private float _timeSpeed = 1.0f;
     private int turnNumber = 0;
     private List<GameTurn> gameTurns;
     private int _unitActionsPointer = 0;
@@ -47,8 +48,8 @@ public class GameRunner : MonoBehaviour
     {
         ApplyUnitActions();
         ApplySpellActions();
-        _time += Time.deltaTime;
-        
+        _time += Time.deltaTime * _timeSpeed;
+
         int newTurn = (int) Math.Truncate(_time / turnTime);
         if (newTurn != turnNumber)
         {
@@ -59,8 +60,14 @@ public class GameRunner : MonoBehaviour
 
     public void ChangeTurnTime(float turnTime)
     {
+        _timeSpeed *= (this.turnTime / turnTime);
         this.turnTime = turnTime;
-        // TODO change turn time of all components
+        var units = _gameUnitFactory.GetAllUnits();
+        foreach (var unit in units)
+        {
+            unit.GetComponent<MoveController>().turnTime = turnTime;
+            unit.GetComponent<AnimatorController>().SetTurnTime(turnTime);
+        }
     }
 
     void ApplyUnitActions()
@@ -186,6 +193,7 @@ public class GameRunner : MonoBehaviour
                     break;
                 }
             }
+
             _unitActionsPointer++;
         }
     }
@@ -215,6 +223,7 @@ public class GameRunner : MonoBehaviour
                         sec.StopSpell(spellAction.TypeId);
                 }
             }
+
             _spellActionsPointer++;
         }
     }
