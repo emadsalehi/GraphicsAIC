@@ -60,4 +60,14 @@ public class SpellEffectController : MonoBehaviour
                 break;
         }
     }
+
+    public void StopAll()
+    {
+        Haste.GetComponent<ParticleSystem>().Stop(true);
+        Damage.GetComponent<ParticleSystem>().Stop(true);
+        Heal.GetComponent<ParticleSystem>().Stop(true);
+        Teleport.GetComponent<ParticleSystem>().Stop(true);
+        Duplicate.GetComponent<ParticleSystem>().Stop(true);
+        Poison.GetComponent<ParticleSystem>().Stop(true);
+    }
 }

@@ -160,7 +160,6 @@ public class GameRunner : MonoBehaviour
         while (_spellActionsPointer < _spellActions.Count && _spellActions[_spellActionsPointer].Time <= _time)
         {
             var spellAction = _spellActions[_spellActionsPointer];
-            // TODO create GameSpellFactory
             if (spellAction.ActionType == SpellActionType.Put)
             {
                 foreach (var sid in spellAction.UnitIds)
@@ -181,7 +180,6 @@ public class GameRunner : MonoBehaviour
                         sec.StopSpell(spellAction.TypeId);
                 }
             }
-
             _spellActionsPointer++;
         }
 
