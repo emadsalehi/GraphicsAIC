@@ -57,17 +57,9 @@ public class GameRunner : MonoBehaviour
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
-                    moveController.turnTime = turnTime;
-                    animatorController.SetTurnTime(turnTime);
                     animatorController.Restart();
                     animatorController.StartMoving();
                     moveController.StartMoving();
-                    var attackEffectController = unit.GetComponent<AttackEffectController>();
-                    if (attackEffectController != null)
-                    {
-                        attackEffectController.StopParticleSystem();
-                    }
-
                     break;
                 }
                 case UnitActionType.MoveAfterRotate:
@@ -76,8 +68,6 @@ public class GameRunner : MonoBehaviour
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
-                    moveController.turnTime = turnTime;
-                    animatorController.SetTurnTime(turnTime);
                     animatorController.Restart();
                     animatorController.MoveAfterRotate();
                     moveController.StartMovingAfterRotate(new Vector3(unitAction.Col, 0, unitAction.Row));
@@ -94,16 +84,22 @@ public class GameRunner : MonoBehaviour
                             Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().Deploy();
+                        var moveController1 = unit.GetComponent<MoveController>();
+                        var animatorController1 = unit.GetComponent<AnimatorController>();
+                        moveController1.turnTime = turnTime;
+                        animatorController1.SetTurnTime(turnTime);
                     }
-
                     Debug.Log("Rotate");
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
-                    moveController.turnTime = turnTime;
-                    animatorController.SetTurnTime(turnTime);
                     animatorController.Restart();
                     animatorController.Rotate();
                     moveController.StartRotating(unitAction.Value - unit.transform.eulerAngles.y);
+                    var attackEffectController = unit.GetComponent<AttackEffectController>();
+                    if (attackEffectController != null)
+                    {
+                        attackEffectController.StopParticleSystem();
+                    }
                     break;
                 }
                 case UnitActionType.StopMove:
@@ -116,13 +112,15 @@ public class GameRunner : MonoBehaviour
                             , new Vector3(unitAction.Col, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row), Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().DeployAttack();
+                        var moveController1 = unit.GetComponent<MoveController>();
+                        var animatorController1 = unit.GetComponent<AnimatorController>();
+                        moveController1.turnTime = turnTime;
+                        animatorController1.SetTurnTime(turnTime);
                     }
 
                     Debug.Log("Attack");
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
-                    moveController.turnTime = turnTime;
-                    animatorController.SetTurnTime(turnTime);
                     animatorController.Restart();
                     animatorController.StopMove();
                     moveController.StopEveryThing();
@@ -133,7 +131,6 @@ public class GameRunner : MonoBehaviour
                     {
                         attackEffectController.PlayParticleSystem(_gameUnitFactory.FindById(unitAction.TargetUnitId));
                     }
-
                     break;
                 }
                 case UnitActionType.Die:
@@ -142,8 +139,6 @@ public class GameRunner : MonoBehaviour
                     GameObject unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     MoveController moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
-                    moveController.turnTime = turnTime;
-                    animatorController.SetTurnTime(turnTime);
                     animatorController.Restart();
                     animatorController.Die();
                     moveController.StopEveryThing();
@@ -152,8 +147,21 @@ public class GameRunner : MonoBehaviour
                     // TODO Play Die sound
                     break;
                 }
+                case UnitActionType.Teleport:
+                {
+                    Debug.Log("Teleport");
+                    GameObject unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    MoveController moveController = unit.GetComponent<MoveController>();
+                    moveController.StopEveryThing();
+                    unit.transform.position = new Vector3(unitAction.Col, unit.transform.position.y, unitAction.Row);
+                    var attackEffectController = unit.GetComponent<AttackEffectController>();
+                    if (attackEffectController != null)
+                    {
+                        attackEffectController.StopParticleSystem();
+                    }
+                    break;
+                }
             }
-
             _unitActionsPointer++;
         }
 
@@ -182,7 +190,6 @@ public class GameRunner : MonoBehaviour
             }
             _spellActionsPointer++;
         }
-
         _time += Time.deltaTime;
         int newTurn = (int) Math.Truncate(_time / turnTime);
         if (newTurn != turnNumber)
@@ -198,7 +205,8 @@ public class GameRunner : MonoBehaviour
         // TODO change turn time of all components
     }
 
-    public void FireUIEvents(List<GameTurn> gameTurns, int turnNumber)
+
+    void FireUIEvents(List<GameTurn> gameTurns, int turnNumber)
     {
         //Debug.Log(turnNumber);
         var turn = gameTurns[turnNumber];
