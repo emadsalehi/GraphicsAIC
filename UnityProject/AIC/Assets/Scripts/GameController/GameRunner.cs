@@ -33,7 +33,6 @@ public class GameRunner : MonoBehaviour
     {
         var game = gameObject.GetComponent<LogReader>().ReadLog();
         gameTurns = game.Turns;
-        Debug.Log(game.Init.GraphicMap.Col);
         GetComponent<MapRenderer>().RenderMap(game.Init, "FirstTile");
         _logParser = gameObject.GetComponent<LogParser>();
         _logParser.TurnTime = turnTime;
@@ -45,6 +44,26 @@ public class GameRunner : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        ApplyUnitActions();
+        ApplySpellActions();
+        _time += Time.deltaTime;
+        
+        int newTurn = (int) Math.Truncate(_time / turnTime);
+        if (newTurn != turnNumber)
+        {
+            turnNumber = newTurn;
+            FireUIEvents(gameTurns, turnNumber);
+        }
+    }
+
+    public void ChangeTurnTime(float turnTime)
+    {
+        this.turnTime = turnTime;
+        // TODO change turn time of all components
+    }
+
+    void ApplyUnitActions()
     {
         while (_unitActionsPointer < _unitActions.Count && _unitActions[_unitActionsPointer].Time <= _time)
         {
@@ -89,6 +108,7 @@ public class GameRunner : MonoBehaviour
                         moveController1.turnTime = turnTime;
                         animatorController1.SetTurnTime(turnTime);
                     }
+
                     Debug.Log("Rotate");
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
@@ -100,6 +120,7 @@ public class GameRunner : MonoBehaviour
                     {
                         attackEffectController.StopParticleSystem();
                     }
+
                     break;
                 }
                 case UnitActionType.StopMove:
@@ -109,7 +130,8 @@ public class GameRunner : MonoBehaviour
                     {
                         Debug.Log("Deploy2");
                         unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
-                            , new Vector3(unitAction.Col, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row), Quaternion.identity);
+                            , new Vector3(unitAction.Col, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row),
+                            Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().DeployAttack();
                         var moveController1 = unit.GetComponent<MoveController>();
@@ -131,6 +153,7 @@ public class GameRunner : MonoBehaviour
                     {
                         attackEffectController.PlayParticleSystem(_gameUnitFactory.FindById(unitAction.TargetUnitId));
                     }
+
                     break;
                 }
                 case UnitActionType.Die:
@@ -159,12 +182,16 @@ public class GameRunner : MonoBehaviour
                     {
                         attackEffectController.StopParticleSystem();
                     }
+
                     break;
                 }
             }
             _unitActionsPointer++;
         }
+    }
 
+    void ApplySpellActions()
+    {
         while (_spellActionsPointer < _spellActions.Count && _spellActions[_spellActionsPointer].Time <= _time)
         {
             var spellAction = _spellActions[_spellActionsPointer];
@@ -190,21 +217,7 @@ public class GameRunner : MonoBehaviour
             }
             _spellActionsPointer++;
         }
-        _time += Time.deltaTime;
-        int newTurn = (int) Math.Truncate(_time / turnTime);
-        if (newTurn != turnNumber)
-        {
-            turnNumber = newTurn;
-            FireUIEvents(gameTurns, turnNumber);
-        }
     }
-
-    public void ChangeTurnTime(float turnTime)
-    {
-        this.turnTime = turnTime;
-        // TODO change turn time of all components
-    }
-
 
     void FireUIEvents(List<GameTurn> gameTurns, int turnNumber)
     {
