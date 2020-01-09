@@ -12,8 +12,7 @@ public class TileCollision : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (GetComponent<Collider>().transform.position.y > 5 * GetComponent<Collider>().bounds.size.y)
-            return;
+        rigidBody.transform.position = new Vector3(rigidBody.transform.position.x, 0, rigidBody.transform.position.z);
         rigidBody.velocity = new Vector3(0, 0, 0);
         Destroy(GetComponent<Rigidbody>());
         Destroy(GetComponent<Collider>());
