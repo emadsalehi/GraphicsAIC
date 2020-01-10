@@ -11,13 +11,6 @@ public class AttackEffectController : MonoBehaviour
     private ParticleSystem particleSystem;
     private bool attackEnable = false;
 
-    public void SetTarget(GameObject target)
-    {
-        if (target != null){
-            this.target = target;
-        }
-    }
-
     void Start()
     {   
         particleSystem = particleSystemGameObject.GetComponent<ParticleSystem>();
@@ -47,8 +40,7 @@ public class AttackEffectController : MonoBehaviour
     void Update()
     {
         if (attackEnable) {
-            Vector3 tp = target.transform.position;
-            particleSystemGameObject.transform.LookAt(tp);
+            particleSystemGameObject.transform.LookAt(target.transform, Vector3.forward);
         }
     }
 }

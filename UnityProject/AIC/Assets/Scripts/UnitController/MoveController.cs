@@ -4,58 +4,78 @@ using UnityEngine;
 
 public class MoveController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private bool isMoving; 
-    private bool isRotating;
-    private bool isMovingAfterRotate;
-    private Vector3 direction;
-    private float valueOfRotate;
+    private bool _isMoving; 
+    private bool _isRotating;
+    private bool _isMovingAfterRotate;
+    private bool _isAttacking;
+    private Vector3 _direction;
+    private float _valueOfRotate;
     private float speed = 1.0f;
+    private GameObject _target;
 
     public float turnTime;
 
     public void StartMoving(){
-        isMoving = true;
-        isRotating = false; 
-        isMovingAfterRotate = false;
+        _isMoving = true;
+        _isRotating = false; 
+        _isMovingAfterRotate = false;
+        _isAttacking = false;
     }
     
     public void StartMovingAfterRotate(Vector3 direction)
     {
-        this.direction = direction / direction.magnitude;
-        isMovingAfterRotate = true;
-        isRotating = false;
-        isMoving = false;     
+        this._direction = direction / direction.magnitude;
+        _isMovingAfterRotate = true;
+        _isRotating = false;
+        _isMoving = false;
+        _isAttacking = false;
     }
     
     public void StopEveryThing()
     {
-        isMoving = false;
-        isRotating = false;
-        isMovingAfterRotate = false;
+        _isMoving = false;
+        _isRotating = false;
+        _isMovingAfterRotate = false;
+        _isAttacking = false;
     }
     
     public void StartRotating(float degree)
     {
-        isMoving = false;
-        isRotating = true;
-        isMovingAfterRotate = false;
-        valueOfRotate = degree / (turnTime / 3.5f);
+        _isMoving = false;
+        _isRotating = true;
+        _isMovingAfterRotate = false;
+        _isAttacking = false;
+        _valueOfRotate = degree / (turnTime / 3.5f);
     }
 
-    // Update is called once per frame
+    
+    public void Attack(GameObject target)
+    {
+        this._target = target;
+        _isMoving = false;
+        _isRotating = false;
+        _isMovingAfterRotate = false;
+        _isAttacking = true;
+    }
+    
     void Update()
     {
-        if (isMoving){
-            transform.position += direction * (speed * Time.deltaTime) / turnTime;
+        if (_isMoving){
+            transform.position += _direction * (speed * Time.deltaTime) / turnTime;
         }
-        if (isRotating)
+        else if (_isRotating)
         {
-            transform.Rotate(0, valueOfRotate * Time.deltaTime, 0);
+            transform.Rotate(0.0f, _valueOfRotate * Time.deltaTime, 0.0f);
         }  
-        if (isMovingAfterRotate)
+        else if (_isMovingAfterRotate)
         {
-            transform.position += direction * (speed * Time.deltaTime) / (turnTime / 1.4f);
-        }      
+            transform.position += _direction * (speed * Time.deltaTime) / (turnTime / 1.4f);
+        } 
+        else if (_isAttacking)
+        {
+            Transform transform1;
+            (transform1 = transform).LookAt(_target.transform);
+            transform1.eulerAngles = new Vector3(0.0f, transform1.eulerAngles.y, 0.0f);
+        }
     }
 }

@@ -93,9 +93,6 @@ public class GameRunner : MonoBehaviour
                     Debug.Log("StartMoveAfterRotate");
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
-                    var animatorController = unit.GetComponent<AnimatorController>();
-                    animatorController.Restart();
-                    animatorController.MoveAfterRotate();
                     moveController.StartMovingAfterRotate(new Vector3(unitAction.Col, 0, unitAction.Row));
                     break;
                 }
@@ -153,7 +150,7 @@ public class GameRunner : MonoBehaviour
                     animatorController.Restart();
                     animatorController.StopMove();
                     moveController.StopEveryThing();
-                    // TODO rotate to defender unit and look at it
+                    moveController.Attack(_gameUnitFactory.FindById(unitAction.TargetUnitId));
                     // TODO play attack sound
                     var attackEffectController = unit.GetComponent<AttackEffectController>();
                     if (attackEffectController != null)
@@ -172,6 +169,11 @@ public class GameRunner : MonoBehaviour
                     animatorController.Restart();
                     animatorController.Die();
                     moveController.StopEveryThing();
+                    var attackEffectController = unit.GetComponent<AttackEffectController>();
+                    if (attackEffectController != null)
+                    {
+                        attackEffectController.StopParticleSystem();
+                    }
                     // TODO destroy by effect
                     // TODO destroy Game Object
                     // TODO Play Die sound
