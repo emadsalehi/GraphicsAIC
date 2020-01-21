@@ -69,11 +69,9 @@ public class AnimatorController : MonoBehaviour
     public void Restart(){
         if (_animator == null)
             _animator = GetComponent<Animator>();
-        _isDeploy = false;
-        _animator.SetBool(Stop , _isDeploy);
-        _animator.SetBool(Rotate1 , _isDeploy);
-        _animator.SetBool(Move , _isDeploy);
-        _animator.SetBool(Die1 , _isDeploy);
-        
+        _animator.SetBool(Stop , false);
+        _animator.SetBool(Rotate1 , false);
+        _animator.SetBool(Move , false);
+        _animator.SetBool(Die1 , false);
     }
 }

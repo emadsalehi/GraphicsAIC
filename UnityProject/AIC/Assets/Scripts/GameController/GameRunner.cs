@@ -20,14 +20,15 @@ public class GameRunner : MonoBehaviour
 
     private List<UnitAction> _unitActions;
     private List<SpellAction> _spellActions;
+    private List<GameTurn> gameTurns;
+    private GameUnitFactory _gameUnitFactory;
+    private LogParser _logParser;
     private float _time = 0.0f;
     private float _timeSpeed = 1.0f;
     private int turnNumber = 0;
-    private List<GameTurn> gameTurns;
     private int _unitActionsPointer = 0;
     private int _spellActionsPointer = 0;
-    private LogParser _logParser;
-    private GameUnitFactory _gameUnitFactory;
+    private bool isRunning = true;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +50,7 @@ public class GameRunner : MonoBehaviour
         ApplyUnitActions();
         ApplySpellActions();
         _time += Time.deltaTime * _timeSpeed;
-
+        
         int newTurn = (int) Math.Truncate(_time / turnTime);
         if (newTurn != turnNumber)
         {
@@ -68,6 +69,16 @@ public class GameRunner : MonoBehaviour
             unit.GetComponent<MoveController>().turnTime = turnTime;
             unit.GetComponent<AnimatorController>().SetTurnTime(turnTime);
         }
+    }
+
+    public void PauseGameRunner()
+    {
+        Time.timeScale = 0.0f;
+    }
+
+    public void PlayGameRunner()
+    {
+        Time.timeScale = 1.0f;
     }
 
     void ApplyUnitActions()
