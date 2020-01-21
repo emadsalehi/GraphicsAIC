@@ -14,11 +14,25 @@ public class playMenuFunctions : MonoBehaviour
     [HideInInspector]
     bool[] isSelected = new bool[4];
 
-    public void OnClickLoadLog()
+    public void OnClickPlay()
     {
         mainMenu.SetActive(!mainMenu.activeSelf);
         playMenu.SetActive(!mainMenu.activeSelf);
+        UnityEngine.Debug.Log(Application.dataPath);
     }
+
+    public void PlayOnBackButtonPressed()
+    {
+        int i = 1;
+        foreach(InputField input in clientSelectFields)
+        {
+            input.text = "Select Client " + i + ":";
+            i++;
+        }
+        playMenu.SetActive(!playMenu.activeSelf);
+        mainMenu.SetActive(!playMenu.activeSelf);
+    }
+
 
     public void SelectClientPath(int i)
     {
