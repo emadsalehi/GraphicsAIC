@@ -914,6 +914,16 @@ PrefabInstance:
       propertyPath: CollisionModule.collidesWith.m_Bits
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 198933866736967478, guid: 2c0c6b8c780ef4c49bad541f8512530d,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198944468147258806, guid: 2c0c6b8c780ef4c49bad541f8512530d,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c0c6b8c780ef4c49bad541f8512530d, type: 3}
 --- !u!1 &197812174 stripped
@@ -7718,6 +7728,26 @@ PrefabInstance:
       propertyPath: CollisionModule.collidesWith.m_Bits
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 198703531385060684, guid: a765fb16b0a48744e851ca9d06b331b1,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198328717470712380, guid: a765fb16b0a48744e851ca9d06b331b1,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198271564936138392, guid: a765fb16b0a48744e851ca9d06b331b1,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198702365396089898, guid: a765fb16b0a48744e851ca9d06b331b1,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a765fb16b0a48744e851ca9d06b331b1, type: 3}
 --- !u!1 &862299901 stripped
@@ -10470,6 +10500,16 @@ PrefabInstance:
       propertyPath: CollisionModule.collidesWith.m_Bits
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 6800755315756987087, guid: 9d069ce67be686849ace3988743eaf53,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166916040334316157, guid: 9d069ce67be686849ace3988743eaf53,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d069ce67be686849ace3988743eaf53, type: 3}
 --- !u!1 &1022172150 stripped
@@ -11050,6 +11090,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4495702768439910, guid: b510fe24f925ddd4bbf696284d146f51, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198458839926552802, guid: b510fe24f925ddd4bbf696284d146f51,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198560510711876152, guid: b510fe24f925ddd4bbf696284d146f51,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198064382219574212, guid: b510fe24f925ddd4bbf696284d146f51,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -16498,6 +16553,11 @@ PrefabInstance:
     - target: {fileID: 198972024003653092, guid: 42e227b1c80c09a4d847427380f80790,
         type: 3}
       propertyPath: CollisionModule.m_Bounce.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198972024003653092, guid: 42e227b1c80c09a4d847427380f80790,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
