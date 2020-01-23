@@ -38,7 +38,7 @@ public class AttackEffectController : MonoBehaviour
     void Update()
     {
         if (attackEnable) {
-            particleSystemGameObject.transform.LookAt(target.transform, Vector3.forward);
+            particleSystemGameObject.transform.LookAt(target.GetComponent<Renderer>().bounds.center);
         }
     }
 }

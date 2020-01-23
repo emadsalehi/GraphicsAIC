@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -120,6 +120,116 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &53888495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 53888497}
+  - component: {fileID: 53888496}
+  m_Layer: 0
+  m_Name: SoundController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &53888496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53888495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ab67fe62e1e45ad9043d042028adb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Menu
+    clip: {fileID: 8300000, guid: 7b190ef4197fe2c49a3b079087afe228, type: 3}
+    pitch: 1
+    volume: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Game
+    clip: {fileID: 8300000, guid: f37505b2b0637ad4fab51e460a724c79, type: 3}
+    pitch: 1
+    volume: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: TypeId0
+    clip: {fileID: 8300000, guid: 2827d2090ea671b408fcbaf0a52325ce, type: 3}
+    pitch: 1
+    volume: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: TypeId1
+    clip: {fileID: 8300000, guid: 112ab00e532d4d54f9e2d9ca716ff2a8, type: 3}
+    pitch: 1
+    volume: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: TypeId2
+    clip: {fileID: 8300000, guid: f29662281d4cd91499a331c396b7fd8c, type: 3}
+    pitch: 1
+    volume: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: TypeId3
+    clip: {fileID: 8300000, guid: b3d73d66296072c4f85fa391b80db2a0, type: 3}
+    pitch: 1
+    volume: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: TypeId4
+    clip: {fileID: 8300000, guid: 327b90ea5bc17444cbd1429755515a01, type: 3}
+    pitch: 1
+    volume: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: TypeId5
+    clip: {fileID: 8300000, guid: fc99db1bcbb45544ea0f94d13c10fb7d, type: 3}
+    pitch: 1
+    volume: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: TypeId6
+    clip: {fileID: 8300000, guid: fc99db1bcbb45544ea0f94d13c10fb7d, type: 3}
+    pitch: 1
+    volume: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: TypeId7
+    clip: {fileID: 8300000, guid: 50f8a4a331a0bec4d8442756d1692484, type: 3}
+    pitch: 1
+    volume: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: TypeId8
+    clip: {fileID: 8300000, guid: 9d1d5572599dd5a4db0226ee6ad26dd5, type: 3}
+    pitch: 1
+    volume: 1
+    loop: 1
+    source: {fileID: 0}
+--- !u!4 &53888497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53888495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &77932194
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Random = UnityEngine.Random;
 
 public class GameRunner : MonoBehaviour
 {
@@ -23,8 +24,10 @@ public class GameRunner : MonoBehaviour
     private List<GameTurn> gameTurns;
     private GameUnitFactory _gameUnitFactory;
     private LogParser _logParser;
+    private AudioManager _audioManager;
     private float _time = 0.0f;
     private float _timeSpeed = 1.0f;
+    private static float tileSize = 1.0f;
     private int turnNumber = 0;
     private int _unitActionsPointer = 0;
     private int _spellActionsPointer = 0;
@@ -42,6 +45,9 @@ public class GameRunner : MonoBehaviour
         _unitActions = _logParser.UnitActions;
         _spellActions = _logParser.SpellActions;
         _gameUnitFactory = new GameUnitFactory();
+        _audioManager = GameObject.Find("SoundController").GetComponent<AudioManager>();
+        _audioManager.Stop("Menu");
+        _audioManager.Play("Game");
     }
 
     // Update is called once per frame
@@ -50,7 +56,7 @@ public class GameRunner : MonoBehaviour
         ApplyUnitActions();
         ApplySpellActions();
         _time += Time.deltaTime * _timeSpeed;
-        
+
         int newTurn = (int) Math.Truncate(_time / turnTime);
         if (newTurn != turnNumber)
         {
@@ -113,8 +119,10 @@ public class GameRunner : MonoBehaviour
                     if (unit == null)
                     {
                         Debug.Log("Deploy");
+                        float xOffset = Random.Range(-tileSize / 3, tileSize / 3);
+                        float zOffset = Random.Range(-tileSize / 3, tileSize / 3);
                         unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
-                            , new Vector3(unitAction.Col, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row),
+                            , new Vector3(unitAction.Col + xOffset, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row + zOffset),
                             Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().Deploy();
@@ -130,6 +138,7 @@ public class GameRunner : MonoBehaviour
                     animatorController.Restart();
                     animatorController.Rotate();
                     moveController.StartRotating(unitAction.Value - unit.transform.eulerAngles.y);
+                    unit.GetComponent<AudioSource>().Stop();
                     var attackEffectController = unit.GetComponent<AttackEffectController>();
                     if (attackEffectController != null)
                     {
@@ -162,7 +171,7 @@ public class GameRunner : MonoBehaviour
                     animatorController.StopMove();
                     moveController.StopEveryThing();
                     moveController.Attack(_gameUnitFactory.FindById(unitAction.TargetUnitId));
-                    // TODO play attack sound
+                    unit.GetComponent<AudioSource>().Play();
                     var attackEffectController = unit.GetComponent<AttackEffectController>();
                     if (attackEffectController != null)
                     {
@@ -185,9 +194,10 @@ public class GameRunner : MonoBehaviour
                     {
                         attackEffectController.StopParticleSystem();
                     }
+
                     // TODO destroy by effect
                     // TODO destroy Game Object
-                    // TODO Play Die sound
+                    unit.GetComponent<AudioSource>().Stop();
                     break;
                 }
                 case UnitActionType.Teleport:
@@ -203,6 +213,7 @@ public class GameRunner : MonoBehaviour
                         attackEffectController.StopParticleSystem();
                     }
 
+                    unit.GetComponent<AudioSource>().Stop();
                     break;
                 }
             }
