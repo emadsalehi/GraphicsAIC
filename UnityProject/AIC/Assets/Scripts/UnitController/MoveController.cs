@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MoveController : MonoBehaviour
 {
-    private bool _isMoving; 
+    private GameObject _target;
+    private Vector3 _direction;
+    private bool _isMoving;
     private bool _isRotating;
     private bool _isMovingAfterRotate;
     private bool _isAttacking;
-    private Vector3 _direction;
     private float _valueOfRotate;
     private float speed = 1.0f;
-    private GameObject _target;
 
     public float turnTime;
 
@@ -24,7 +24,7 @@ public class MoveController : MonoBehaviour
     
     public void StartMovingAfterRotate(Vector3 direction)
     {
-        this._direction = direction / direction.magnitude;
+        _direction = direction / direction.magnitude;
         _isMovingAfterRotate = true;
         _isRotating = false;
         _isMoving = false;

@@ -16,11 +16,12 @@ public class DynamicScrollView : MonoBehaviour
   
     public void LoadLocalLogFiles()
     {
-        String path = Application.dataPath + "/Server/Log";
+        String path = Application.dataPath + "/Server/Log/";
         String[] filePaths = Directory.GetFiles(path);
         Debug.Log(filePaths[0]);
         for (int i = 0; i < filePaths.Length; i++)
         {
+            // filePaths[i] = filePaths[i].Replace('\\', '/');
             String [] pathSplitted = filePaths[i].Split('/');
             String fileNameWithODots = pathSplitted[pathSplitted.Length - 1];
             String[] fileNameWithODotsSplitted = fileNameWithODots.Split('.');
@@ -34,7 +35,7 @@ public class DynamicScrollView : MonoBehaviour
             go.transform.localPosition = Vector3.zero;
             go.transform.localScale = Vector3.one;
             string paths = filePaths[i];
-            go.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(paths));
+            go.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(paths.Replace("/", "\\")));
         }
     }
      

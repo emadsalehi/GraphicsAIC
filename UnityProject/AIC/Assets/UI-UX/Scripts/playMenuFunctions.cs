@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using SFB;
+// using SFB;
 
 public class playMenuFunctions : MonoBehaviour
 {
@@ -36,30 +36,29 @@ public class playMenuFunctions : MonoBehaviour
 
     public void SelectClientPath(int i)
     {
-        
-        string panelName = "Load Client " + i;
-        var extensions = new []
-        {
-            new ExtensionFilter("Client Files", "cpp", "java", "py", "go"),
-        };
-        string[] pathArray = StandaloneFileBrowser.OpenFilePanel(panelName, "", extensions, false);
-        isSelected[i] = true;
-        string path = pathArray[0];
-        InputField selectedInputField = clientSelectFields[i];
-        selectedInputField.text = path;
+        // string panelName = "Load Client " + i;
+        // var extensions = new []
+        // {
+        //     new ExtensionFilter("Client Files", "cpp", "java", "py", "go"),
+        // };
+        // string[] pathArray = StandaloneFileBrowser.OpenFilePanel(panelName, "", extensions, false);
+        // isSelected[i] = true;
+        // string path = pathArray[0];
+        // InputField selectedInputField = clientSelectFields[i];
+        // selectedInputField.text = path;
     }
 
     public void StartGame()
     {
-        string[] pathArray = StandaloneFileBrowser.OpenFolderPanel("Hello", "", false);
-        string path = pathArray[0];
-        UnityEngine.Debug.Log(path);
-        for (int i = 0; i < 4; i ++)
-        {
-            RunClientCode(i);
-        }
-        path = path.Replace("\"", "\"\"");
-        Process.Start("/bin/bash", "-c "+"\"touch " + path+"/hello\"");
+        // string[] pathArray = StandaloneFileBrowser.OpenFolderPanel("Hello", "", false);
+        // string path = pathArray[0];
+        // UnityEngine.Debug.Log(path);
+        // for (int i = 0; i < 4; i ++)
+        // {
+        //     RunClientCode(i);
+        // }
+        // path = path.Replace("\"", "\"\"");
+        // Process.Start("/bin/bash", "-c "+"\"touch " + path+"/hello\"");
     }
 
     private void RunClientCode(int i)
