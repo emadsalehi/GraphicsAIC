@@ -26,19 +26,18 @@ public class AttackEffectController : MonoBehaviour
 
     public void PlayParticleSystem(GameObject target)
     {
-        this._target = target;
-        if (this._target != null){
-            _destination = transform.position - particleSystemGameObject.transform.position;
-            particleSystem.Play();
-            _attackEnable = true;
-        }
+        _target = target;
+        if (_target == null) return;
+        _destination = transform.position - particleSystemGameObject.transform.position;
+        particleSystem.Play();
+        _attackEnable = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (_attackEnable) {
-            particleSystemGameObject.transform.LookAt(_target.GetComponent<Renderer>().bounds.center);
+            particleSystemGameObject.transform.LookAt(_target.GetComponent<Details>().offset + _target.transform.position);
         }
     }
 }

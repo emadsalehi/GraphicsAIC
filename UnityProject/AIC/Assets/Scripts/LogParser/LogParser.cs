@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,7 +12,8 @@ public enum UnitActionType
     StopMove,
     Rotate,
     Die,
-    Teleport
+    Teleport,
+    Haste
 }
 
 public enum SpellActionType
@@ -23,7 +25,7 @@ public enum SpellActionType
 public class UnitAction
 {
     public float Time { get; set; }
-    public int Value { get; set; }
+    public float Value { get; set; }
     public int UnitId { get; set; }
     public int PId { get; set; }
     public int TargetUnitId { get; set; }
@@ -32,7 +34,7 @@ public class UnitAction
     public int TypeId { get; set; }
     public UnitActionType ActionType { get; set; }
 
-    public UnitAction(float time, int value, int unitId, int pId, int row
+    public UnitAction(float time, float value, int unitId, int pId, int row
         , int col, int targetUnitId, int typeId, UnitActionType actionType)
     {
         Time = time;
@@ -68,19 +70,19 @@ public class SpellAction
 
 public class LogParser : MonoBehaviour
 {
-    private List<UnitAction> unitActions = new List<UnitAction>();
-    private List<SpellAction> spellActions = new List<SpellAction>();
-    private float turnTime;
+    private List<UnitAction> _unitActions = new List<UnitAction>();
+    private List<SpellAction> _spellActions = new List<SpellAction>();
+    private float _turnTime;
 
     public LogParser(float turnTime)
     {
-        this.turnTime = turnTime;
+        this._turnTime = turnTime;
     }
 
     public void ParseLog(Game game)
     {
-        unitActions = new List<UnitAction>();
-        spellActions = new List<SpellAction>();
+        _unitActions = new List<UnitAction>();
+        _spellActions = new List<SpellAction>();
         LoadUnitActions(game);
         LoadSpellActions(game);
     }
@@ -90,14 +92,15 @@ public class LogParser : MonoBehaviour
         var unitFactory = new UnitFactory();
         var turns = game.Turns;
 
-        foreach (var turn in turns)
+        for (var i = 0; i < turns.Count; i++)
         {
+            var turn = turns[i];
             foreach (var turnPlayer in turn.PlayerTurnEvents)
             {
                 if (turnPlayer.TurnEvent.Units == null) continue;
                 foreach (var playerUnit in turnPlayer.TurnEvent.Units)
                 {
-                    unitFactory.AddUnitDetail(turnPlayer.PId, playerUnit, turn.TurnNum);
+                    unitFactory.AddUnitDetail(turnPlayer.PId, playerUnit, i);
                 }
             }
         }
@@ -115,17 +118,14 @@ public class LogParser : MonoBehaviour
                 {
                     if (lastActionType != UnitActionType.StopMove)
                     {
-                        var targetUnitId = 0;
                         var turnAttacks = game.Turns[i + unitDetails.startTurn].TurnAttacks;
-                        foreach (var turnAttack in turnAttacks)
-                        {
-                            if (turnAttack.AttackerId != unitDetails.id) continue;
-                            targetUnitId = turnAttack.DefenderId;
-                            break;
-                        }
+                        var targetUnitId =
+                            (from turnAttack in turnAttacks
+                                where turnAttack.AttackerId == unitDetails.id
+                                select turnAttack.DefenderId).FirstOrDefault();
 
                         lastActionType = UnitActionType.StopMove;
-                        unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), 0, unitDetails.id
+                        _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + i), 0, unitDetails.id
                             , unitDetails.pId, 0, 0, targetUnitId, unitDetails.typeId, UnitActionType.StopMove));
                     }
                 }
@@ -151,11 +151,11 @@ public class LogParser : MonoBehaviour
                                 break;
                         }
 
-                        unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), rotationValue,
+                        _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + i), rotationValue,
                             unitDetails.id
                             , unitDetails.pId, unitDetails.unitEvents[i].row, unitDetails.unitEvents[i].col, 0,
                             unitDetails.typeId, UnitActionType.Rotate));
-                        unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i) + turnTime / 3.5f, 0,
+                        _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + i) + _turnTime / 3.5f, 1.0f,
                             unitDetails.id
                             , unitDetails.pId, currentDir[0], currentDir[1], 0, unitDetails.typeId,
                             UnitActionType.MoveAfterRotate));
@@ -165,14 +165,33 @@ public class LogParser : MonoBehaviour
                     {
                         if (currentDir[0] > 1 || currentDir[0] < -1 || currentDir[1] > 1 || currentDir[1] < -1)
                         {
-                            unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), 0,
-                                unitDetails.id
-                                , unitDetails.pId, unitDetails.unitEvents[i + 1].row, unitDetails.unitEvents[i + 1].col,
-                                0, unitDetails.typeId,
-                                UnitActionType.Teleport));
-                            lastActionType = UnitActionType.Teleport;
+                            foreach (var mapSpell in game.Turns[i + 1].PlayerTurnEvents[unitDetails.pId].TurnEvent
+                                .MapSpells)
+                            {
+                                if (mapSpell.TypeId == 0)
+                                {
+                                    var speed = (float) Math.Sqrt(
+                                        Math.Pow(currentDir[0], 2) + Math.Pow(currentDir[1], 2));
+                                    _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + i), speed,
+                                        unitDetails.id
+                                        , unitDetails.pId, currentDir[0], currentDir[1],
+                                        0, unitDetails.typeId, UnitActionType.Haste));
+                                    lastActionType = UnitActionType.Haste;
+                                    // TODO: haste checking
+                                }
+                                else
+                                {
+                                    _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + i), 0,
+                                        unitDetails.id
+                                        , unitDetails.pId, unitDetails.unitEvents[i + 1].row,
+                                        unitDetails.unitEvents[i + 1].col,
+                                        0, unitDetails.typeId,
+                                        UnitActionType.Teleport));
+                                    lastActionType = UnitActionType.Teleport;
+                                }
+                            }
                         }
-                        else if (dir[0] != currentDir[0] || dir[1] != currentDir[1])
+                        else if (dir[0] != currentDir[0] || dir[1] != currentDir[1] || lastActionType == UnitActionType.Haste)
                         {
                             var rotationValue = 0;
                             switch (currentDir[0])
@@ -191,10 +210,10 @@ public class LogParser : MonoBehaviour
                                     break;
                             }
 
-                            unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), rotationValue,
+                            _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + i), rotationValue,
                                 unitDetails.id
                                 , unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.Rotate));
-                            unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i) + turnTime / 3.5f, 0,
+                            _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + i) + _turnTime / 3.5f, 1.0f,
                                 unitDetails.id
                                 , unitDetails.pId, currentDir[0], currentDir[1], 0, unitDetails.typeId,
                                 UnitActionType.MoveAfterRotate));
@@ -202,7 +221,7 @@ public class LogParser : MonoBehaviour
                         }
                         else
                         {
-                            unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), 0, unitDetails.id
+                            _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + i), 1.0f, unitDetails.id
                                 , unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.StartMove));
                             lastActionType = UnitActionType.StartMove;
                         }
@@ -213,11 +232,11 @@ public class LogParser : MonoBehaviour
                 dir[1] = currentDir[1];
             }
 
-            unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + unitDetails.unitEvents.Count - 1)
+            _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + unitDetails.unitEvents.Count - 1)
                 , 0, unitDetails.id, unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.Die));
         }
 
-        unitActions = unitActions.OrderBy(o => o.Time).ToList();
+        _unitActions = _unitActions.OrderBy(o => o.Time).ToList();
     }
 
     private void LoadSpellActions(Game game)
@@ -238,30 +257,31 @@ public class LogParser : MonoBehaviour
 
         foreach (var spellDetails in spellFactory.spellDetailsList)
         {
-            spellActions.Add(new SpellAction(turnTime * spellDetails.startTurn, spellDetails.id, spellDetails.unitIds,
+            _spellActions.Add(new SpellAction(_turnTime * spellDetails.startTurn, spellDetails.typeId,
+                spellDetails.unitIds,
                 SpellActionType.Put, spellDetails.id));
-            spellActions.Add(new SpellAction(turnTime * (spellDetails.startTurn + spellDetails.aliveTurns),
-                spellDetails.id, spellDetails.unitIds, SpellActionType.Pick, spellDetails.id));
+            _spellActions.Add(new SpellAction(_turnTime * (spellDetails.startTurn + spellDetails.aliveTurns),
+                spellDetails.typeId, spellDetails.unitIds, SpellActionType.Pick, spellDetails.id));
         }
 
-        spellActions = spellActions.OrderBy(o => o.Time).ToList();
+        _spellActions = _spellActions.OrderBy(o => o.Time).ToList();
     }
 
     public List<UnitAction> UnitActions
     {
-        get => unitActions;
-        set => unitActions = value;
+        get => _unitActions;
+        set => _unitActions = value;
     }
 
     public List<SpellAction> SpellActions
     {
-        get => spellActions;
-        set => spellActions = value;
+        get => _spellActions;
+        set => _spellActions = value;
     }
 
     public float TurnTime
     {
-        get => turnTime;
-        set => turnTime = value;
+        get => _turnTime;
+        set => _turnTime = value;
     }
 }

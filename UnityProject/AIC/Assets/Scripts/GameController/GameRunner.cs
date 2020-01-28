@@ -74,6 +74,7 @@ public class GameRunner : MonoBehaviour
         {
             unit.GetComponent<MoveController>().turnTime = turnTime;
             unit.GetComponent<AnimatorController>().SetTurnTime(turnTime);
+            unit.GetComponent<AudioSource>().pitch *= _timeSpeed;
         }
     }
 
@@ -101,6 +102,7 @@ public class GameRunner : MonoBehaviour
                     var animatorController = unit.GetComponent<AnimatorController>();
                     animatorController.Restart();
                     animatorController.StartMoving();
+                    moveController.speed = unitAction.Value;
                     moveController.StartMoving();
                     break;
                 }
@@ -108,6 +110,7 @@ public class GameRunner : MonoBehaviour
                 {
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
+                    moveController.speed = unitAction.Value;
                     moveController.StartMovingAfterRotate(new Vector3(unitAction.Col, 0, unitAction.Row));
                     break;
                 }
@@ -170,13 +173,13 @@ public class GameRunner : MonoBehaviour
                         ? _towers[unitAction.TargetUnitId]
                         : _gameUnitFactory.FindById(unitAction.TargetUnitId);
                     moveController.Attack(target);
-                    unit.GetComponent<AudioSource>().Play();
                     var attackEffectController = unit.GetComponent<AttackEffectController>();
                     if (attackEffectController != null)
                     {
                         attackEffectController.PlayParticleSystem(target);
                     }
 
+                    unit.GetComponent<AudioSource>().Play();
                     break;
                 }
                 case UnitActionType.Die:
@@ -211,6 +214,16 @@ public class GameRunner : MonoBehaviour
                         attackEffectController.StopParticleSystem();
                     }
 
+                    unit.GetComponent<AudioSource>().Stop();
+                    break;
+                }
+                case UnitActionType.Haste:
+                {
+                    Debug.Log("Haste on " + unitAction.UnitId + " on turn " + _turnNumber);
+                    var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    var moveController = unit.GetComponent<MoveController>();
+                    unit.transform.Rotate(0.0f, (float)Math.Atan2(unitAction.Col, unitAction.Row), 0.0f);
+                    moveController.speed = unitAction.Value;
                     unit.GetComponent<AudioSource>().Stop();
                     break;
                 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MoveController : MonoBehaviour
 {
@@ -11,8 +9,8 @@ public class MoveController : MonoBehaviour
     private bool _isMovingAfterRotate;
     private bool _isAttacking;
     private float _valueOfRotate;
-    private float speed = 1.0f;
 
+    public float speed = 1.0f;
     public float turnTime;
 
     public void StartMoving(){
@@ -51,7 +49,7 @@ public class MoveController : MonoBehaviour
     
     public void Attack(GameObject target)
     {
-        this._target = target;
+        _target = target;
         _isMoving = false;
         _isRotating = false;
         _isMovingAfterRotate = false;

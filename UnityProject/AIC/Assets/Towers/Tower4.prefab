@@ -92,6 +92,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1850404634619400519}
   - component: {fileID: -281052073640190256}
+  - component: {fileID: 6442812462674317032}
+  - component: {fileID: 6500038429186300875}
   m_Layer: 9
   m_Name: Tower4
   m_TagString: Tower4
@@ -128,6 +130,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystemGameObject: {fileID: 8007287543036273780}
+--- !u!114 &6442812462674317032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3456139906394301268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d35c528b23afe842b1e0efd254a920a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 2, z: 0}
+--- !u!65 &6500038429186300875
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3456139906394301268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 2, z: 3}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1 &3498135454173880384
 GameObject:
   m_ObjectHideFlags: 0
