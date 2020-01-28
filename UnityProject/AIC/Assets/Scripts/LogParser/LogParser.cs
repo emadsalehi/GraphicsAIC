@@ -167,7 +167,8 @@ public class LogParser : MonoBehaviour
                         {
                             unitActions.Add(new UnitAction(turnTime * (unitDetails.startTurn + i), 0,
                                 unitDetails.id
-                                , unitDetails.pId, currentDir[0], currentDir[1], 0, unitDetails.typeId,
+                                , unitDetails.pId, unitDetails.unitEvents[i + 1].row, unitDetails.unitEvents[i + 1].col,
+                                0, unitDetails.typeId,
                                 UnitActionType.Teleport));
                             lastActionType = UnitActionType.Teleport;
                         }

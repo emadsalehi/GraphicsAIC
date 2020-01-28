@@ -7,15 +7,6 @@ using Random = UnityEngine.Random;
 
 public class GameRunner : MonoBehaviour
 {
-    private class UIPlayer
-    {
-        public int PId { get; set; }
-        public int Hp { get; set; }
-        public int Ap { get; set; }
-        public int[] Hand { get; set; }
-        public bool isAlive { get; set; }
-    }
-
     public float turnTime = 2.0f;
     public int unitNumbers = 9;
     public List<GameObject> playerGameObjects;
@@ -28,6 +19,7 @@ public class GameRunner : MonoBehaviour
     private LogParser _logParser;
     private AudioManager _audioManager;
     private float _time = 0.0f;
+    private float _uiTime = 0.0f;
     private float _timeSpeed = 1.0f;
     private const float TileSize = 1.0f;
     private int _turnNumber = 0;
@@ -64,8 +56,9 @@ public class GameRunner : MonoBehaviour
         ApplyUnitActions();
         ApplySpellActions();
         _time += Time.deltaTime * _timeSpeed;
+        _uiTime += Time.deltaTime;
 
-        int newTurn = (int) Math.Truncate(_time / turnTime);
+        var newTurn = (int) Math.Truncate(_uiTime / turnTime);
         if (newTurn == _turnNumber) return;
         _turnNumber = newTurn;
         FireUIEvents(_gameTurns, _turnNumber);
@@ -74,6 +67,7 @@ public class GameRunner : MonoBehaviour
     public void ChangeTurnTime(float turnTime)
     {
         _timeSpeed *= (this.turnTime / turnTime);
+        _uiTime /= (this.turnTime / turnTime);
         this.turnTime = turnTime;
         var units = _gameUnitFactory.GetAllUnits();
         foreach (var unit in units)
@@ -102,7 +96,6 @@ public class GameRunner : MonoBehaviour
             {
                 case UnitActionType.StartMove:
                 {
-                    Debug.Log("StartMove");
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
@@ -113,7 +106,6 @@ public class GameRunner : MonoBehaviour
                 }
                 case UnitActionType.MoveAfterRotate:
                 {
-                    Debug.Log("StartMoveAfterRotate");
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
                     moveController.StartMovingAfterRotate(new Vector3(unitAction.Col, 0, unitAction.Row));
@@ -124,7 +116,7 @@ public class GameRunner : MonoBehaviour
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     if (unit == null)
                     {
-                        Debug.Log("Deploy");
+                        Debug.Log("Deploy on " + unitAction.UnitId + " on turn " + _turnNumber);
                         var xOffset = Random.Range(-TileSize / 3, TileSize / 3);
                         var zOffset = Random.Range(-TileSize / 3, TileSize / 3);
                         unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
@@ -137,8 +129,6 @@ public class GameRunner : MonoBehaviour
                         moveController1.turnTime = turnTime;
                         animatorController1.SetTurnTime(turnTime);
                     }
-
-                    Debug.Log("Rotate");
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     animatorController.Restart();
@@ -158,9 +148,11 @@ public class GameRunner : MonoBehaviour
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     if (unit == null)
                     {
-                        Debug.Log("Deploy2");
+                        Debug.Log("Deploy2 on " + unitAction.UnitId + " on turn " + _turnNumber);
+                        var xOffset = Random.Range(-TileSize / 3, TileSize / 3);
+                        var zOffset = Random.Range(-TileSize / 3, TileSize / 3);
                         unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
-                            , new Vector3(unitAction.Col, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row),
+                            , new Vector3(unitAction.Col + xOffset, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row + zOffset),
                             Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().DeployAttack();
@@ -169,8 +161,6 @@ public class GameRunner : MonoBehaviour
                         moveController1.turnTime = turnTime;
                         animatorController1.SetTurnTime(turnTime);
                     }
-
-                    Debug.Log("Attack");
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     animatorController.Restart();
@@ -191,8 +181,7 @@ public class GameRunner : MonoBehaviour
                 }
                 case UnitActionType.Die:
                 {
-                    Debug.Log("Die");
-                    var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                        var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     animatorController.Restart();
@@ -211,7 +200,7 @@ public class GameRunner : MonoBehaviour
                 }
                 case UnitActionType.Teleport:
                 {
-                    Debug.Log("Teleport");
+                    Debug.Log("Teleport on " + unitAction.UnitId + " on turn " + _turnNumber);
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
                     moveController.StopEveryThing();
@@ -261,17 +250,9 @@ public class GameRunner : MonoBehaviour
     {
         //Debug.Log(turnNumber);
         if (turnNumber >= gameTurns.Count) return;
+        var uiController = GetComponent<UIContoller>();
+        uiController.UpdateTurnNumberBroadcast(turnNumber);
         var turn = gameTurns[turnNumber];
-        gameObject.BroadcastMessage("UpdateTurnNumber", turnNumber);
-        var playersStatus = turn.PlayerTurnEvents.Select(tp => new UIPlayer
-            {
-                Ap = tp.TurnEvent.Ap,
-                Hand = tp.TurnEvent.Hand,
-                Hp = tp.TurnEvent.Hp,
-                isAlive = tp.TurnEvent.IsAlive,
-                PId = tp.PId
-            })
-            .ToList();
-        gameObject.BroadcastMessage("UpdatePlayersStatus", playersStatus);
+        uiController.FireUIEvents(turn);
     }
 }

@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -177,13 +177,13 @@ MonoBehaviour:
   - name: TypeId2
     clip: {fileID: 8300000, guid: f29662281d4cd91499a331c396b7fd8c, type: 3}
     pitch: 1
-    volume: 1
+    volume: 0.5
     loop: 1
     source: {fileID: 0}
   - name: TypeId3
     clip: {fileID: 8300000, guid: b3d73d66296072c4f85fa391b80db2a0, type: 3}
     pitch: 1
-    volume: 1
+    volume: 0.5
     loop: 1
     source: {fileID: 0}
   - name: TypeId4
@@ -195,13 +195,13 @@ MonoBehaviour:
   - name: TypeId5
     clip: {fileID: 8300000, guid: fc99db1bcbb45544ea0f94d13c10fb7d, type: 3}
     pitch: 1
-    volume: 1
+    volume: 0.5
     loop: 1
     source: {fileID: 0}
   - name: TypeId6
     clip: {fileID: 8300000, guid: fc99db1bcbb45544ea0f94d13c10fb7d, type: 3}
     pitch: 1
-    volume: 1
+    volume: 0.5
     loop: 1
     source: {fileID: 0}
   - name: TypeId7
@@ -213,7 +213,7 @@ MonoBehaviour:
   - name: TypeId8
     clip: {fileID: 8300000, guid: 9d1d5572599dd5a4db0226ee6ad26dd5, type: 3}
     pitch: 1
-    volume: 1
+    volume: 0.5
     loop: 1
     source: {fileID: 0}
 --- !u!4 &53888497
@@ -2528,7 +2528,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 685, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1066544763
 MonoBehaviour:
@@ -3135,7 +3135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1394474143
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3736,7 +3736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1759882906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4394,7 +4394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.12956238}
+  m_AnchoredPosition: {x: 0, y: 0.000091552734}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2079172707
