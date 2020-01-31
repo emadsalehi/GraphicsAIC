@@ -19,7 +19,7 @@ public class SpellFactory
             }
         }
         if (!found){
-            SpellDetails spellDetails = new SpellDetails(PId , id, playerMapSpell.UnitIds , turnTime);
+            SpellDetails spellDetails = new SpellDetails(PId , id, playerMapSpell.UnitIds, playerMapSpell.TypeId, turnTime);
             spellDetailsList.Add(spellDetails);
         }
         

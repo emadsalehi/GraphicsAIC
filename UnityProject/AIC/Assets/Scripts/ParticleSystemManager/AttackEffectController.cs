@@ -1,54 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AttackEffectController : MonoBehaviour
 {
     public GameObject particleSystemGameObject;
 
-    private Vector3 destination;
-    private GameObject target;
+    private Vector3 _destination;
+    private GameObject _target;
     private ParticleSystem particleSystem;
-    private bool attackEnable = false;
-
-    public void SetTarget(GameObject target)
-    {
-        if (target != null){
-            this.target = target;
-        }
-    }
+    private bool _attackEnable = false;
 
     void Start()
     {   
         particleSystem = particleSystemGameObject.GetComponent<ParticleSystem>();
-        StopParticleSystem();
-        if (target != null){
-            destination = target.transform.position;
+        if (_target != null) {
+            _destination = _target.transform.position;
         }
     }
   
 
     public void StopParticleSystem() {
+        if (particleSystem == null) return;
         particleSystem.Stop();
-        attackEnable = false;
+        _attackEnable = false;
     }
 
     public void PlayParticleSystem(GameObject target)
     {
-        this.target = target;
-        if (this.target != null){
-            destination = transform.position - particleSystemGameObject.transform.position;
-            particleSystem.Play();
-            attackEnable = true;
-        }
+        _target = target;
+        if (_target == null) return;
+        _destination = transform.position - particleSystemGameObject.transform.position;
+        particleSystem.Play();
+        _attackEnable = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (attackEnable) {
-            Vector3 tp = target.transform.position;
-            particleSystemGameObject.transform.LookAt(tp);
+        if (_attackEnable) {
+            particleSystemGameObject.transform.LookAt(_target.GetComponent<Details>().offset + _target.transform.position);
         }
     }
 }

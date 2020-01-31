@@ -2,38 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
+using Random = UnityEngine.Random;
 
 public class GameRunner : MonoBehaviour
 {
-    private class UIPlayer
-    {
-        public int PId { get; set; }
-        public int Hp { get; set; }
-        public int Ap { get; set; }
-        public int[] Hand { get; set; }
-        public bool isAlive { get; set; }
-    }
-
     public float turnTime = 2.0f;
     public int unitNumbers = 9;
     public List<GameObject> playerGameObjects;
 
     private List<UnitAction> _unitActions;
     private List<SpellAction> _spellActions;
+    private List<GameTurn> _gameTurns;
+    private List<GameObject> _towers = new List<GameObject>();
+    private GameUnitFactory _gameUnitFactory;
+    private LogParser _logParser;
+    private AudioManager _audioManager;
     private float _time = 0.0f;
+    private float _uiTime = 0.0f;
     private float _timeSpeed = 1.0f;
-    private int turnNumber = 0;
-    private List<GameTurn> gameTurns;
+    private const float TileSize = 1.0f;
+    private int _turnNumber = 0;
     private int _unitActionsPointer = 0;
     private int _spellActionsPointer = 0;
-    private LogParser _logParser;
-    private GameUnitFactory _gameUnitFactory;
 
     // Start is called before the first frame update
     void Start()
     {
         var game = gameObject.GetComponent<LogReader>().ReadLog();
-        gameTurns = game.Turns;
+        _gameTurns = game.Turns;
         GetComponent<MapRenderer>().RenderMap(game.Init, "FirstTile");
         _logParser = gameObject.GetComponent<LogParser>();
         _logParser.TurnTime = turnTime;
@@ -41,6 +38,16 @@ public class GameRunner : MonoBehaviour
         _unitActions = _logParser.UnitActions;
         _spellActions = _logParser.SpellActions;
         _gameUnitFactory = new GameUnitFactory();
+        if (GameObject.Find("SoundController") != null)
+        {
+            _audioManager = GameObject.Find("SoundController").GetComponent<AudioManager>();
+            _audioManager.Stop("Menu");
+            _audioManager.Play("Game");
+        }
+        _towers.Add(GameObject.FindWithTag("Tower1"));
+        _towers.Add(GameObject.FindWithTag("Tower2"));
+        _towers.Add(GameObject.FindWithTag("Tower3"));
+        _towers.Add(GameObject.FindWithTag("Tower4"));
     }
 
     // Update is called once per frame
@@ -49,28 +56,39 @@ public class GameRunner : MonoBehaviour
         ApplyUnitActions();
         ApplySpellActions();
         _time += Time.deltaTime * _timeSpeed;
+        _uiTime += Time.deltaTime;
 
-        int newTurn = (int) Math.Truncate(_time / turnTime);
-        if (newTurn != turnNumber)
-        {
-            turnNumber = newTurn;
-            FireUIEvents(gameTurns, turnNumber);
-        }
+        var newTurn = (int) Math.Truncate(_uiTime / turnTime);
+        if (newTurn == _turnNumber) return;
+        _turnNumber = newTurn;
+        FireUIEvents(_gameTurns, _turnNumber);
     }
 
     public void ChangeTurnTime(float turnTime)
     {
         _timeSpeed *= (this.turnTime / turnTime);
+        _uiTime /= (this.turnTime / turnTime);
         this.turnTime = turnTime;
         var units = _gameUnitFactory.GetAllUnits();
         foreach (var unit in units)
         {
             unit.GetComponent<MoveController>().turnTime = turnTime;
             unit.GetComponent<AnimatorController>().SetTurnTime(turnTime);
+            unit.GetComponent<AudioSource>().pitch *= _timeSpeed;
         }
     }
 
-    void ApplyUnitActions()
+    public void PauseGameRunner()
+    {
+        Time.timeScale = 0.0f;
+    }
+
+    public void PlayGameRunner()
+    {
+        Time.timeScale = 1.0f;
+    }
+
+    private void ApplyUnitActions()
     {
         while (_unitActionsPointer < _unitActions.Count && _unitActions[_unitActionsPointer].Time <= _time)
         {
@@ -79,23 +97,20 @@ public class GameRunner : MonoBehaviour
             {
                 case UnitActionType.StartMove:
                 {
-                    Debug.Log("StartMove");
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     animatorController.Restart();
                     animatorController.StartMoving();
+                    moveController.speed = unitAction.Value;
                     moveController.StartMoving();
                     break;
                 }
                 case UnitActionType.MoveAfterRotate:
                 {
-                    Debug.Log("StartMoveAfterRotate");
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
-                    var animatorController = unit.GetComponent<AnimatorController>();
-                    animatorController.Restart();
-                    animatorController.MoveAfterRotate();
+                    moveController.speed = unitAction.Value;
                     moveController.StartMovingAfterRotate(new Vector3(unitAction.Col, 0, unitAction.Row));
                     break;
                 }
@@ -104,9 +119,11 @@ public class GameRunner : MonoBehaviour
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     if (unit == null)
                     {
-                        Debug.Log("Deploy");
+                        Debug.Log("Deploy on " + unitAction.UnitId + " on turn " + _turnNumber);
+                        var xOffset = Random.Range(-TileSize / 3, TileSize / 3);
+                        var zOffset = Random.Range(-TileSize / 3, TileSize / 3);
                         unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
-                            , new Vector3(unitAction.Col, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row),
+                            , new Vector3(unitAction.Col + xOffset, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row + zOffset),
                             Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().Deploy();
@@ -115,13 +132,12 @@ public class GameRunner : MonoBehaviour
                         moveController1.turnTime = turnTime;
                         animatorController1.SetTurnTime(turnTime);
                     }
-
-                    Debug.Log("Rotate");
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     animatorController.Restart();
                     animatorController.Rotate();
                     moveController.StartRotating(unitAction.Value - unit.transform.eulerAngles.y);
+                    unit.GetComponent<AudioSource>().Stop();
                     var attackEffectController = unit.GetComponent<AttackEffectController>();
                     if (attackEffectController != null)
                     {
@@ -135,9 +151,11 @@ public class GameRunner : MonoBehaviour
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     if (unit == null)
                     {
-                        Debug.Log("Deploy2");
+                        Debug.Log("Deploy2 on " + unitAction.UnitId + " on turn " + _turnNumber);
+                        var xOffset = Random.Range(-TileSize / 3, TileSize / 3);
+                        var zOffset = Random.Range(-TileSize / 3, TileSize / 3);
                         unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
-                            , new Vector3(unitAction.Col, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row),
+                            , new Vector3(unitAction.Col + xOffset, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row + zOffset),
                             Quaternion.identity);
                         _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
                         unit.GetComponent<AnimatorController>().DeployAttack();
@@ -146,42 +164,48 @@ public class GameRunner : MonoBehaviour
                         moveController1.turnTime = turnTime;
                         animatorController1.SetTurnTime(turnTime);
                     }
-
-                    Debug.Log("Attack");
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     animatorController.Restart();
                     animatorController.StopMove();
                     moveController.StopEveryThing();
-                    // TODO rotate to defender unit and look at it
-                    // TODO play attack sound
+                    var target = unitAction.TargetUnitId < 4 && unitAction.TargetUnitId >= 0
+                        ? _towers[unitAction.TargetUnitId]
+                        : _gameUnitFactory.FindById(unitAction.TargetUnitId);
+                    moveController.Attack(target);
                     var attackEffectController = unit.GetComponent<AttackEffectController>();
                     if (attackEffectController != null)
                     {
-                        attackEffectController.PlayParticleSystem(_gameUnitFactory.FindById(unitAction.TargetUnitId));
+                        attackEffectController.PlayParticleSystem(target);
                     }
 
+                    unit.GetComponent<AudioSource>().Play();
                     break;
                 }
                 case UnitActionType.Die:
                 {
-                    Debug.Log("Die");
-                    GameObject unit = _gameUnitFactory.FindById(unitAction.UnitId);
-                    MoveController moveController = unit.GetComponent<MoveController>();
+                        var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     animatorController.Restart();
                     animatorController.Die();
                     moveController.StopEveryThing();
+                    var attackEffectController = unit.GetComponent<AttackEffectController>();
+                    if (attackEffectController != null)
+                    {
+                        attackEffectController.StopParticleSystem();
+                    }
+
                     // TODO destroy by effect
                     // TODO destroy Game Object
-                    // TODO Play Die sound
+                    unit.GetComponent<AudioSource>().Stop();
                     break;
                 }
                 case UnitActionType.Teleport:
                 {
-                    Debug.Log("Teleport");
-                    GameObject unit = _gameUnitFactory.FindById(unitAction.UnitId);
-                    MoveController moveController = unit.GetComponent<MoveController>();
+                    Debug.Log("Teleport on " + unitAction.UnitId + " on turn " + _turnNumber);
+                    var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    var moveController = unit.GetComponent<MoveController>();
                     moveController.StopEveryThing();
                     unit.transform.position = new Vector3(unitAction.Col, unit.transform.position.y, unitAction.Row);
                     var attackEffectController = unit.GetComponent<AttackEffectController>();
@@ -190,6 +214,17 @@ public class GameRunner : MonoBehaviour
                         attackEffectController.StopParticleSystem();
                     }
 
+                    unit.GetComponent<AudioSource>().Stop();
+                    break;
+                }
+                case UnitActionType.Haste:
+                {
+                    Debug.Log("Haste on " + unitAction.UnitId + " on turn " + _turnNumber);
+                    var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    var moveController = unit.GetComponent<MoveController>();
+                    unit.transform.Rotate(0.0f, (float)Math.Atan2(unitAction.Col, unitAction.Row), 0.0f);
+                    moveController.speed = unitAction.Value;
+                    unit.GetComponent<AudioSource>().Stop();
                     break;
                 }
             }
@@ -198,29 +233,25 @@ public class GameRunner : MonoBehaviour
         }
     }
 
-    void ApplySpellActions()
+    private void ApplySpellActions()
     {
         while (_spellActionsPointer < _spellActions.Count && _spellActions[_spellActionsPointer].Time <= _time)
         {
             var spellAction = _spellActions[_spellActionsPointer];
             if (spellAction.ActionType == SpellActionType.Put)
             {
-                foreach (var sid in spellAction.UnitIds)
+                foreach (var sec in spellAction.UnitIds.Select(sid => _gameUnitFactory.FindById(sid))
+                    .Select(unit => unit.GetComponent<SpellEffectController>()).Where(sec => sec != null))
                 {
-                    GameObject unit = _gameUnitFactory.FindById(sid);
-                    SpellEffectController sec = unit.GetComponent<SpellEffectController>();
-                    if (sec != null)
-                        sec.StartSpell(spellAction.TypeId);
+                    sec.StartSpell(spellAction.TypeId);
                 }
             }
             else
             {
-                foreach (var sid in spellAction.UnitIds)
+                foreach (var sec in spellAction.UnitIds.Select(sid => _gameUnitFactory.FindById(sid))
+                    .Select(unit => unit.GetComponent<SpellEffectController>()).Where(sec => sec != null))
                 {
-                    GameObject unit = _gameUnitFactory.FindById(sid);
-                    SpellEffectController sec = unit.GetComponent<SpellEffectController>();
-                    if (sec != null)
-                        sec.StopSpell(spellAction.TypeId);
+                    sec.StopSpell(spellAction.TypeId);
                 }
             }
 
@@ -228,23 +259,13 @@ public class GameRunner : MonoBehaviour
         }
     }
 
-    void FireUIEvents(List<GameTurn> gameTurns, int turnNumber)
+    private void FireUIEvents(List<GameTurn> gameTurns, int turnNumber)
     {
         //Debug.Log(turnNumber);
+        if (turnNumber >= gameTurns.Count) return;
+        var uiController = GetComponent<UIContoller>();
+        uiController.UpdateTurnNumberBroadcast(turnNumber);
         var turn = gameTurns[turnNumber];
-        gameObject.BroadcastMessage("UpdateTurnNumber", turnNumber);
-        List<UIPlayer> playersStatus = new List<UIPlayer>();
-        foreach (TurnPlayer tp in turn.PlayerTurnEvents)
-        {
-            UIPlayer player = new UIPlayer();
-            player.Ap = tp.TurnEvent.Ap;
-            player.Hand = tp.TurnEvent.Hand;
-            player.Hp = tp.TurnEvent.Hp;
-            player.isAlive = tp.TurnEvent.IsAlive;
-            player.PId = tp.PId;
-            playersStatus.Add(player);
-        }
-
-        gameObject.BroadcastMessage("UpdatePlayersStatus", playersStatus);
+        uiController.FireUIEvents(turn);
     }
 }
