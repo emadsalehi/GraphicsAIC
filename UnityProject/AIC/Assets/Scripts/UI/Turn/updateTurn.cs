@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class updateTurn : MonoBehaviour
@@ -7,14 +8,18 @@ public class updateTurn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var textcom = gameObject.GetComponent("Text") as UnityEngine.UI.Text;
-        textcom.text = "hoora";
-        Debug.Log(textcom.text);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void updateTurnText(int turn)
+    {
+        var textcom = gameObject.GetComponent<TextMeshProUGUI>();
+        textcom.text = "Turn   " + turn;
     }
 }
