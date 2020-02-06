@@ -35,7 +35,7 @@ public class DynamicScrollView : MonoBehaviour
             go.transform.localPosition = Vector3.zero;
             go.transform.localScale = Vector3.one;
             string paths = filePaths[i];
-            go.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(paths.Replace("/", "\\")));
+            go.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(paths));
         }
     }
      
@@ -51,6 +51,7 @@ public class DynamicScrollView : MonoBehaviour
     public void OnButtonClick(String path)
     {
         //string file = files[index];
+        Debug.Log(path);
         PlayerPrefs.SetString("LogPath", path);
         SceneManager.LoadScene(1);
         //Debug.Log(file);

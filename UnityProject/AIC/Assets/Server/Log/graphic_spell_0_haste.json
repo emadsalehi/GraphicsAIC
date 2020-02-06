@@ -6,28 +6,32 @@
       "col": 30,
       "kings": [
         {
-          "row": 4,
-          "col": 6,
-          "pId": 0,
-          "hp": 90
+            "name":  "TEAM 1",
+            "row": 4,
+            "col": 6,
+            "pId": 0,
+            "hp": 90
         },
         {
-          "row": 15,
-          "col": 23,
-          "pId": 1,
-          "hp": 90
+            "name":  "TEAM 2",
+            "row": 15,
+            "col": 23,
+            "pId": 1,
+            "hp": 90
         },
         {
-          "row": 15,
-          "col": 6,
-          "pId": 2,
-          "hp": 90
+            "name":  "TEAM 3",
+            "row": 15,
+            "col": 6,
+            "pId": 2,
+            "hp": 90
         },
         {
-          "row": 4,
-          "col": 23,
-          "pId": 3,
-          "hp": 90
+            "name":  "TEAM 4",
+            "row": 4,
+            "col": 23,
+            "pId": 3,
+            "hp": 90
         }
       ],
       "paths": [

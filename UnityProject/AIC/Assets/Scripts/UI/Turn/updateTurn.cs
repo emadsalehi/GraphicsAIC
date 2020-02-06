@@ -17,9 +17,9 @@ public class updateTurn : MonoBehaviour
         
     }
 
-    void updateTurnText(int turn)
+    void UpdateTurnNumber(int turn)
     {
         var textcom = gameObject.GetComponent<TextMeshProUGUI>();
-        textcom.text = "Turn   " + turn;
+        textcom.text = "TURN   " + turn;
     }
 }
