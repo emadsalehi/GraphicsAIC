@@ -5,13 +5,14 @@ using System;
 
 public class ChangeUIHealth : MonoBehaviour
 {
-    private float normalWidth;
-    private int maxHP = 90;
+    private float _normalWidth;
+    private int _maxHp = 90;
+    public int player;
     // Use this for initialization
     void Start()
     {
         var rect = gameObject.GetComponent<RectTransform>();
-        normalWidth = rect.rect.width;
+        _normalWidth = rect.rect.width;
         rect.sizeDelta = new Vector2(100, rect.rect.height);
 
     }
@@ -22,23 +23,21 @@ public class ChangeUIHealth : MonoBehaviour
 
     }
 
-    void UpdatePlayersStatus(List<UIPlayer> players)
+    public void UpdatePlayersStatus(List<UIPlayer> players)
     {
-        var parentName = gameObject.transform.parent.parent.name;
-        int player = Convert.ToInt32(parentName[parentName.Length - 1]) - 1;
         var status = players[player];
         var hp = status.Hp;
-        var width = (hp / maxHP) * normalWidth;
+        var width = (hp / _maxHp) * _normalWidth;
         var rect = gameObject.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(width, rect.rect.height);
 
     }
 
-    void SetPlayers(List<InitKing> kings)
+    public void SetPlayers(List<InitKing> kings)
     {
         var parentName = gameObject.transform.parent.parent.name;
         int player = Convert.ToInt32(parentName[parentName.Length - 1]) - 1;
         var hp = kings[player].Hp;
-        maxHP = hp;
+        _maxHp = hp;
     }
 }

@@ -5,14 +5,17 @@ using System;
 
 public class ChangeUIAP: MonoBehaviour
 {
-    private float normalWidth;
-    private int maxAP = 8;
+    private float _normalWidth;
+    private int _maxAp = 8;
+    public int player;
+    
     // Use this for initialization
     void Start()
     {
         var rect = gameObject.GetComponent<RectTransform>();
-        normalWidth = rect.rect.width;
-        rect.sizeDelta = new Vector2(100, rect.rect.height);
+        var rect1 = rect.rect;
+        _normalWidth = rect1.width;
+        rect.sizeDelta = new Vector2(100, rect1.height);
     }
 
     // Update is called once per frame
@@ -21,20 +24,18 @@ public class ChangeUIAP: MonoBehaviour
 
     }
 
-    void UpdatePlayersStatus(List<UIPlayer> players)
+    public void UpdatePlayersStatus(List<UIPlayer> players)
     {
-        var parentName = gameObject.transform.parent.parent.name;
-        int player = Convert.ToInt32(parentName[parentName.Length - 1]) - 1;
         var status = players[player];
         var ap = status.Ap;
-        var width = (ap / maxAP) * normalWidth;
+        var width = (ap / _maxAp) * _normalWidth;
         var rect = gameObject.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(width, rect.rect.height);
 
     }
 
-    void SetMaxAP(int ap)
+    public void SetMaxAP(int ap)
     {
-        maxAP = ap;
+        _maxAp = ap;
     }
 }
