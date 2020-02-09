@@ -10,6 +10,7 @@ public class ServerRunFunctions : MonoBehaviour
     {
         
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -17,7 +18,7 @@ public class ServerRunFunctions : MonoBehaviour
         
     }
     
-    void StartProcess(int timeout)
+    public void StartProcess(int timeout)
     {
         
         string workingPath = Application.dataPath;
