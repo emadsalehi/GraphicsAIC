@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class playMenuFunctions : MonoBehaviour
 {
-    public GameObject mainMenu, playMenu;
+    public GameObject mainMenu, runSeverMenu;
     public List<InputField> clientSelectFields;
 
     [HideInInspector]
@@ -17,7 +17,7 @@ public class playMenuFunctions : MonoBehaviour
     public void OnClickPlay()
     {
         mainMenu.SetActive(!mainMenu.activeSelf);
-        playMenu.SetActive(!mainMenu.activeSelf);
+        runSeverMenu.SetActive(!mainMenu.activeSelf);
         UnityEngine.Debug.Log(Application.dataPath);
     }
 
@@ -29,8 +29,8 @@ public class playMenuFunctions : MonoBehaviour
             input.text = "Select Client " + i + ":";
             i++;
         }
-        playMenu.SetActive(!playMenu.activeSelf);
-        mainMenu.SetActive(!playMenu.activeSelf);
+        runSeverMenu.SetActive(!runSeverMenu.activeSelf);
+        mainMenu.SetActive(!runSeverMenu.activeSelf);
     }
 
 
