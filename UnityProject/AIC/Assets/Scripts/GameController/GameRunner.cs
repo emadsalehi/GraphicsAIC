@@ -49,6 +49,8 @@ public class GameRunner : MonoBehaviour
         _towers.Add(GameObject.FindWithTag("Tower2"));
         _towers.Add(GameObject.FindWithTag("Tower3"));
         _towers.Add(GameObject.FindWithTag("Tower4"));
+        BroadcastMessage("SetPlayers", game.Init.GraphicMap.Kings);
+        BroadcastMessage("SetMaxAP", game.Init.MaxAP);
     }
 
     // Update is called once per frame
