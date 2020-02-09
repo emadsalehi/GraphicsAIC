@@ -44,6 +44,7 @@ public class GameRunner : MonoBehaviour
             _audioManager.Stop("Menu");
             _audioManager.Play("Game");
         }
+
         _towers.Add(GameObject.FindWithTag("Tower1"));
         _towers.Add(GameObject.FindWithTag("Tower2"));
         _towers.Add(GameObject.FindWithTag("Tower3"));
@@ -132,6 +133,7 @@ public class GameRunner : MonoBehaviour
                         moveController1.turnTime = turnTime;
                         animatorController1.SetTurnTime(turnTime);
                     }
+
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     animatorController.Restart();
@@ -143,7 +145,6 @@ public class GameRunner : MonoBehaviour
                     {
                         attackEffectController.StopParticleSystem();
                     }
-
                     break;
                 }
                 case UnitActionType.StopMove:
@@ -164,6 +165,7 @@ public class GameRunner : MonoBehaviour
                         moveController1.turnTime = turnTime;
                         animatorController1.SetTurnTime(turnTime);
                     }
+
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     animatorController.Restart();
@@ -179,12 +181,15 @@ public class GameRunner : MonoBehaviour
                         attackEffectController.PlayParticleSystem(target);
                     }
 
+                    Debug.Log("Attack from " + unitAction.UnitId + " on unit " + unitAction.TargetUnitId + " on turn " +
+                              _turnNumber);
+
                     unit.GetComponent<AudioSource>().Play();
                     break;
                 }
                 case UnitActionType.Die:
                 {
-                        var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    var unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var moveController = unit.GetComponent<MoveController>();
                     var animatorController = unit.GetComponent<AnimatorController>();
                     animatorController.Restart();
@@ -197,14 +202,21 @@ public class GameRunner : MonoBehaviour
                     }
 
                     // TODO destroy by effect
-                    // TODO destroy Game Object
                     unit.GetComponent<AudioSource>().Stop();
+                    break;
+                }
+                case UnitActionType.Destroy:
+                {
+                    var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    Destroy(unit);
                     break;
                 }
                 case UnitActionType.Teleport:
                 {
                     Debug.Log("Teleport on " + unitAction.UnitId + " on turn " + _turnNumber);
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    var animatorController = unit.GetComponent<AnimatorController>();
+                    animatorController.Restart();
                     var moveController = unit.GetComponent<MoveController>();
                     moveController.StopEveryThing();
                     unit.transform.position = new Vector3(unitAction.Col, unit.transform.position.y, unitAction.Row);
@@ -213,7 +225,6 @@ public class GameRunner : MonoBehaviour
                     {
                         attackEffectController.StopParticleSystem();
                     }
-
                     unit.GetComponent<AudioSource>().Stop();
                     break;
                 }
@@ -221,14 +232,20 @@ public class GameRunner : MonoBehaviour
                 {
                     Debug.Log("Haste on " + unitAction.UnitId + " on turn " + _turnNumber);
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    var animatorController = unit.GetComponent<AnimatorController>();
+                    animatorController.Restart();
+                    animatorController.StartMoving();
+                    var spellEffectController = unit.GetComponent<SpellEffectController>();
+                    spellEffectController.StartSpell(0);
                     var moveController = unit.GetComponent<MoveController>();
-                    unit.transform.Rotate(0.0f, (float)Math.Atan2(unitAction.Col, unitAction.Row), 0.0f);
+                    unit.transform.Rotate(0.0f, (float) Math.Atan2(unitAction.Col, unitAction.Row), 0.0f);
+                    moveController.StopEveryThing();
+                    moveController.StartMoving();
                     moveController.speed = unitAction.Value;
                     unit.GetComponent<AudioSource>().Stop();
                     break;
                 }
             }
-
             _unitActionsPointer++;
         }
     }
@@ -241,6 +258,7 @@ public class GameRunner : MonoBehaviour
             if (spellAction.ActionType == SpellActionType.Put)
             {
                 foreach (var sec in spellAction.UnitIds.Select(sid => _gameUnitFactory.FindById(sid))
+                    .Where(unit => unit != null)
                     .Select(unit => unit.GetComponent<SpellEffectController>()).Where(sec => sec != null))
                 {
                     sec.StartSpell(spellAction.TypeId);
@@ -249,6 +267,7 @@ public class GameRunner : MonoBehaviour
             else
             {
                 foreach (var sec in spellAction.UnitIds.Select(sid => _gameUnitFactory.FindById(sid))
+                    .Where(unit => unit != null)
                     .Select(unit => unit.GetComponent<SpellEffectController>()).Where(sec => sec != null))
                 {
                     sec.StopSpell(spellAction.TypeId);
