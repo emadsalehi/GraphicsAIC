@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SettingButton : MonoBehaviour
+public class HideButton : MonoBehaviour
 {
-    public GameObject setting;
+    public GameObject ui;
     // Use this for initialization
     void Start()
     {
-        
         var btn = gameObject.GetComponent<Button>();
         btn.onClick.AddListener(OnMouseClick);
     }
@@ -18,12 +16,13 @@ public class SettingButton : MonoBehaviour
     void Update()
     {
 
+
     }
 
     private void OnMouseClick()
     {
-        var ui = GameObject.Find("In-Game UI");
-        ui.SetActive(false);
-        setting.SetActive(true);
+        var setting = GameObject.Find("Settings Menu");
+        setting.SetActive(false);
+        ui.SetActive(true);
     }
 }

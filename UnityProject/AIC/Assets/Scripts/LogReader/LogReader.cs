@@ -84,6 +84,7 @@ public class InitKing
     public int Row { get; set; }
     public int Col { get; set; }
     public int PId { get; set; }
+    public int Hp { get; set; }
     public string Name { get; set; }
 }
 

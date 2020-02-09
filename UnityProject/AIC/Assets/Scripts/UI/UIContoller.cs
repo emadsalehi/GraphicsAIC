@@ -25,4 +25,5 @@ public class UIContoller : MonoBehaviour
             .ToList();
         canvas.BroadcastMessage("UpdatePlayersStatus", playersStatus);
     }
+
 }
