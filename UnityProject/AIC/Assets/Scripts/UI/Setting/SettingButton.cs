@@ -23,7 +23,7 @@ public class SettingButton : MonoBehaviour
     private void OnMouseClick()
     {
         var ui = GameObject.Find("In-Game UI");
-        ui.SetActive(false);
+        //ui.SetActive(false);
         setting.SetActive(true);
     }
 }
