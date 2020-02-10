@@ -89,9 +89,10 @@ public class GameRunner : MonoBehaviour
     {
         var targetValue = timeSlider.value;
         var targetTurnValue = targetValue * (_gameTurns.Count - 1);
-        var targetTurnTime = targetTurnValue * baseTurnTime;
-        Debug.Log("Delay Time: " + (targetTurnTime - _time));
-        StartCoroutine(SetNormalSpeed(turnTime, (targetTurnTime - _time) * _fastForwardTurnTime));
+        var targetTime = targetTurnValue * baseTurnTime;
+        if (targetTime > _time)
+            return;
+        StartCoroutine(SetNormalSpeed(turnTime, (targetTime - _time) * _fastForwardTurnTime));
         ChangeTurnTime(_fastForwardTurnTime);
     }
 
