@@ -412,8 +412,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 3
-  player: 1
+  index: 1
+  player: 3
 --- !u!1 &72912577 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3279025389838571532, guid: 1b453a4daf9de6d4d9abe77c3b186cb6,
@@ -5947,8 +5947,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 3
-  player: 4
+  index: 4
+  player: 3
 --- !u!1 &447707420 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 3da871e81960e3042ba4c5545b09968f,
@@ -6169,8 +6169,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 3
-  player: 0
+  index: 0
+  player: 3
 --- !u!1001 &506379397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6274,8 +6274,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 1
-  player: 2
+  index: 2
+  player: 1
 --- !u!1 &556100418 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4599973161299788510, guid: 3ec5c4da3063eb848b61ec3ce2ab67d0,
@@ -6595,8 +6595,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 0
-  player: 1
+  index: 1
+  player: 0
 --- !u!1 &656640628 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1631939584518712, guid: f071f4acca27a9c498813493fcb491b0,
@@ -6631,8 +6631,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 1
-  player: 4
+  index: 4
+  player: 1
 --- !u!1001 &684220612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7767,8 +7767,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 2
-  player: 3
+  index: 3
+  player: 2
 --- !u!1 &857275705 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 11198247398810043, guid: 286ee24e2c057644a9971b3fe987da85,
@@ -10021,8 +10021,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 3
-  player: 2
+  index: 2
+  player: 3
 --- !u!1001 &899079151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10414,8 +10414,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 2
-  player: 0
+  index: 0
+  player: 2
 --- !u!1 &1005405430 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 11198248314443169, guid: 286ee24e2c057644a9971b3fe987da85,
@@ -10653,8 +10653,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 0
-  player: 2
+  index: 2
+  player: 0
 --- !u!1001 &1022172149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11194,8 +11194,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 0
-  player: 4
+  index: 4
+  player: 0
 --- !u!1001 &1147221047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11368,8 +11368,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 1
-  player: 0
+  index: 0
+  player: 1
 --- !u!1001 &1168590111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16389,8 +16389,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 0
-  player: 3
+  index: 3
+  player: 0
 --- !u!1001 &1361348425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22484,8 +22484,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 2
-  player: 1
+  index: 1
+  player: 2
 --- !u!1 &1732286894 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1660839107641064, guid: a765fb16b0a48744e851ca9d06b331b1,
@@ -25240,8 +25240,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 2
-  player: 4
+  index: 4
+  player: 2
 --- !u!1001 &1874817356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28096,8 +28096,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe688e63db57f40409438452864c980d, type: 3}
   - {fileID: 21300000, guid: fddc619fdb0959440938368feec77f98, type: 3}
   - {fileID: 21300000, guid: 90c28d9363bb27443854b09bd2ddb472, type: 3}
-  index: 1
-  player: 3
+  index: 3
+  player: 1
 --- !u!1 &2085462450
 GameObject:
   m_ObjectHideFlags: 0

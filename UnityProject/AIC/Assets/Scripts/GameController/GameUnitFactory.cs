@@ -21,4 +21,16 @@ public class GameUnitFactory
     {
         return _gameUnits.Select(gameUnit => gameUnit.unit).ToList();
     }
+
+    public void RemoveUnit(int id)
+    {
+        foreach (var gameUnit in _gameUnits)
+        {
+            if (gameUnit.id == id)
+            {
+                _gameUnits.Remove(gameUnit);
+                return;
+            }
+        }
+    }
 }

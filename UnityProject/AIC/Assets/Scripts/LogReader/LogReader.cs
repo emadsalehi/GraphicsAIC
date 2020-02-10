@@ -8,7 +8,14 @@ using Newtonsoft.Json;
 public class Game
 {
     public GameInit Init { get; set; }
+    public List<EndGame> End { get; set; }
     public List<GameTurn> Turns { get; set; }
+}
+
+public class EndGame
+{
+    public int PlayerId { get; set; }
+    public int Score { get; set; }
 }
 
 public class GameTurn
@@ -62,13 +69,14 @@ public class GameInit
 {
     public InitMap GraphicMap { get; set; }
     public int MaxAP { get; set; }
-    public InitConstants Constants { get; set; }
+    public List<InitConstants> BaseUnits { get; set; }
 }
 
 public class InitConstants
 {
+    public int Type { get; set; }
     public int MaxHp { get; set; }
-    public int ApThreshold { get; set; }
+    public int Ap { get; set; }
 }
 
 public class InitMap

@@ -23,7 +23,7 @@ public class AnimatorController : MonoBehaviour
     }
 
     public void SetTurnTime(float turnTime){
-        this._turnTime = turnTime; 
+        _turnTime = turnTime; 
         _speed  = 2 / turnTime;
         _animator.speed = _speed;
     }

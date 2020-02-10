@@ -11,6 +11,11 @@ public class UIContoller : MonoBehaviour
     {
         canvas.BroadcastMessage("UpdateTurnNumber", turnNumber);
     }
+
+    public void UpdateSlider(int turnNumber, int totalTurnNumber)
+    {
+        canvas.BroadcastMessage("UpdateSliderValue", (float) turnNumber / totalTurnNumber);
+    }
     
     public void FireUIEvents(GameTurn turn)
     {

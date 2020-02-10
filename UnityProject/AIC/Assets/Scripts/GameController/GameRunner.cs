@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GameRunner : MonoBehaviour
 {
-    public float turnTime = 2.0f;
+    public float turnTime = 1.0f;
+    [FormerlySerializedAs("baseTurnTile")] public float baseTurnTime = 1.0f;
     public int unitNumbers = 9;
     public List<GameObject> playerGameObjects;
+    public Slider timeSlider;
 
     private List<UnitAction> _unitActions;
     private List<SpellAction> _spellActions;
@@ -25,6 +29,7 @@ public class GameRunner : MonoBehaviour
     private int _turnNumber = 0;
     private int _unitActionsPointer = 0;
     private int _spellActionsPointer = 0;
+    private const float _fastForwardTurnTime = 0.05f; 
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +49,6 @@ public class GameRunner : MonoBehaviour
             _audioManager.Stop("Menu");
             _audioManager.Play("Game");
         }
-
         _towers.Add(GameObject.FindWithTag("Tower1"));
         _towers.Add(GameObject.FindWithTag("Tower2"));
         _towers.Add(GameObject.FindWithTag("Tower3"));
@@ -60,27 +64,42 @@ public class GameRunner : MonoBehaviour
         ApplySpellActions();
         _time += Time.deltaTime * _timeSpeed;
         _uiTime += Time.deltaTime;
-
+        
         var newTurn = (int) Math.Truncate(_uiTime / turnTime);
         if (newTurn == _turnNumber) return;
         _turnNumber = newTurn;
         FireUIEvents(_gameTurns, _turnNumber);
     }
 
-    public void ChangeTurnTime(float turnTime)
+    public void ChangeTurnTime(float targetTurnTime)
     {
-        _timeSpeed *= (this.turnTime / turnTime);
-        _uiTime /= (this.turnTime / turnTime);
-        this.turnTime = turnTime;
+        _timeSpeed *= (turnTime / targetTurnTime);
+        _uiTime /= (turnTime / targetTurnTime);
+        turnTime = targetTurnTime;
         var units = _gameUnitFactory.GetAllUnits();
         foreach (var unit in units)
         {
-            unit.GetComponent<MoveController>().turnTime = turnTime;
-            unit.GetComponent<AnimatorController>().SetTurnTime(turnTime);
-            unit.GetComponent<AudioSource>().pitch *= _timeSpeed;
+            unit.GetComponent<MoveController>().turnTime = targetTurnTime;
+            unit.GetComponent<AnimatorController>().SetTurnTime(targetTurnTime);
+            unit.GetComponent<AudioSource>().pitch = _timeSpeed;
         }
     }
 
+    public void ChangeGameTime()
+    {
+        var targetValue = timeSlider.value;
+        var targetTurnValue = targetValue * (_gameTurns.Count - 1);
+        var targetTurnTime = targetTurnValue * baseTurnTime;
+        Debug.Log("Delay Time: " + (targetTurnTime - _time));
+        StartCoroutine(SetNormalSpeed(turnTime, (targetTurnTime - _time) * _fastForwardTurnTime));
+        ChangeTurnTime(_fastForwardTurnTime);
+    }
+
+    IEnumerator SetNormalSpeed(float targetTurnTime, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ChangeTurnTime(targetTurnTime);
+    }
     public void PauseGameRunner()
     {
         Time.timeScale = 0.0f;
@@ -210,6 +229,7 @@ public class GameRunner : MonoBehaviour
                 case UnitActionType.Destroy:
                 {
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    _gameUnitFactory.RemoveUnit(unitAction.UnitId);
                     Destroy(unit);
                     break;
                 }
@@ -286,6 +306,7 @@ public class GameRunner : MonoBehaviour
         if (turnNumber >= gameTurns.Count) return;
         var uiController = GetComponent<UIContoller>();
         uiController.UpdateTurnNumberBroadcast(turnNumber);
+        uiController.UpdateSlider(turnNumber, _gameTurns.Count - 1);
         var turn = gameTurns[turnNumber];
         uiController.FireUIEvents(turn);
     }
