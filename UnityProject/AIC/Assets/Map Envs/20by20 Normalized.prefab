@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1998650258782543771}
   m_Layer: 0
-  m_Name: 20by20Normalized
+  m_Name: 20by20 Normalized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
