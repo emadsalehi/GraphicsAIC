@@ -602,7 +602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5269608196891866224}
   m_Layer: 0
-  m_Name: MapEnvs1
+  m_Name: 10by40 Normalized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
