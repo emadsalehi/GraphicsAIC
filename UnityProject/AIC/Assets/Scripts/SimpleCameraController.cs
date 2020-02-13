@@ -4,6 +4,11 @@ namespace UnityTemplateProjects
 {
     public class SimpleCameraController : MonoBehaviour
     {
+
+        public float[] xBounds = new float[2];
+        public float[] yBounds = new float[2];
+        public float[] zBounds = new float[2];
+        
         class CameraState
         {
             public float yaw;
@@ -12,6 +17,9 @@ namespace UnityTemplateProjects
             public float x;
             public float y;
             public float z;
+            public float[] xBounds = new float[2];
+            public float[] yBounds = new float[2];
+            public float[] zBounds = new float[2];
 
             public void SetFromTransform(Transform t)
             {
@@ -21,6 +29,13 @@ namespace UnityTemplateProjects
                 x = t.position.x;
                 y = t.position.y;
                 z = t.position.z;
+            }
+
+            public void SetBounds(float[] xBound, float[] yBound, float[] zBound)
+            {
+                xBounds = xBound;
+                yBounds = yBound;
+                zBounds = zBound;
             }
 
             public void Translate(Vector3 translation)
@@ -41,10 +56,59 @@ namespace UnityTemplateProjects
                 x = Mathf.Lerp(x, target.x, positionLerpPct);
                 y = Mathf.Lerp(y, target.y, positionLerpPct);
                 z = Mathf.Lerp(z, target.z, positionLerpPct);
+                
+                if (x < xBounds[0])
+                {
+                    x = xBounds[0];
+                } 
+                if (x > xBounds[1])
+                {
+                    x = xBounds[1];
+                }
+                if (y < yBounds[0])
+                {
+                    y = yBounds[0];
+                } 
+                if (y > yBounds[1])
+                {
+                    y = yBounds[1];
+                }
+                if (z < zBounds[0])
+                {
+                    z = zBounds[0];
+                } 
+                if (z > zBounds[1])
+                {
+                    z = zBounds[1];
+                }
             }
 
             public void UpdateTransform(Transform t)
             {
+                if (x < xBounds[0])
+                {
+                    x = xBounds[0];
+                } 
+                if (x > xBounds[1])
+                {
+                    x = xBounds[1];
+                }
+                if (y < yBounds[0])
+                {
+                    y = yBounds[0];
+                } 
+                if (y > yBounds[1])
+                {
+                    y = yBounds[1];
+                }
+                if (z < zBounds[0])
+                {
+                    z = zBounds[0];
+                } 
+                if (z > zBounds[1])
+                {
+                    z = zBounds[1];
+                }
                 t.eulerAngles = new Vector3(pitch, yaw, roll);
                 t.position = new Vector3(x, y, z);
             }
@@ -74,6 +138,7 @@ namespace UnityTemplateProjects
         {
             m_TargetCameraState.SetFromTransform(transform);
             m_InterpolatingCameraState.SetFromTransform(transform);
+            m_InterpolatingCameraState.SetBounds(xBounds, yBounds, zBounds);
         }
 
         Vector3 GetInputTranslationDirection()

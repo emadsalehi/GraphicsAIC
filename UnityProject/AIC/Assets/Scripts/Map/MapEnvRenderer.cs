@@ -6,25 +6,25 @@ using UnityEngine;
 public class MapEnvRenderer : MonoBehaviour
 {
     public GameObject[] MapEnvs;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void RenderMapEnv(int width, int height)
     {
-        
-    }
-
-    public void RenderMapEnv(int height, int width)
-    {
-        String envName = height + "by" + width + " Normalized";
-        foreach (GameObject mapEnv in MapEnvs)
+        var envName = width + "by" + height + " Normalized";
+        var found = false;
+        foreach (var mapEnv in MapEnvs)
         {
-            if (mapEnv.name == envName)
+            if (mapEnv.name != envName) continue;
+            found = true;
+            Instantiate(mapEnv);
+            break;
+        }
+
+        envName = "20by20 Normalized";
+        if (found) return;
+        {
+            foreach (var mapEnv in MapEnvs)
             {
+                if (mapEnv.name != envName) continue;
                 Instantiate(mapEnv);
                 break;
             }

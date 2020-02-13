@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using UnityTemplateProjects;
 using Random = UnityEngine.Random;
 
 public class GameRunner : MonoBehaviour
@@ -35,7 +36,7 @@ public class GameRunner : MonoBehaviour
     private int _unitActionsPointer;
     private int _spellActionsPointer;
     private int _kingActionPointer;
-    private bool _isPaused = false;
+    private bool _isPaused;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,7 @@ public class GameRunner : MonoBehaviour
         _init = game.Init;
         _end = game.End;
         GetComponent<MapRenderer>().RenderMap(game.Init, "FirstTile");
+        GetComponent<MapEnvRenderer>().RenderMapEnv(_init.GraphicMap.Col, _init.GraphicMap.Row);
         _logParser = gameObject.GetComponent<LogParser>();
         _logParser.TurnTime = turnTime;
         _logParser.ParseLog(game);
@@ -63,6 +65,14 @@ public class GameRunner : MonoBehaviour
         _towers.Add(GameObject.FindWithTag("Tower3"));
         _towers.Add(GameObject.FindWithTag("Tower4"));
         GetComponent<UIContoller>().canvas.BroadcastMessage("SetPlayers", game.Init.GraphicMap.Kings);
+        var cameras = GetComponent<CameraChanger>().cameras;
+        cameras[0].transform.position = new Vector3(_init.GraphicMap.Col, 2.7f, -0.3f);
+        foreach (var simpleCameraController in cameras.Select(camera => camera.GetComponent<SimpleCameraController>()))
+        {
+            simpleCameraController.xBounds = new[] {-0.5f, 0.5f + _init.GraphicMap.Col};
+            simpleCameraController.yBounds = new[] {-0.5f, 0.5f + _init.GraphicMap.Row};
+            simpleCameraController.zBounds = new[] {0.0f, 30.0f};
+        }
     }
 
     // Update is called once per frame

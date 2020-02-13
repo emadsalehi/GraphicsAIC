@@ -287,7 +287,7 @@ public class LogParser : MonoBehaviour
             }
 
             _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + unitDetails.unitEvents.Count - 1)
-                , 0, unitDetails.id, unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.Die));
+                , 0, unitDetails.id, unitDetails.pId, unitDetails.unitEvents[0].row, unitDetails.unitEvents[0].col, 0, unitDetails.typeId, UnitActionType.Die));
             _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + unitDetails.unitEvents.Count)
                 , 0, unitDetails.id, unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.Destroy));
         }
