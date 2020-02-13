@@ -16,45 +16,39 @@ public class DynamicScrollView : MonoBehaviour
   
     public void LoadLocalLogFiles()
     {
-        String path = Application.dataPath + "/Server/Log/";
-        String[] filePaths = Directory.GetFiles(path);
+        var path = Application.dataPath + "/Server/Log/";
+        var filePaths = Directory.GetFiles(path);
         Debug.Log(filePaths[0]);
         for (int i = 0; i < filePaths.Length; i++)
         {
             // filePaths[i] = filePaths[i].Replace('\\', '/');
-            String [] pathSplitted = filePaths[i].Split('/');
-            String fileNameWithODots = pathSplitted[pathSplitted.Length - 1];
-            String[] fileNameWithODotsSplitted = fileNameWithODots.Split('.');
+            var pathSplitted = filePaths[i].Split('/');
+            var fileNameWithODots = pathSplitted[pathSplitted.Length - 1];
+            var fileNameWithODotsSplitted = fileNameWithODots.Split('.');
             if (fileNameWithODotsSplitted[fileNameWithODotsSplitted.Length - 1] == "meta")
             {
                 continue;
             }
-            GameObject go = Instantiate(Prefab);
-            go.GetComponentInChildren<Text>().text = takeFirstPart(fileNameWithODots);
+            var go = Instantiate(Prefab);
+            go.GetComponentInChildren<Text>().text = TakeFirstPart(fileNameWithODots);
             go.transform.SetParent(Container);
             go.transform.localPosition = Vector3.zero;
             go.transform.localScale = Vector3.one;
-            string paths = filePaths[i];
+            var paths = filePaths[i];
             go.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(paths));
         }
     }
      
-    String takeFirstPart(String path)
+    private String TakeFirstPart(String path)
     {
-        int fileExtPos = path.LastIndexOf(".");
-        if (fileExtPos >= 0)
-            return path.Substring(0, fileExtPos);
-        return null;
+        var fileExtPos = path.LastIndexOf(".", StringComparison.Ordinal);
+        return fileExtPos >= 0 ? path.Substring(0, fileExtPos) : null;
     }
 
 
-    public void OnButtonClick(String path)
+    private void OnButtonClick(String path)
     {
-        //string file = files[index];
-        Debug.Log(path);
         PlayerPrefs.SetString("LogPath", path);
         SceneManager.LoadScene(1);
-        //Debug.Log(file);
-        // Process file here...
     }
 }

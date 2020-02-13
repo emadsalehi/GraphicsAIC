@@ -72,15 +72,15 @@ public class MapRenderer : MonoBehaviour
             return;
         }
         
-        for (int i = 0; i < gameInit.GraphicMap.Row; ++i)
+        for (int i = 0; i < gameInit.graphicMap.row; ++i)
         {
-            for (int j = 0; j < gameInit.GraphicMap.Col; ++j)
+            for (int j = 0; j < gameInit.graphicMap.col; ++j)
             {
                 // if (availableLoc[i, j])
                 //     continue;
                 if(tileLocation[i, j])
                 {
-                    CreatePathTile(tilePack, i, j, gameInit.GraphicMap.Row, gameInit.GraphicMap.Col);
+                    CreatePathTile(tilePack, i, j, gameInit.graphicMap.row, gameInit.graphicMap.col);
                 }
 
                 else
@@ -93,9 +93,9 @@ public class MapRenderer : MonoBehaviour
                 }
             }
         }
-        for (int i = 0; i < gameInit.GraphicMap.Row; ++i)
+        for (int i = 0; i < gameInit.graphicMap.row; ++i)
         {
-            for (int j = 0; j < gameInit.GraphicMap.Col; ++j)
+            for (int j = 0; j < gameInit.graphicMap.col; ++j)
             {
                 if(kingLocation[i, j] != 0)
                 {
@@ -111,29 +111,29 @@ public class MapRenderer : MonoBehaviour
 
     private void SetLocations(GameInit gameInit)
     {
-        tileLocation = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
-        kingLocation = new int [gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
-        availableLoc = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
+        tileLocation = new bool[gameInit.graphicMap.row, gameInit.graphicMap.col];
+        kingLocation = new int [gameInit.graphicMap.row, gameInit.graphicMap.col];
+        availableLoc = new bool[gameInit.graphicMap.row, gameInit.graphicMap.col];
         //junkLocation = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
 
-        foreach(InitPath path in gameInit.GraphicMap.Paths)
+        foreach(InitPath path in gameInit.graphicMap.paths)
         {
-            foreach(PathCell cell in path.Cells)
+            foreach(PathCell cell in path.cells)
             {
-                tileLocation[cell.Row, cell.Col] = true;
+                tileLocation[cell.row, cell.col] = true;
             }
         }
 
-        foreach (InitKing king in gameInit.GraphicMap.Kings)
+        foreach (InitKing king in gameInit.graphicMap.kings)
         {
             for(int i = -1; i < 2; ++i)
             {
                 for(int j = -1; j < 2; ++j)
                 {
-                    availableLoc[king.Row + i, king.Col + j] = true;
+                    availableLoc[king.row + i, king.col + j] = true;
                 }
             }
-            kingLocation[king.Row, king.Col] = king.PId + 1;
+            kingLocation[king.row, king.col] = king.pId + 1;
         }
         /*
         for(int i = 0; i < gameInit.GraphicMap.Row; ++i)

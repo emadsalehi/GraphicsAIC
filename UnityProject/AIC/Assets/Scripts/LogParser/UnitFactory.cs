@@ -9,17 +9,17 @@ public class UnitFactory
     public void AddUnitDetail(int pId, PlayerUnit playerUnit, int turnNum)
     {
         var found = false;
-        foreach (var unitDetails in unitDetailsList.Where(unitDetails => unitDetails.id == playerUnit.Id && unitDetails.pId == pId))
+        foreach (var unitDetails in unitDetailsList.Where(unitDetails => unitDetails.id == playerUnit.id && unitDetails.pId == pId))
         {
             found = true;
-            unitDetails.unitEvents.Add(new UnitEvent(playerUnit.Row, playerUnit.Col));
+            unitDetails.unitEvents.Add(new UnitEvent(playerUnit.row, playerUnit.col));
             break;
         }
 
         if (found) return;
         {
-            var unitDetails = new UnitDetails(pId, playerUnit.Id, turnNum, playerUnit.TypeId);
-            unitDetails.unitEvents.Add(new UnitEvent(playerUnit.Row, playerUnit.Col));
+            var unitDetails = new UnitDetails(pId, playerUnit.id, turnNum, playerUnit.typeId);
+            unitDetails.unitEvents.Add(new UnitEvent(playerUnit.row, playerUnit.col));
             unitDetailsList.Add(unitDetails);
         }
     }

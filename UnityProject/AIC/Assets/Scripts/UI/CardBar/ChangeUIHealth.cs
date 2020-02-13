@@ -29,7 +29,7 @@ public class ChangeUIHealth : MonoBehaviour
 
     public void SetPlayers(List<InitKing> kings)
     {
-        var hp = kings[player].Hp;
+        var hp = kings[player].hp;
         _maxHp = hp;
     }
 }

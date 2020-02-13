@@ -120,27 +120,27 @@ public class LogParser : MonoBehaviour
         var isAttacking = new int[4];
         var isDied = new bool[4];
 
-        for (var i = 0; i < game.Turns.Count; i++)
+        for (var i = 0; i < game.turns.Count; i++)
         {
-            var turn = game.Turns[i];
-            foreach (var turnPlayer in turn.PlayerTurnEvents)
+            var turn = game.turns[i];
+            foreach (var turnPlayer in turn.playerTurnEvents)
             {
-                if (turnPlayer.TurnEvent.Hp <= 0 && !isDied[turnPlayer.PId])
+                if (turnPlayer.turnEvent.hp <= 0 && !isDied[turnPlayer.pId])
                 {
-                    _kingActions.Add(new KingAction(_turnTime * i, turnPlayer.PId, 0, KingActionType.Die));
-                    isDied[turnPlayer.PId] = true;
+                    _kingActions.Add(new KingAction(_turnTime * i, turnPlayer.pId, 0, KingActionType.Die));
+                    isDied[turnPlayer.pId] = true;
                 }
             }
 
             for (var j = 0; j < 4; j++)
             {
                 var found = false;
-                foreach (var turnAttack in from turnAttack in turn.TurnAttacks
-                    let attackerId = turnAttack.AttackerId
+                foreach (var turnAttack in from turnAttack in turn.turnAttacks
+                    let attackerId = turnAttack.attackerId
                     where attackerId == j
                     select turnAttack)
                 {
-                    isAttacking[j] = turnAttack.DefenderId;
+                    isAttacking[j] = turnAttack.defenderId;
                     found = true;
                 }
 
@@ -169,17 +169,17 @@ public class LogParser : MonoBehaviour
     private void LoadUnitActions(Game game)
     {
         var unitFactory = new UnitFactory();
-        var turns = game.Turns;
+        var turns = game.turns;
 
         for (var i = 0; i < turns.Count; i++)
         {
             var turn = turns[i];
-            foreach (var turnPlayer in turn.PlayerTurnEvents)
+            foreach (var turnPlayer in turn.playerTurnEvents)
             {
-                if (turnPlayer.TurnEvent.Units == null) continue;
-                foreach (var playerUnit in turnPlayer.TurnEvent.Units)
+                if (turnPlayer.turnEvent.units == null) continue;
+                foreach (var playerUnit in turnPlayer.turnEvent.units)
                 {
-                    unitFactory.AddUnitDetail(turnPlayer.PId, playerUnit, i);
+                    unitFactory.AddUnitDetail(turnPlayer.pId, playerUnit, i);
                 }
             }
         }
@@ -197,11 +197,11 @@ public class LogParser : MonoBehaviour
                 {
                     if (lastActionType != UnitActionType.StopMove)
                     {
-                        var turnAttacks = game.Turns[i + unitDetails.startTurn + 1].TurnAttacks;
+                        var turnAttacks = game.turns[i + unitDetails.startTurn + 1].turnAttacks;
                         var targetUnitId =
                             (from turnAttack in turnAttacks
-                                where turnAttack.AttackerId == unitDetails.id
-                                select turnAttack.DefenderId).FirstOrDefault();
+                                where turnAttack.attackerId == unitDetails.id
+                                select turnAttack.defenderId).FirstOrDefault();
 
                         lastActionType = UnitActionType.StopMove;
                         _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + i), 0, unitDetails.id
@@ -223,10 +223,10 @@ public class LogParser : MonoBehaviour
                     if (currentDir[0] > 1 || currentDir[0] < -1 || currentDir[1] > 1 || currentDir[1] < -1)
                     {
                         var turnNum = unitDetails.startTurn + i;
-                        foreach (var mapSpell in game.Turns[turnNum + 1].PlayerTurnEvents[unitDetails.pId].TurnEvent
-                            .MapSpells)
+                        foreach (var mapSpell in game.turns[turnNum + 1].playerTurnEvents[unitDetails.pId].turnEvent
+                            .mapSpells)
                         {
-                            if (mapSpell.TypeId == 0)
+                            if (mapSpell.typeId == 0)
                             {
                                 var speed = (float) Math.Sqrt(
                                     Math.Pow(currentDir[0], 2) + Math.Pow(currentDir[1], 2));
@@ -298,17 +298,17 @@ public class LogParser : MonoBehaviour
     private void LoadSpellActions(Game game)
     {
         var spellFactory = new SpellFactory();
-        var turns = game.Turns;
+        var turns = game.turns;
         for (var i = 0; i < turns.Count; i++)
         {
             var turn = turns[i];
-            foreach (var turnPlayer in turn.PlayerTurnEvents)
+            foreach (var turnPlayer in turn.playerTurnEvents)
             {
-                if (turnPlayer.TurnEvent.MapSpells == null) continue;
-                foreach (var playerMapSpell in turnPlayer.TurnEvent.MapSpells)
+                if (turnPlayer.turnEvent.mapSpells == null) continue;
+                foreach (var playerMapSpell in turnPlayer.turnEvent.mapSpells)
                 {
-                    spellFactory.AddSpellDetails(turnPlayer.PId, playerMapSpell, i - 1,
-                        playerMapSpell.SpellId);
+                    spellFactory.AddSpellDetails(turnPlayer.pId, playerMapSpell, i - 1,
+                        playerMapSpell.spellId);
                 }
             }
         }

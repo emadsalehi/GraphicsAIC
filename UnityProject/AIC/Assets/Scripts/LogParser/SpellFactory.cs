@@ -11,7 +11,7 @@ public class SpellFactory
     {
         var found = false;
         foreach (var spellDetails in spellDetailsList.Where(spellDetails =>
-            spellDetails.id == playerMapSpell.SpellId && spellDetails.pId == pId))
+            spellDetails.id == playerMapSpell.spellId && spellDetails.pId == pId))
         {
             found = true;
             spellDetails.aliveTurns += 1;
@@ -21,7 +21,7 @@ public class SpellFactory
         if (found) return;
         {
             var spellDetails =
-                new SpellDetails(pId, id, playerMapSpell.UnitIds, playerMapSpell.TypeId, turnTime);
+                new SpellDetails(pId, id, playerMapSpell.unitIds, playerMapSpell.typeId, turnTime);
             spellDetailsList.Add(spellDetails);
         }
     }

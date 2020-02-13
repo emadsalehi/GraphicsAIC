@@ -26,13 +26,13 @@ public class UIContoller : MonoBehaviour
     
     public void FireUiEvents(GameTurn turn)
     {
-        var playersStatus = turn.PlayerTurnEvents.Select(tp => new UIPlayer
+        var playersStatus = turn.playerTurnEvents.Select(tp => new UIPlayer
             {
-                Ap = tp.TurnEvent.Ap,
-                Hand = tp.TurnEvent.Hand,
-                Hp = tp.TurnEvent.Hp,
-                isAlive = tp.TurnEvent.IsAlive,
-                PId = tp.PId
+                Ap = tp.turnEvent.ap,
+                Hand = tp.turnEvent.hand,
+                Hp = tp.turnEvent.hp,
+                isAlive = tp.turnEvent.isAlive,
+                PId = tp.pId
             })
             .ToList();
         canvas.BroadcastMessage("UpdatePlayersStatus", playersStatus);

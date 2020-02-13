@@ -20,13 +20,13 @@ public class EndGameDetailsLoader : MonoBehaviour
     {
         foreach (var king in kings)
         {
-            names.Add(king.Name);
+            names.Add(king.name);
         }
     }
     
     public void CreateEndGame(List<EndGame> end)
     {
-        if (end.ElementAt(0).Score + end.ElementAt(2).Score == end.ElementAt(1).Score + end.ElementAt(3).Score)
+        if (end.ElementAt(0).score + end.ElementAt(2).score == end.ElementAt(1).score + end.ElementAt(3).score)
         {
             win.SetActive(false);
             lose.SetActive(false);
@@ -40,14 +40,14 @@ public class EndGameDetailsLoader : MonoBehaviour
             hLine.SetActive(true);
             draw.SetActive(false);
         }
-        var sorted = end.OrderByDescending(o => o.Score).ToList();
-        player1.GetComponent<TextMeshProUGUI>().text = names.ElementAt(sorted[0].PlayerId);
-        player2.GetComponent<TextMeshProUGUI>().text = names.ElementAt(sorted[1].PlayerId);
-        player3.GetComponent<TextMeshProUGUI>().text = names.ElementAt(sorted[2].PlayerId);
-        player4.GetComponent<TextMeshProUGUI>().text = names.ElementAt(sorted[3].PlayerId);
-        point1.GetComponent<TextMeshProUGUI>().text = sorted[0].Score.ToString();
-        point2.GetComponent<TextMeshProUGUI>().text = sorted[1].Score.ToString();
-        point3.GetComponent<TextMeshProUGUI>().text = sorted[2].Score.ToString();
-        point4.GetComponent<TextMeshProUGUI>().text = sorted[3].Score.ToString();
+        var sorted = end.OrderByDescending(o => o.score).ToList();
+        player1.GetComponent<TextMeshProUGUI>().text = names.ElementAt(sorted[0].playerId);
+        player2.GetComponent<TextMeshProUGUI>().text = names.ElementAt(sorted[1].playerId);
+        player3.GetComponent<TextMeshProUGUI>().text = names.ElementAt(sorted[2].playerId);
+        player4.GetComponent<TextMeshProUGUI>().text = names.ElementAt(sorted[3].playerId);
+        point1.GetComponent<TextMeshProUGUI>().text = sorted[0].score.ToString();
+        point2.GetComponent<TextMeshProUGUI>().text = sorted[1].score.ToString();
+        point3.GetComponent<TextMeshProUGUI>().text = sorted[2].score.ToString();
+        point4.GetComponent<TextMeshProUGUI>().text = sorted[3].score.ToString();
     }
 }

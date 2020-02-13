@@ -42,11 +42,11 @@ public class GameRunner : MonoBehaviour
     void Start()
     {
         var game = gameObject.GetComponent<LogReader>().ReadLog();
-        _gameTurns = game.Turns;
-        _init = game.Init;
-        _end = game.End;
-        GetComponent<MapRenderer>().RenderMap(game.Init, "FirstTile");
-        GetComponent<MapEnvRenderer>().RenderMapEnv(_init.GraphicMap.Col, _init.GraphicMap.Row);
+        _gameTurns = game.turns;
+        _init = game.init;
+        _end = game.end;
+        GetComponent<MapRenderer>().RenderMap(game.init, "FirstTile");
+        GetComponent<MapEnvRenderer>().RenderMapEnv(_init.graphicMap.col, _init.graphicMap.row);
         _logParser = gameObject.GetComponent<LogParser>();
         _logParser.TurnTime = turnTime;
         _logParser.ParseLog(game);
@@ -64,14 +64,14 @@ public class GameRunner : MonoBehaviour
         _towers.Add(GameObject.FindWithTag("Tower2"));
         _towers.Add(GameObject.FindWithTag("Tower3"));
         _towers.Add(GameObject.FindWithTag("Tower4"));
-        GetComponent<UIContoller>().canvas.BroadcastMessage("SetPlayers", game.Init.GraphicMap.Kings);
+        GetComponent<UIContoller>().canvas.BroadcastMessage("SetPlayers", game.init.graphicMap.kings);
         var cameras = GetComponent<CameraChanger>().cameras;
-        cameras[0].transform.position = new Vector3(_init.GraphicMap.Col, 2.7f, -0.3f);
+        cameras[0].transform.position = new Vector3(_init.graphicMap.col, 2.7f, -0.3f);
         foreach (var simpleCameraController in cameras.Select(camera => camera.GetComponent<SimpleCameraController>()))
         {
-            simpleCameraController.xBounds = new[] {-0.5f, 0.5f + _init.GraphicMap.Col};
-            simpleCameraController.yBounds = new[] {-0.5f, 0.5f + _init.GraphicMap.Row};
-            simpleCameraController.zBounds = new[] {0.0f, 30.0f};
+            simpleCameraController.xBounds = new[] {-0.5f, 0.5f + _init.graphicMap.col};
+            simpleCameraController.yBounds = new[] {-0.5f, 0.5f + _init.graphicMap.row};
+            simpleCameraController.zBounds = new[] {0.0f, 15.0f};
         }
     }
 
@@ -409,12 +409,12 @@ public class GameRunner : MonoBehaviour
         if (turnNumber > gameTurns.Count) return;
         if (turnNumber == gameTurns.Count)
         {
-            uiController.FireEndGameEvents(_end, _init.GraphicMap.Kings);
+            uiController.FireEndGameEvents(_end, _init.graphicMap.kings);
             StartCoroutine(BackToMenu(5));
             return;
         }
-        uiController.canvas.BroadcastMessage("SetPlayers", _init.GraphicMap.Kings);
-        uiController.canvas.BroadcastMessage("SetMaxAP", _init.MaxAP);
+        uiController.canvas.BroadcastMessage("SetPlayers", _init.graphicMap.kings);
+        uiController.canvas.BroadcastMessage("SetMaxAP", _init.maxAP);
         uiController.UpdateTurnNumberBroadcast(turnNumber);
         uiController.UpdateSlider(turnNumber, _gameTurns.Count - 1);
         var turn = gameTurns[turnNumber];
