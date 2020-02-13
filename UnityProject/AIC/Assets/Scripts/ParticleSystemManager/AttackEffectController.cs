@@ -28,6 +28,7 @@ public class AttackEffectController : MonoBehaviour
     {
         _target = target;
         if (_target == null) return;
+        particleSystem = particleSystemGameObject.GetComponent<ParticleSystem>();
         _destination = transform.position - particleSystemGameObject.transform.position;
         particleSystem.Play();
         _attackEnable = true;
@@ -36,7 +37,7 @@ public class AttackEffectController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_attackEnable) {
+        if (_attackEnable && _target != null) {
             particleSystemGameObject.transform.LookAt(_target.GetComponent<Details>().offset + _target.transform.position);
         }
     }

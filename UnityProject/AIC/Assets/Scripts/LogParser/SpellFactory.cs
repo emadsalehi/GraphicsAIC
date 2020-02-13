@@ -1,28 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpellFactory
 {
     public List<SpellDetails> spellDetailsList = new List<SpellDetails>();
 
-    public void AddSpellDetails (int PId , PlayerMapSpell playerMapSpell , int turnTime ,int id)
+    public void AddSpellDetails(int pId, PlayerMapSpell playerMapSpell, int turnTime, int id)
     {
-        bool found = false;
-        foreach (SpellDetails spellDetails in spellDetailsList)
+        var found = false;
+        foreach (var spellDetails in spellDetailsList.Where(spellDetails =>
+            spellDetails.id == playerMapSpell.SpellId && spellDetails.pId == pId))
         {
-            if (spellDetails.id == playerMapSpell.SpellId && spellDetails.pId == PId )
-            {
-                found = true;
-                spellDetails.aliveTurns += 1;
-                break;
-            }
+            found = true;
+            spellDetails.aliveTurns += 1;
+            break;
         }
-        if (!found){
-            SpellDetails spellDetails = new SpellDetails(PId , id, playerMapSpell.UnitIds, playerMapSpell.TypeId, turnTime);
+
+        if (found) return;
+        {
+            var spellDetails =
+                new SpellDetails(pId, id, playerMapSpell.UnitIds, playerMapSpell.TypeId, turnTime);
             spellDetailsList.Add(spellDetails);
         }
-        
     }
-    
 }

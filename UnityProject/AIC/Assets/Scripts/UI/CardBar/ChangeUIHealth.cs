@@ -17,16 +17,10 @@ public class ChangeUIHealth : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void UpdatePlayersStatus(List<UIPlayer> players)
     {
         var status = players[player];
-        var hp = status.Hp;
+        var hp = (float) status.Hp;
         var width = (hp / _maxHp) * _normalWidth;
         var rect = gameObject.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(width, rect.rect.height);
@@ -35,8 +29,6 @@ public class ChangeUIHealth : MonoBehaviour
 
     public void SetPlayers(List<InitKing> kings)
     {
-        var parentName = gameObject.transform.parent.parent.name;
-        int player = Convert.ToInt32(parentName[parentName.Length - 1]) - 1;
         var hp = kings[player].Hp;
         _maxHp = hp;
     }

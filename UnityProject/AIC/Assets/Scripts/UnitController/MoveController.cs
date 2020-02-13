@@ -55,6 +55,11 @@ public class MoveController : MonoBehaviour
         _isMovingAfterRotate = false;
         _isAttacking = true;
     }
+
+    public void SetDirection(Vector3 direction)
+    {
+        _direction = direction / direction.magnitude;
+    }
     
     void Update()
     {
@@ -71,6 +76,7 @@ public class MoveController : MonoBehaviour
         } 
         else if (_isAttacking)
         {
+            if (_target == null) return;
             Transform transform1;
             (transform1 = transform).LookAt(_target.transform);
             transform1.eulerAngles = new Vector3(0.0f, transform1.eulerAngles.y, 0.0f);

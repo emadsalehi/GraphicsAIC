@@ -14,6 +14,7 @@ public class AnimatorController : MonoBehaviour
     private static readonly int Move = Animator.StringToHash("Move");
     private static readonly int Die1 = Animator.StringToHash("Die");
     private static readonly int Attack = Animator.StringToHash("DeployAttack");
+    private static readonly int DeployDie1 = Animator.StringToHash("DeployDie");
 
     void Start()
     {
@@ -64,6 +65,13 @@ public class AnimatorController : MonoBehaviour
         if (_animator == null)
             _animator = GetComponent<Animator>();
         _animator.SetBool(Attack , true);
+    }
+    
+    public void DeployDie()
+    {
+        if (_animator == null)
+            _animator = GetComponent<Animator>();
+        _animator.SetBool(DeployDie1 , true);
     }
 
     public void Restart(){

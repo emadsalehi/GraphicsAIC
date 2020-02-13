@@ -23,6 +23,14 @@ public enum SpellActionType
     Pick
 }
 
+public enum KingActionType
+{
+    Attack,
+    Die,
+    ChangeTarget,
+    StopAttack
+}
+
 public class UnitAction
 {
     public float Time { get; set; }
@@ -68,11 +76,27 @@ public class SpellAction
     }
 }
 
+public class KingAction
+{
+    public float Time { get; set; }
+    public int PId { get; set; }
+    public int TargetUnitId { get; set; }
+    public KingActionType KingActionType { get; set; }
+
+    public KingAction(float time, int pId, int targetUnitId, KingActionType kingActionType)
+    {
+        Time = time;
+        PId = pId;
+        TargetUnitId = targetUnitId;
+        KingActionType = kingActionType;
+    }
+}
 
 public class LogParser : MonoBehaviour
 {
     private List<UnitAction> _unitActions = new List<UnitAction>();
     private List<SpellAction> _spellActions = new List<SpellAction>();
+    private List<KingAction> _kingActions = new List<KingAction>();
     private float _turnTime;
 
     public LogParser(float turnTime)
@@ -84,8 +108,62 @@ public class LogParser : MonoBehaviour
     {
         _unitActions = new List<UnitAction>();
         _spellActions = new List<SpellAction>();
+        _kingActions = new List<KingAction>();
         LoadUnitActions(game);
         LoadSpellActions(game);
+        LoadKingActions(game);
+    }
+
+    private void LoadKingActions(Game game)
+    {
+        var lastKingTarget = new int[4];
+        var isAttacking = new int[4];
+        var isDied = new bool[4];
+
+        for (var i = 0; i < game.Turns.Count; i++)
+        {
+            var turn = game.Turns[i];
+            foreach (var turnPlayer in turn.PlayerTurnEvents)
+            {
+                if (turnPlayer.TurnEvent.Hp <= 0 && !isDied[turnPlayer.PId])
+                {
+                    _kingActions.Add(new KingAction(_turnTime * i, turnPlayer.PId, 0, KingActionType.Die));
+                    isDied[turnPlayer.PId] = true;
+                }
+            }
+
+            for (var j = 0; j < 4; j++)
+            {
+                var found = false;
+                foreach (var turnAttack in from turnAttack in turn.TurnAttacks
+                    let attackerId = turnAttack.AttackerId
+                    where attackerId == j
+                    select turnAttack)
+                {
+                    isAttacking[j] = turnAttack.DefenderId;
+                    found = true;
+                }
+
+                if (!found)
+                {
+                    isAttacking[j] = 0;
+                }
+
+                if (isAttacking[j] == 0)
+                {
+                    if (lastKingTarget[j] == 0) continue;
+                    _kingActions.Add(new KingAction(_turnTime * i, 0, 0, KingActionType.StopAttack));
+                    lastKingTarget[j] = 0;
+                }
+                else
+                {
+                    if (lastKingTarget[j] == 0)
+                        _kingActions.Add(new KingAction(_turnTime * i, j, isAttacking[j], KingActionType.Attack));
+                    else if (lastKingTarget[j] != isAttacking[j])
+                        _kingActions.Add(new KingAction(_turnTime * i, j, isAttacking[j], KingActionType.ChangeTarget));
+                }
+            }
+        }
     }
 
     private void LoadUnitActions(Game game)
@@ -108,7 +186,7 @@ public class LogParser : MonoBehaviour
 
         foreach (var unitDetails in unitFactory.unitDetailsList)
         {
-            var dir = new List<int> {1, 0};
+            var dir = new List<int> {0, 0};
             var currentDir = new List<int> {0, 0};
             var lastActionType = UnitActionType.Deploy;
             for (var i = 0; i < unitDetails.unitEvents.Count - 1; i++)
@@ -127,13 +205,15 @@ public class LogParser : MonoBehaviour
 
                         lastActionType = UnitActionType.StopMove;
                         _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + i), 0, unitDetails.id
-                            , unitDetails.pId, 0, 0, targetUnitId, unitDetails.typeId, UnitActionType.StopMove));
+                            , unitDetails.pId, unitDetails.unitEvents[i].row, unitDetails.unitEvents[i].col,
+                            targetUnitId, unitDetails.typeId, UnitActionType.StopMove));
                     }
                 }
                 else
                 {
                     if (!(lastActionType == UnitActionType.StopMove || lastActionType == UnitActionType.Deploy ||
-                          lastActionType == UnitActionType.Teleport || lastActionType == UnitActionType.Haste))
+                          lastActionType == UnitActionType.Teleport || lastActionType == UnitActionType.Haste ||
+                          lastActionType == UnitActionType.StartMove))
                     {
                         _unitActions.Add(new UnitAction(_turnTime * (unitDetails.startTurn + i), 1.0f, unitDetails.id
                             , unitDetails.pId, 0, 0, 0, unitDetails.typeId, UnitActionType.StartMove));
@@ -142,7 +222,8 @@ public class LogParser : MonoBehaviour
 
                     if (currentDir[0] > 1 || currentDir[0] < -1 || currentDir[1] > 1 || currentDir[1] < -1)
                     {
-                        foreach (var mapSpell in game.Turns[i + 1].PlayerTurnEvents[unitDetails.pId].TurnEvent
+                        var turnNum = unitDetails.startTurn + i;
+                        foreach (var mapSpell in game.Turns[turnNum + 1].PlayerTurnEvents[unitDetails.pId].TurnEvent
                             .MapSpells)
                         {
                             if (mapSpell.TypeId == 0)
@@ -169,7 +250,7 @@ public class LogParser : MonoBehaviour
                         }
                     }
                     else if (dir[0] != currentDir[0] || dir[1] != currentDir[1] ||
-                             lastActionType == UnitActionType.Haste)
+                             lastActionType == UnitActionType.Haste || i == 0)
                     {
                         var rotationValue = 0;
                         switch (currentDir[0])
@@ -200,6 +281,7 @@ public class LogParser : MonoBehaviour
                         lastActionType = UnitActionType.MoveAfterRotate;
                     }
                 }
+
                 dir[0] = currentDir[0];
                 dir[1] = currentDir[1];
             }
@@ -217,14 +299,15 @@ public class LogParser : MonoBehaviour
     {
         var spellFactory = new SpellFactory();
         var turns = game.Turns;
-        foreach (var turn in turns)
+        for (var i = 0; i < turns.Count; i++)
         {
+            var turn = turns[i];
             foreach (var turnPlayer in turn.PlayerTurnEvents)
             {
                 if (turnPlayer.TurnEvent.MapSpells == null) continue;
                 foreach (var playerMapSpell in turnPlayer.TurnEvent.MapSpells)
                 {
-                    spellFactory.AddSpellDetails(turnPlayer.PId, playerMapSpell, turn.TurnNum - 1,
+                    spellFactory.AddSpellDetails(turnPlayer.PId, playerMapSpell, i - 1,
                         playerMapSpell.SpellId);
                 }
             }
@@ -232,27 +315,20 @@ public class LogParser : MonoBehaviour
 
         foreach (var spellDetails in spellFactory.spellDetailsList)
         {
-            _spellActions.Add(new SpellAction(_turnTime * (spellDetails.startTurn - 1), spellDetails.typeId,
-                spellDetails.unitIds,
-                SpellActionType.Put, spellDetails.id));
-            _spellActions.Add(new SpellAction(_turnTime * (spellDetails.startTurn + spellDetails.aliveTurns - 1),
+            _spellActions.Add(new SpellAction(_turnTime * spellDetails.startTurn, spellDetails.typeId,
+                spellDetails.unitIds, SpellActionType.Put, spellDetails.id));
+            _spellActions.Add(new SpellAction(_turnTime * (spellDetails.startTurn + spellDetails.aliveTurns),
                 spellDetails.typeId, spellDetails.unitIds, SpellActionType.Pick, spellDetails.id));
         }
 
         _spellActions = _spellActions.OrderBy(o => o.Time).ToList();
     }
 
-    public List<UnitAction> UnitActions
-    {
-        get => _unitActions;
-        set => _unitActions = value;
-    }
+    public List<UnitAction> UnitActions => _unitActions;
 
-    public List<SpellAction> SpellActions
-    {
-        get => _spellActions;
-        set => _spellActions = value;
-    }
+    public List<SpellAction> SpellActions => _spellActions;
+
+    public List<KingAction> KingActions => _kingActions;
 
     public float TurnTime
     {

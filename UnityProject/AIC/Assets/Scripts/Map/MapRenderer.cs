@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class MapRenderer : MonoBehaviour
@@ -16,10 +17,10 @@ public class MapRenderer : MonoBehaviour
     public JunkTile[] junckTiles;
 
     private bool[,] tileLocation;
-    private bool[,] kingLocation;
+    private int [,] kingLocation;
     private bool[,] availableLoc;
     //private bool[,] junkLocation;
-    private Queue<KingTower> kingTowerqueue;
+    private List<KingTower> kingTowerqueue;
     private Queue<GameObject> mapElements = new Queue<GameObject>();
     private float deltaTileTime = 0;
     private System.Random random = new System.Random();
@@ -61,7 +62,7 @@ public class MapRenderer : MonoBehaviour
 
     public void RenderMap(GameInit gameInit, string packName)
     {
-        kingTowerqueue = new Queue<KingTower>(Towers);
+        kingTowerqueue = new List<KingTower>(Towers);
         SetLocations(gameInit);
         PathTile tilePack = Array.Find(mainTiles, item => item.name == packName);
         ScaleTilePack(tilePack);
@@ -75,8 +76,8 @@ public class MapRenderer : MonoBehaviour
         {
             for (int j = 0; j < gameInit.GraphicMap.Col; ++j)
             {
-                if (availableLoc[i, j])
-                    continue;
+                // if (availableLoc[i, j])
+                //     continue;
                 if(tileLocation[i, j])
                 {
                     CreatePathTile(tilePack, i, j, gameInit.GraphicMap.Row, gameInit.GraphicMap.Col);
@@ -96,12 +97,12 @@ public class MapRenderer : MonoBehaviour
         {
             for (int j = 0; j < gameInit.GraphicMap.Col; ++j)
             {
-                if(kingLocation[i, j])
+                if(kingLocation[i, j] != 0)
                 {
                     Debug.LogWarning("Found King in " + i + " " + j + ":" + kingLocation[i, j]);
                     float xPos = (j) * TileSize;
                     float zPos = (i) * TileSize;
-                    mapElements.Enqueue(Instantiate(ScaleKingTower(kingTowerqueue.Dequeue()).tower, new Vector3(xPos, StartY, zPos), Quaternion.identity));
+                    mapElements.Enqueue(Instantiate(ScaleKingTower(kingTowerqueue.ElementAt(kingLocation[i, j] - 1)).tower, new Vector3(xPos, StartY, zPos), Quaternion.identity));
                 }
             }
         }
@@ -111,7 +112,7 @@ public class MapRenderer : MonoBehaviour
     private void SetLocations(GameInit gameInit)
     {
         tileLocation = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
-        kingLocation = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
+        kingLocation = new int [gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
         availableLoc = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
         //junkLocation = new bool[gameInit.GraphicMap.Row, gameInit.GraphicMap.Col];
 
@@ -132,7 +133,7 @@ public class MapRenderer : MonoBehaviour
                     availableLoc[king.Row + i, king.Col + j] = true;
                 }
             }
-            kingLocation[king.Row, king.Col] = true;
+            kingLocation[king.Row, king.Col] = king.PId + 1;
         }
         /*
         for(int i = 0; i < gameInit.GraphicMap.Row; ++i)

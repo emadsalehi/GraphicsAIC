@@ -1,0 +1,6721 @@
+{
+  "init": {
+    "maxAP": 8,
+    "graphicMap": {
+      "row": 20,
+      "col": 30,
+      "kings": [
+        {
+          "row": 4,
+          "col": 6,
+          "pId": 0,
+          "hp": 90,
+          "name": "Team0"
+        },
+        {
+          "row": 15,
+          "col": 23,
+          "pId": 1,
+          "hp": 90,
+          "name": "Team1"
+        },
+        {
+          "row": 15,
+          "col": 6,
+          "pId": 2,
+          "hp": 90,
+          "name": "Team2"
+        },
+        {
+          "row": 4,
+          "col": 23,
+          "pId": 3,
+          "hp": 90,
+          "name": "Team3"
+        }
+      ],
+      "paths": [
+        {
+          "pathId": 0,
+          "cells": [
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 5,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 7,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 6
+            },
+            {
+              "row": 9,
+              "col": 6
+            },
+            {
+              "row": 10,
+              "col": 6
+            },
+            {
+              "row": 11,
+              "col": 6
+            },
+            {
+              "row": 12,
+              "col": 6
+            },
+            {
+              "row": 13,
+              "col": 6
+            },
+            {
+              "row": 14,
+              "col": 6
+            },
+            {
+              "row": 15,
+              "col": 6
+            }
+          ]
+        },
+        {
+          "pathId": 1,
+          "cells": [
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 7
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 9
+            },
+            {
+              "row": 4,
+              "col": 10
+            },
+            {
+              "row": 4,
+              "col": 11
+            },
+            {
+              "row": 4,
+              "col": 12
+            },
+            {
+              "row": 4,
+              "col": 13
+            },
+            {
+              "row": 4,
+              "col": 14
+            },
+            {
+              "row": 4,
+              "col": 15
+            },
+            {
+              "row": 4,
+              "col": 16
+            },
+            {
+              "row": 4,
+              "col": 17
+            },
+            {
+              "row": 4,
+              "col": 18
+            },
+            {
+              "row": 4,
+              "col": 19
+            },
+            {
+              "row": 4,
+              "col": 20
+            },
+            {
+              "row": 4,
+              "col": 21
+            },
+            {
+              "row": 4,
+              "col": 22
+            },
+            {
+              "row": 4,
+              "col": 23
+            }
+          ]
+        },
+        {
+          "pathId": 2,
+          "cells": [
+            {
+              "row": 15,
+              "col": 6
+            },
+            {
+              "row": 15,
+              "col": 7
+            },
+            {
+              "row": 15,
+              "col": 8
+            },
+            {
+              "row": 15,
+              "col": 9
+            },
+            {
+              "row": 15,
+              "col": 10
+            },
+            {
+              "row": 15,
+              "col": 11
+            },
+            {
+              "row": 15,
+              "col": 12
+            },
+            {
+              "row": 15,
+              "col": 13
+            },
+            {
+              "row": 15,
+              "col": 14
+            },
+            {
+              "row": 15,
+              "col": 15
+            },
+            {
+              "row": 15,
+              "col": 16
+            },
+            {
+              "row": 15,
+              "col": 17
+            },
+            {
+              "row": 15,
+              "col": 18
+            },
+            {
+              "row": 15,
+              "col": 19
+            },
+            {
+              "row": 15,
+              "col": 20
+            },
+            {
+              "row": 15,
+              "col": 21
+            },
+            {
+              "row": 15,
+              "col": 22
+            },
+            {
+              "row": 15,
+              "col": 23
+            }
+          ]
+        },
+        {
+          "pathId": 3,
+          "cells": [
+            {
+              "row": 4,
+              "col": 23
+            },
+            {
+              "row": 5,
+              "col": 23
+            },
+            {
+              "row": 6,
+              "col": 23
+            },
+            {
+              "row": 7,
+              "col": 23
+            },
+            {
+              "row": 8,
+              "col": 23
+            },
+            {
+              "row": 9,
+              "col": 23
+            },
+            {
+              "row": 10,
+              "col": 23
+            },
+            {
+              "row": 11,
+              "col": 23
+            },
+            {
+              "row": 12,
+              "col": 23
+            },
+            {
+              "row": 13,
+              "col": 23
+            },
+            {
+              "row": 14,
+              "col": 23
+            },
+            {
+              "row": 15,
+              "col": 23
+            }
+          ]
+        },
+        {
+          "pathId": 4,
+          "cells": [
+            {
+              "row": 4,
+              "col": 6
+            },
+            {
+              "row": 4,
+              "col": 7
+            },
+            {
+              "row": 4,
+              "col": 8
+            },
+            {
+              "row": 4,
+              "col": 9
+            },
+            {
+              "row": 4,
+              "col": 10
+            },
+            {
+              "row": 4,
+              "col": 11
+            },
+            {
+              "row": 4,
+              "col": 12
+            },
+            {
+              "row": 4,
+              "col": 13
+            },
+            {
+              "row": 4,
+              "col": 14
+            },
+            {
+              "row": 5,
+              "col": 14
+            },
+            {
+              "row": 6,
+              "col": 14
+            },
+            {
+              "row": 7,
+              "col": 14
+            },
+            {
+              "row": 8,
+              "col": 14
+            },
+            {
+              "row": 9,
+              "col": 14
+            },
+            {
+              "row": 10,
+              "col": 14
+            },
+            {
+              "row": 11,
+              "col": 14
+            },
+            {
+              "row": 12,
+              "col": 14
+            },
+            {
+              "row": 13,
+              "col": 14
+            },
+            {
+              "row": 14,
+              "col": 14
+            },
+            {
+              "row": 15,
+              "col": 14
+            },
+            {
+              "row": 15,
+              "col": 15
+            },
+            {
+              "row": 15,
+              "col": 16
+            },
+            {
+              "row": 15,
+              "col": 17
+            },
+            {
+              "row": 15,
+              "col": 18
+            },
+            {
+              "row": 15,
+              "col": 19
+            },
+            {
+              "row": 15,
+              "col": 20
+            },
+            {
+              "row": 15,
+              "col": 21
+            },
+            {
+              "row": 15,
+              "col": 22
+            },
+            {
+              "row": 15,
+              "col": 23
+            }
+          ]
+        },
+        {
+          "pathId": 5,
+          "cells": [
+            {
+              "row": 15,
+              "col": 6
+            },
+            {
+              "row": 14,
+              "col": 6
+            },
+            {
+              "row": 13,
+              "col": 6
+            },
+            {
+              "row": 12,
+              "col": 6
+            },
+            {
+              "row": 11,
+              "col": 6
+            },
+            {
+              "row": 10,
+              "col": 6
+            },
+            {
+              "row": 9,
+              "col": 6
+            },
+            {
+              "row": 8,
+              "col": 6
+            },
+            {
+              "row": 7,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 7
+            },
+            {
+              "row": 6,
+              "col": 8
+            },
+            {
+              "row": 6,
+              "col": 9
+            },
+            {
+              "row": 5,
+              "col": 9
+            },
+            {
+              "row": 4,
+              "col": 9
+            },
+            {
+              "row": 4,
+              "col": 10
+            },
+            {
+              "row": 4,
+              "col": 11
+            },
+            {
+              "row": 4,
+              "col": 12
+            },
+            {
+              "row": 4,
+              "col": 13
+            },
+            {
+              "row": 4,
+              "col": 14
+            },
+            {
+              "row": 4,
+              "col": 15
+            },
+            {
+              "row": 4,
+              "col": 16
+            },
+            {
+              "row": 4,
+              "col": 17
+            },
+            {
+              "row": 4,
+              "col": 18
+            },
+            {
+              "row": 4,
+              "col": 19
+            },
+            {
+              "row": 4,
+              "col": 20
+            },
+            {
+              "row": 4,
+              "col": 21
+            },
+            {
+              "row": 4,
+              "col": 22
+            },
+            {
+              "row": 4,
+              "col": 23
+            }
+          ]
+        }
+      ]
+    },
+    "baseUnits": [
+      {
+        "typeId": 0,
+        "maxHP": 15,
+        "ap": 3
+      },
+      {
+        "typeId": 1,
+        "maxHP": 30,
+        "ap": 3
+      },
+      {
+        "typeId": 2,
+        "maxHP": 20,
+        "ap": 1
+      },
+      {
+        "typeId": 3,
+        "maxHP": 25,
+        "ap": 7
+      },
+      {
+        "typeId": 4,
+        "maxHP": 50,
+        "ap": 7
+      },
+      {
+        "typeId": 5,
+        "maxHP": 30,
+        "ap": 7
+      },
+      {
+        "typeId": 6,
+        "maxHP": 15,
+        "ap": 7
+      },
+      {
+        "typeId": 7,
+        "maxHP": 30,
+        "ap": 7
+      },
+      {
+        "typeId": 8,
+        "maxHP": 20,
+        "ap": 7
+      }
+    ]
+  },
+  "end": [
+    {
+      "playerId": 0,
+      "score": 3
+    },
+    {
+      "playerId": 1,
+      "score": 6
+    },
+    {
+      "playerId": 2,
+      "score": 3
+    },
+    {
+      "playerId": 3,
+      "score": 8
+    }
+  ],
+  "turns": [
+    {
+      "turnNum": 2,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 2,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              0,
+              3,
+              4,
+              1
+            ],
+            "units": [
+              {
+                "id": 37,
+                "typeId": 5,
+                "row": 15,
+                "col": 22,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 1,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              4,
+              3,
+              0,
+              7
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 7,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 7,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 2,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              1,
+              4,
+              0,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 22,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 3,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 3,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              0,
+              3,
+              4,
+              1
+            ],
+            "units": [
+              {
+                "id": 37,
+                "typeId": 5,
+                "row": 15,
+                "col": 21,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 2,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              4,
+              3,
+              0,
+              7
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 8,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 8,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 3,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              1,
+              4,
+              0,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 21,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 4,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 4,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              0,
+              3,
+              4,
+              1
+            ],
+            "units": [
+              {
+                "id": 37,
+                "typeId": 5,
+                "row": 15,
+                "col": 20,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 3,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              4,
+              3,
+              0,
+              7
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 9,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 9,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 4,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              1,
+              4,
+              0,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 20,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 5,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 5,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              0,
+              3,
+              4,
+              1
+            ],
+            "units": [
+              {
+                "id": 37,
+                "typeId": 5,
+                "row": 15,
+                "col": 19,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 41,
+                "typeId": 5,
+                "row": 15,
+                "col": 19,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": [
+              {
+                "spellId": 1,
+                "unitIds": [
+                  40
+                ],
+                "typeId": 2
+              }
+            ]
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 4,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              4,
+              3,
+              0,
+              7
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 10,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 10,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 5,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              1,
+              4,
+              0,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 19,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": [
+              {
+                "spellId": 2,
+                "unitIds": [
+                  41
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 6,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 6,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              0,
+              3,
+              4,
+              1
+            ],
+            "units": [
+              {
+                "id": 37,
+                "typeId": 5,
+                "row": 15,
+                "col": 18,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 41,
+                "typeId": 5,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 5,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              4,
+              3,
+              0,
+              7
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 11,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 11,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 6,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              1,
+              4,
+              0,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 18,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": [
+              {
+                "spellId": 2,
+                "unitIds": [
+                  41
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 7,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 7,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              0,
+              3,
+              4,
+              1
+            ],
+            "units": [
+              {
+                "id": 37,
+                "typeId": 5,
+                "row": 15,
+                "col": 17,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 6,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              4,
+              3,
+              0,
+              7
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 12,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 12,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 7,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              1,
+              4,
+              0,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 17,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": [
+              {
+                "spellId": 2,
+                "unitIds": [
+                  41
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 8,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              0,
+              3,
+              4,
+              1
+            ],
+            "units": [
+              {
+                "id": 37,
+                "typeId": 5,
+                "row": 15,
+                "col": 16,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 7,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              4,
+              3,
+              0,
+              7
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 13,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 13,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              1,
+              4,
+              0,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 16,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 9,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 2,
+            "hp": 90,
+            "hand": [
+              8,
+              0,
+              3,
+              4,
+              1,
+              7
+            ],
+            "units": [
+              {
+                "id": 37,
+                "typeId": 5,
+                "row": 15,
+                "col": 16,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 42,
+                "typeId": 6,
+                "row": 15,
+                "col": 22,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": [
+              {
+                "spellId": 3,
+                "unitIds": [
+                  45
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              6,
+              8,
+              4,
+              3,
+              0,
+              7
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 13,
+                "hp": 25,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 13,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 1,
+            "hp": 90,
+            "hand": [
+              8,
+              1,
+              4,
+              0,
+              6,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 15,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 22,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 22,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 45,
+                "typeId": 5,
+                "row": 4,
+                "col": 15,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": [
+              {
+                "spellId": 4,
+                "unitIds": [
+                  37
+                ],
+                "typeId": 2
+              }
+            ]
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 37,
+          "defenderId": 38
+        },
+        {
+          "attackerId": 38,
+          "defenderId": 37
+        },
+        {
+          "attackerId": 39,
+          "defenderId": 37
+        }
+      ]
+    },
+    {
+      "turnNum": 10,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 3,
+            "hp": 90,
+            "hand": [
+              8,
+              0,
+              3,
+              4,
+              1,
+              7
+            ],
+            "units": [
+              {
+                "id": 42,
+                "typeId": 6,
+                "row": 15,
+                "col": 21,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": [
+              {
+                "spellId": 3,
+                "unitIds": [
+                  45
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 2,
+            "hp": 90,
+            "hand": [
+              8,
+              4,
+              3,
+              0,
+              7,
+              5
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 13,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 13,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 7,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 2,
+            "hp": 90,
+            "hand": [
+              8,
+              1,
+              4,
+              0,
+              6,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 14,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 21,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 21,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 45,
+                "typeId": 5,
+                "row": 4,
+                "col": 14,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 37,
+          "defenderId": 38
+        },
+        {
+          "attackerId": 38,
+          "defenderId": 37
+        },
+        {
+          "attackerId": 39,
+          "defenderId": 37
+        }
+      ]
+    },
+    {
+      "turnNum": 11,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 4,
+            "hp": 90,
+            "hand": [
+              8,
+              0,
+              3,
+              4,
+              1,
+              7
+            ],
+            "units": [
+              {
+                "id": 42,
+                "typeId": 6,
+                "row": 15,
+                "col": 20,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": [
+              {
+                "spellId": 3,
+                "unitIds": [
+                  45
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 3,
+            "hp": 90,
+            "hand": [
+              8,
+              4,
+              3,
+              0,
+              7,
+              5
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 14,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 14,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 8,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 3,
+            "hp": 90,
+            "hand": [
+              8,
+              1,
+              4,
+              0,
+              6,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 13,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 20,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 20,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 12,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 5,
+            "hp": 90,
+            "hand": [
+              8,
+              0,
+              3,
+              4,
+              1,
+              7
+            ],
+            "units": [
+              {
+                "id": 42,
+                "typeId": 6,
+                "row": 15,
+                "col": 19,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 4,
+            "hp": 90,
+            "hand": [
+              8,
+              4,
+              3,
+              0,
+              7,
+              5
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 15,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 15,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 9,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 4,
+            "hp": 90,
+            "hand": [
+              8,
+              1,
+              4,
+              0,
+              6,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 12,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 19,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 19,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 13,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 6,
+            "hp": 90,
+            "hand": [
+              8,
+              0,
+              3,
+              4,
+              1,
+              7
+            ],
+            "units": [],
+            "mapSpells": [
+              {
+                "spellId": 5,
+                "unitIds": [
+                  47
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 5,
+            "hp": 90,
+            "hand": [
+              8,
+              4,
+              3,
+              0,
+              7,
+              5
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 15,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 15,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 10,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 5,
+            "hp": 90,
+            "hand": [
+              8,
+              1,
+              4,
+              0,
+              6,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 18,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 47,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": [
+              {
+                "spellId": 6,
+                "unitIds": [
+                  42
+                ],
+                "typeId": 2
+              }
+            ]
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 38,
+          "defenderId": 42
+        },
+        {
+          "attackerId": 39,
+          "defenderId": 42
+        },
+        {
+          "attackerId": 42,
+          "defenderId": 38
+        },
+        {
+          "attackerId": 42,
+          "defenderId": 39
+        }
+      ]
+    },
+    {
+      "turnNum": 14,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 83,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 7,
+            "hp": 90,
+            "hand": [
+              8,
+              0,
+              3,
+              4,
+              1,
+              7
+            ],
+            "units": [],
+            "mapSpells": [
+              {
+                "spellId": 5,
+                "unitIds": [
+                  47
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 6,
+            "hp": 90,
+            "hand": [
+              8,
+              4,
+              3,
+              0,
+              7,
+              5
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 16,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 16,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 11,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 6,
+            "hp": 90,
+            "hand": [
+              8,
+              1,
+              4,
+              0,
+              6,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 17,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 17,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 47,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 40,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 47,
+          "defenderId": 0
+        }
+      ]
+    },
+    {
+      "turnNum": 15,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 76,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              8,
+              0,
+              3,
+              4,
+              1,
+              7
+            ],
+            "units": [],
+            "mapSpells": [
+              {
+                "spellId": 5,
+                "unitIds": [
+                  47
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 7,
+            "hp": 90,
+            "hand": [
+              8,
+              4,
+              3,
+              0,
+              7,
+              5
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 17,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 17,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 12,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 7,
+            "hp": 90,
+            "hand": [
+              8,
+              1,
+              4,
+              0,
+              6,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 16,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 16,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 40,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 47,
+          "defenderId": 0
+        }
+      ]
+    },
+    {
+      "turnNum": 16,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 71,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 2,
+            "hp": 90,
+            "hand": [
+              0,
+              3,
+              4,
+              1,
+              7,
+              8
+            ],
+            "units": [
+              {
+                "id": 48,
+                "typeId": 8,
+                "row": 15,
+                "col": 22,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              8,
+              4,
+              3,
+              0,
+              7,
+              5
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 13,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              8,
+              1,
+              4,
+              0,
+              6,
+              2
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 15,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 15,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 40,
+          "defenderId": 0
+        }
+      ]
+    },
+    {
+      "turnNum": 17,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 64,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 3,
+            "hp": 80,
+            "hand": [
+              0,
+              3,
+              4,
+              1,
+              7,
+              8
+            ],
+            "units": [
+              {
+                "id": 48,
+                "typeId": 8,
+                "row": 15,
+                "col": 21,
+                "hp": 5,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": [
+              {
+                "spellId": 7,
+                "unitIds": [
+                  52
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 2,
+            "hp": 90,
+            "hand": [
+              4,
+              3,
+              0,
+              7,
+              5,
+              8
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 14,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 49,
+                "typeId": 8,
+                "row": 15,
+                "col": 7,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 1,
+            "hp": 90,
+            "hand": [
+              1,
+              4,
+              0,
+              6,
+              8,
+              3
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 14,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 14,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 22,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 22,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 52,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": [
+              {
+                "spellId": 8,
+                "unitIds": [
+                  48
+                ],
+                "typeId": 2
+              }
+            ]
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 38,
+          "defenderId": 48
+        },
+        {
+          "attackerId": 39,
+          "defenderId": 1
+        },
+        {
+          "attackerId": 39,
+          "defenderId": 48
+        },
+        {
+          "attackerId": 40,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 52,
+          "defenderId": 0
+        }
+      ]
+    },
+    {
+      "turnNum": 18,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 57,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 4,
+            "hp": 80,
+            "hand": [
+              0,
+              3,
+              4,
+              1,
+              7,
+              8
+            ],
+            "units": [],
+            "mapSpells": [
+              {
+                "spellId": 7,
+                "unitIds": [
+                  52
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 3,
+            "hp": 90,
+            "hand": [
+              4,
+              3,
+              0,
+              7,
+              5,
+              8
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 15,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 49,
+                "typeId": 8,
+                "row": 15,
+                "col": 8,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 2,
+            "hp": 90,
+            "hand": [
+              1,
+              4,
+              0,
+              6,
+              8,
+              3
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 13,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 13,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 21,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 21,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 52,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 38,
+          "defenderId": 48
+        },
+        {
+          "attackerId": 39,
+          "defenderId": 48
+        },
+        {
+          "attackerId": 40,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 52,
+          "defenderId": 0
+        }
+      ]
+    },
+    {
+      "turnNum": 19,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 50,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 5,
+            "hp": 65,
+            "hand": [
+              0,
+              3,
+              4,
+              1,
+              7,
+              8
+            ],
+            "units": [],
+            "mapSpells": [
+              {
+                "spellId": 7,
+                "unitIds": [
+                  52
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 4,
+            "hp": 90,
+            "hand": [
+              4,
+              3,
+              0,
+              7,
+              5,
+              8
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 16,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 49,
+                "typeId": 8,
+                "row": 15,
+                "col": 9,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 3,
+            "hp": 90,
+            "hand": [
+              1,
+              4,
+              0,
+              6,
+              8,
+              3
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 12,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 12,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 20,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 20,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 38,
+          "defenderId": 1
+        },
+        {
+          "attackerId": 39,
+          "defenderId": 1
+        },
+        {
+          "attackerId": 40,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 52,
+          "defenderId": 0
+        }
+      ]
+    },
+    {
+      "turnNum": 20,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 45,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 6,
+            "hp": 50,
+            "hand": [
+              0,
+              3,
+              4,
+              1,
+              7,
+              8
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 5,
+            "hp": 90,
+            "hand": [
+              4,
+              3,
+              0,
+              7,
+              5,
+              8
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 17,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 49,
+                "typeId": 8,
+                "row": 15,
+                "col": 10,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 4,
+            "hp": 90,
+            "hand": [
+              1,
+              4,
+              0,
+              6,
+              8,
+              3
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 11,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 11,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 19,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 19,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 38,
+          "defenderId": 1
+        },
+        {
+          "attackerId": 39,
+          "defenderId": 1
+        },
+        {
+          "attackerId": 40,
+          "defenderId": 0
+        }
+      ]
+    },
+    {
+      "turnNum": 21,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 16,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 7,
+            "hp": 35,
+            "hand": [
+              0,
+              3,
+              4,
+              1,
+              7,
+              8
+            ],
+            "units": [],
+            "mapSpells": [
+              {
+                "spellId": 9,
+                "unitIds": [
+                  53,
+                  54,
+                  55
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 6,
+            "hp": 90,
+            "hand": [
+              4,
+              3,
+              0,
+              7,
+              5,
+              8
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 49,
+                "typeId": 8,
+                "row": 15,
+                "col": 11,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 5,
+            "hp": 90,
+            "hand": [
+              1,
+              4,
+              0,
+              6,
+              8,
+              3
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 11,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 11,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 18,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 18,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 53,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 54,
+                "typeId": 6,
+                "row": 4,
+                "col": 11,
+                "hp": 7,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 55,
+                "typeId": 2,
+                "row": 4,
+                "col": 11,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 38,
+          "defenderId": 1
+        },
+        {
+          "attackerId": 39,
+          "defenderId": 1
+        },
+        {
+          "attackerId": 40,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 43,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 44,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 53,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 54,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 55,
+          "defenderId": 0
+        }
+      ]
+    },
+    {
+      "turnNum": 22,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 15,
+            "hand": [
+              0,
+              3,
+              4,
+              1,
+              7,
+              8
+            ],
+            "units": [],
+            "mapSpells": [
+              {
+                "spellId": 9,
+                "unitIds": [
+                  53,
+                  54,
+                  55
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 7,
+            "hp": 90,
+            "hand": [
+              4,
+              3,
+              0,
+              7,
+              5,
+              8
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 49,
+                "typeId": 8,
+                "row": 15,
+                "col": 12,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 6,
+            "hp": 90,
+            "hand": [
+              1,
+              4,
+              0,
+              6,
+              8,
+              3
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 11,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 11,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 17,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 17,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 53,
+                "typeId": 5,
+                "row": 4,
+                "col": 11,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 54,
+                "typeId": 6,
+                "row": 4,
+                "col": 11,
+                "hp": 7,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 55,
+                "typeId": 2,
+                "row": 4,
+                "col": 11,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 38,
+          "defenderId": 1
+        },
+        {
+          "attackerId": 39,
+          "defenderId": 1
+        },
+        {
+          "attackerId": 40,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 43,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 44,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 46,
+          "defenderId": 1
+        },
+        {
+          "attackerId": 53,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 54,
+          "defenderId": 0
+        },
+        {
+          "attackerId": 55,
+          "defenderId": 0
+        }
+      ]
+    },
+    {
+      "turnNum": 23,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 3,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 22,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 57,
+                "typeId": 1,
+                "row": 15,
+                "col": 22,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": [
+              {
+                "spellId": 9,
+                "unitIds": [
+                  53,
+                  54,
+                  55
+                ],
+                "typeId": 4
+              }
+            ]
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              4,
+              3,
+              0,
+              7,
+              5,
+              8
+            ],
+            "units": [
+              {
+                "id": 38,
+                "typeId": 5,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 39,
+                "typeId": 2,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 46,
+                "typeId": 6,
+                "row": 15,
+                "col": 18,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 49,
+                "typeId": 8,
+                "row": 15,
+                "col": 13,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 7,
+            "hp": 90,
+            "hand": [
+              1,
+              4,
+              0,
+              6,
+              8,
+              3
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 10,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 10,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 10,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 16,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 16,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 38,
+          "defenderId": 1
+        },
+        {
+          "attackerId": 39,
+          "defenderId": 1
+        },
+        {
+          "attackerId": 46,
+          "defenderId": 1
+        }
+      ]
+    },
+    {
+      "turnNum": 24,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 4,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 22,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 57,
+                "typeId": 1,
+                "row": 15,
+                "col": 22,
+                "hp": 25,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              4,
+              3,
+              0,
+              7,
+              5,
+              8
+            ],
+            "units": [
+              {
+                "id": 49,
+                "typeId": 8,
+                "row": 15,
+                "col": 14,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              1,
+              4,
+              0,
+              6,
+              8,
+              3
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 9,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 9,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 9,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 15,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 15,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 46,
+          "defenderId": 56
+        },
+        {
+          "attackerId": 46,
+          "defenderId": 57
+        },
+        {
+          "attackerId": 56,
+          "defenderId": 38
+        },
+        {
+          "attackerId": 56,
+          "defenderId": 39
+        },
+        {
+          "attackerId": 56,
+          "defenderId": 46
+        },
+        {
+          "attackerId": 57,
+          "defenderId": 39
+        }
+      ]
+    },
+    {
+      "turnNum": 25,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 5,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 21,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 57,
+                "typeId": 1,
+                "row": 15,
+                "col": 21,
+                "hp": 25,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              4,
+              3,
+              0,
+              7,
+              5,
+              8
+            ],
+            "units": [
+              {
+                "id": 49,
+                "typeId": 8,
+                "row": 15,
+                "col": 15,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              1,
+              4,
+              0,
+              6,
+              8,
+              3
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 8,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 8,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 8,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 14,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 14,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 26,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 6,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 20,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 57,
+                "typeId": 1,
+                "row": 15,
+                "col": 20,
+                "hp": 25,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              4,
+              3,
+              0,
+              7,
+              5,
+              8
+            ],
+            "units": [
+              {
+                "id": 49,
+                "typeId": 8,
+                "row": 15,
+                "col": 16,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              1,
+              4,
+              0,
+              6,
+              8,
+              3
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 7,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 7,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 7,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 13,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 13,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 27,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 7,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 20,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 57,
+                "typeId": 1,
+                "row": 15,
+                "col": 19,
+                "hp": 25,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              4,
+              3,
+              0,
+              7,
+              5,
+              8
+            ],
+            "units": [
+              {
+                "id": 49,
+                "typeId": 8,
+                "row": 15,
+                "col": 17,
+                "hp": 5,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              1,
+              4,
+              0,
+              6,
+              8,
+              3
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 4,
+                "col": 6,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 4,
+                "col": 6,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 4,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 12,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 12,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 56,
+          "defenderId": 49
+        }
+      ]
+    },
+    {
+      "turnNum": 28,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 20,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 57,
+                "typeId": 1,
+                "row": 15,
+                "col": 18,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 2,
+            "hp": 90,
+            "hand": [
+              3,
+              0,
+              7,
+              5,
+              8,
+              4
+            ],
+            "units": [
+              {
+                "id": 58,
+                "typeId": 4,
+                "row": 15,
+                "col": 7,
+                "hp": 50,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 6,
+            "hp": 90,
+            "hand": [
+              4,
+              0,
+              6,
+              8,
+              3,
+              1
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 5,
+                "col": 6,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 5,
+                "col": 6,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 5,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 11,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 11,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 59,
+                "typeId": 1,
+                "row": 4,
+                "col": 22,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 49,
+          "defenderId": 57
+        },
+        {
+          "attackerId": 56,
+          "defenderId": 49
+        }
+      ]
+    },
+    {
+      "turnNum": 29,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 19,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 57,
+                "typeId": 1,
+                "row": 15,
+                "col": 17,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 3,
+            "hp": 90,
+            "hand": [
+              3,
+              0,
+              7,
+              5,
+              8,
+              4
+            ],
+            "units": [
+              {
+                "id": 58,
+                "typeId": 4,
+                "row": 15,
+                "col": 8,
+                "hp": 50,
+                "damageLevel": 1,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 7,
+            "hp": 90,
+            "hand": [
+              4,
+              0,
+              6,
+              8,
+              3,
+              1
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 6,
+                "col": 6,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 6,
+                "col": 6,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 6,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 10,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 10,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 59,
+                "typeId": 1,
+                "row": 4,
+                "col": 21,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 30,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 18,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 57,
+                "typeId": 1,
+                "row": 15,
+                "col": 16,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 4,
+            "hp": 90,
+            "hand": [
+              3,
+              0,
+              7,
+              5,
+              8,
+              4
+            ],
+            "units": [
+              {
+                "id": 58,
+                "typeId": 4,
+                "row": 15,
+                "col": 9,
+                "hp": 50,
+                "damageLevel": 1,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              4,
+              0,
+              6,
+              8,
+              3,
+              1
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 7,
+                "col": 6,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 1
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 7,
+                "col": 6,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 7,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 9,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 9,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 59,
+                "typeId": 1,
+                "row": 4,
+                "col": 20,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 31,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 17,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 57,
+                "typeId": 1,
+                "row": 15,
+                "col": 15,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 5,
+            "hp": 90,
+            "hand": [
+              3,
+              0,
+              7,
+              5,
+              8,
+              4
+            ],
+            "units": [
+              {
+                "id": 58,
+                "typeId": 4,
+                "row": 15,
+                "col": 10,
+                "hp": 50,
+                "damageLevel": 1,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              4,
+              0,
+              6,
+              8,
+              3,
+              1
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 8,
+                "col": 6,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 1
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 8,
+                "col": 6,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 8,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 8,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 8,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 59,
+                "typeId": 1,
+                "row": 4,
+                "col": 19,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 32,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 16,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 57,
+                "typeId": 1,
+                "row": 15,
+                "col": 14,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 6,
+            "hp": 90,
+            "hand": [
+              3,
+              0,
+              7,
+              5,
+              8,
+              4
+            ],
+            "units": [
+              {
+                "id": 58,
+                "typeId": 4,
+                "row": 15,
+                "col": 11,
+                "hp": 50,
+                "damageLevel": 1,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              4,
+              0,
+              6,
+              8,
+              3,
+              1
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 9,
+                "col": 6,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 1
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 9,
+                "col": 6,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 9,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 7,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 7,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 59,
+                "typeId": 1,
+                "row": 4,
+                "col": 18,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": []
+    },
+    {
+      "turnNum": 33,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 15,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 57,
+                "typeId": 1,
+                "row": 15,
+                "col": 14,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 7,
+            "hp": 85,
+            "hand": [
+              3,
+              0,
+              7,
+              5,
+              8,
+              4
+            ],
+            "units": [
+              {
+                "id": 58,
+                "typeId": 4,
+                "row": 15,
+                "col": 12,
+                "hp": 45,
+                "damageLevel": 1,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              4,
+              0,
+              6,
+              8,
+              3,
+              1
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 9,
+                "col": 6,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 1
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 10,
+                "col": 6,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 10,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 4,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 4,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 59,
+                "typeId": 1,
+                "row": 4,
+                "col": 17,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 40,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 57,
+          "defenderId": 58
+        }
+      ]
+    },
+    {
+      "turnNum": 34,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 15,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 57,
+                "typeId": 1,
+                "row": 15,
+                "col": 14,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 65,
+            "hand": [
+              3,
+              0,
+              7,
+              5,
+              8,
+              4
+            ],
+            "units": [
+              {
+                "id": 58,
+                "typeId": 4,
+                "row": 15,
+                "col": 13,
+                "hp": 25,
+                "damageLevel": 1,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              4,
+              0,
+              6,
+              8,
+              3,
+              1
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 9,
+                "col": 6,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 1
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 10,
+                "col": 6,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 10,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 5,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 5,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 59,
+                "typeId": 1,
+                "row": 4,
+                "col": 16,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 40,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 43,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 44,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 56,
+          "defenderId": 58
+        },
+        {
+          "attackerId": 57,
+          "defenderId": 58
+        }
+      ]
+    },
+    {
+      "turnNum": 35,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 15,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 2,
+            "hp": 45,
+            "hand": [
+              0,
+              7,
+              5,
+              8,
+              4,
+              1
+            ],
+            "units": [
+              {
+                "id": 58,
+                "typeId": 4,
+                "row": 15,
+                "col": 13,
+                "hp": 5,
+                "damageLevel": 1,
+                "rangeLevel": 0
+              },
+              {
+                "id": 60,
+                "typeId": 3,
+                "row": 15,
+                "col": 7,
+                "hp": 25,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              4,
+              0,
+              6,
+              8,
+              3,
+              1
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 9,
+                "col": 6,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 1
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 10,
+                "col": 6,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 10,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 6,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 6,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 59,
+                "typeId": 1,
+                "row": 4,
+                "col": 15,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 40,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 43,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 44,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 56,
+          "defenderId": 58
+        },
+        {
+          "attackerId": 57,
+          "defenderId": 58
+        },
+        {
+          "attackerId": 58,
+          "defenderId": 57
+        }
+      ]
+    },
+    {
+      "turnNum": 36,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 15,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 3,
+            "hp": 25,
+            "hand": [
+              0,
+              7,
+              5,
+              8,
+              4,
+              1
+            ],
+            "units": [
+              {
+                "id": 60,
+                "typeId": 3,
+                "row": 15,
+                "col": 8,
+                "hp": 25,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              4,
+              0,
+              6,
+              8,
+              3,
+              1
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 9,
+                "col": 6,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 1
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 10,
+                "col": 6,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 10,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 7,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 7,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 59,
+                "typeId": 1,
+                "row": 4,
+                "col": 14,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 40,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 43,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 44,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 56,
+          "defenderId": 58
+        }
+      ]
+    },
+    {
+      "turnNum": 37,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 14,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 4,
+            "hp": 5,
+            "hand": [
+              0,
+              7,
+              5,
+              8,
+              4,
+              1
+            ],
+            "units": [
+              {
+                "id": 60,
+                "typeId": 3,
+                "row": 15,
+                "col": 9,
+                "hp": 25,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 8,
+            "hp": 90,
+            "hand": [
+              4,
+              0,
+              6,
+              8,
+              3,
+              1
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 9,
+                "col": 6,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 1
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 10,
+                "col": 6,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 10,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 8,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 8,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 59,
+                "typeId": 1,
+                "row": 4,
+                "col": 13,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 40,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 43,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 44,
+          "defenderId": 2
+        }
+      ]
+    },
+    {
+      "turnNum": 38,
+      "playerTurnEvents": [
+        {
+          "pId": 0,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -13,
+            "hand": [
+              5,
+              6,
+              8,
+              3,
+              1,
+              4
+            ],
+            "units": [],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 1,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 8,
+            "hp": -5,
+            "hand": [
+              3,
+              4,
+              7,
+              8,
+              6,
+              5
+            ],
+            "units": [
+              {
+                "id": 56,
+                "typeId": 0,
+                "row": 15,
+                "col": 13,
+                "hp": 10,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 2,
+          "turnEvent": {
+            "isAlive": false,
+            "ap": 5,
+            "hp": -15,
+            "hand": [
+              0,
+              7,
+              5,
+              8,
+              4,
+              1
+            ],
+            "units": [
+              {
+                "id": 60,
+                "typeId": 3,
+                "row": 15,
+                "col": 10,
+                "hp": 25,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        },
+        {
+          "pId": 3,
+          "turnEvent": {
+            "isAlive": true,
+            "ap": 2,
+            "hp": 90,
+            "hand": [
+              0,
+              6,
+              8,
+              3,
+              1,
+              5
+            ],
+            "units": [
+              {
+                "id": 40,
+                "typeId": 5,
+                "row": 9,
+                "col": 6,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 1
+              },
+              {
+                "id": 43,
+                "typeId": 6,
+                "row": 10,
+                "col": 6,
+                "hp": 15,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 44,
+                "typeId": 2,
+                "row": 10,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 50,
+                "typeId": 8,
+                "row": 9,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 51,
+                "typeId": 2,
+                "row": 9,
+                "col": 6,
+                "hp": 20,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 59,
+                "typeId": 1,
+                "row": 4,
+                "col": 12,
+                "hp": 30,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              },
+              {
+                "id": 61,
+                "typeId": 4,
+                "row": 4,
+                "col": 22,
+                "hp": 50,
+                "damageLevel": 0,
+                "rangeLevel": 0
+              }
+            ],
+            "mapSpells": []
+          }
+        }
+      ],
+      "turnAttacks": [
+        {
+          "attackerId": 40,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 43,
+          "defenderId": 2
+        },
+        {
+          "attackerId": 44,
+          "defenderId": 2
+        }
+      ]
+    }
+  ]
+}

@@ -27,7 +27,7 @@ public class ChangeUIAP: MonoBehaviour
     public void UpdatePlayersStatus(List<UIPlayer> players)
     {
         var status = players[player];
-        var ap = status.Ap;
+        var ap = (float) status.Ap;
         var width = (ap / _maxAp) * _normalWidth;
         var rect = gameObject.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(width, rect.rect.height);

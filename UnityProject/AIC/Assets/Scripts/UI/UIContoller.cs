@@ -16,8 +16,15 @@ public class UIContoller : MonoBehaviour
     {
         canvas.BroadcastMessage("UpdateSliderValue", (float) turnNumber / totalTurnNumber);
     }
+
+    public void FireEndGameEvents(List<EndGame> end, List<InitKing> kings)
+    {
+        canvas.BroadcastMessage("LoadEndGame");
+        canvas.BroadcastMessage("InitializeNames", kings);
+        canvas.BroadcastMessage("CreateEndGame", end);
+    }
     
-    public void FireUIEvents(GameTurn turn)
+    public void FireUiEvents(GameTurn turn)
     {
         var playersStatus = turn.PlayerTurnEvents.Select(tp => new UIPlayer
             {

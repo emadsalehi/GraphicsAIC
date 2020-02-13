@@ -6,28 +6,28 @@
       "col": 30,
       "kings": [
         {
-            "name":  "TEAM 1",
+            "name":  "Emad",
             "row": 4,
             "col": 6,
             "pId": 0,
             "hp": 90
         },
         {
-            "name":  "TEAM 2",
+            "name":  "Shayeste",
             "row": 15,
             "col": 23,
             "pId": 1,
             "hp": 90
         },
         {
-            "name":  "TEAM 3",
+            "name":  "Sina",
             "row": 15,
             "col": 6,
             "pId": 2,
             "hp": 90
         },
         {
-            "name":  "TEAM 4",
+            "name":  "Ashkan",
             "row": 4,
             "col": 23,
             "pId": 3,

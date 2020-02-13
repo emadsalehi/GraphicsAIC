@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class UnitFactory
 {
@@ -7,20 +8,17 @@ public class UnitFactory
 
     public void AddUnitDetail(int pId, PlayerUnit playerUnit, int turnNum)
     {
-        bool found = false;
-        foreach (UnitDetails unitDetails in unitDetailsList)
+        var found = false;
+        foreach (var unitDetails in unitDetailsList.Where(unitDetails => unitDetails.id == playerUnit.Id && unitDetails.pId == pId))
         {
-            if (unitDetails.id == playerUnit.Id && unitDetails.pId == pId)
-            {
-                found = true;
-                unitDetails.unitEvents.Add(new UnitEvent(playerUnit.Row, playerUnit.Col));
-                break;
-            }
+            found = true;
+            unitDetails.unitEvents.Add(new UnitEvent(playerUnit.Row, playerUnit.Col));
+            break;
         }
 
-        if (!found)
+        if (found) return;
         {
-            UnitDetails unitDetails = new UnitDetails(pId, playerUnit.Id, turnNum, playerUnit.TypeId);
+            var unitDetails = new UnitDetails(pId, playerUnit.Id, turnNum, playerUnit.TypeId);
             unitDetails.unitEvents.Add(new UnitEvent(playerUnit.Row, playerUnit.Col));
             unitDetailsList.Add(unitDetails);
         }
