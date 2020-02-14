@@ -3,12 +3,14 @@ using System;
 using System.Diagnostics;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 // using SFB;
 
 public class playMenuFunctions : MonoBehaviour
 {
-    public GameObject mainMenu, runSeverMenu;
+    public GameObject mainMenu, runServer;
+    [FormerlySerializedAs("runSeverMenu")] public GameObject chooseMapMenu;
     public List<InputField> clientSelectFields;
 
     [HideInInspector]
@@ -17,20 +19,20 @@ public class playMenuFunctions : MonoBehaviour
     public void OnClickPlay()
     {
         mainMenu.SetActive(!mainMenu.activeSelf);
-        runSeverMenu.SetActive(!mainMenu.activeSelf);
+        chooseMapMenu.SetActive(!mainMenu.activeSelf);
         UnityEngine.Debug.Log(Application.dataPath);
     }
 
     public void PlayOnBackButtonPressed()
     {
-        int i = 1;
-        foreach(InputField input in clientSelectFields)
-        {
-            input.text = "Select Client " + i + ":";
-            i++;
-        }
-        runSeverMenu.SetActive(!runSeverMenu.activeSelf);
-        mainMenu.SetActive(!runSeverMenu.activeSelf);
+        // int i = 1;
+        // foreach(InputField input in clientSelectFields)
+        // {
+        //     input.text = "Select Client " + i + ":";
+        //     i++;
+        // }
+        runServer.SetActive(!runServer.activeSelf);
+        mainMenu.SetActive(!runServer.activeSelf);
     }
 
 

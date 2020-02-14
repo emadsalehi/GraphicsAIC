@@ -27,4 +27,6 @@ public class LoadLog : MonoBehaviour
         mainMenu.SetActive(!selectLog.activeSelf);
     }
 
+    
+
 }
