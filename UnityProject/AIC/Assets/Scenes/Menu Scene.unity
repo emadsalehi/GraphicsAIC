@@ -509,10 +509,10 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PLAY
+  m_Text: Run  Server
 --- !u!222 &92737464
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5628,10 +5628,10 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LOAD LOG
+  m_Text: RUN   Logs
 --- !u!222 &2012985163
 CanvasRenderer:
   m_ObjectHideFlags: 0
