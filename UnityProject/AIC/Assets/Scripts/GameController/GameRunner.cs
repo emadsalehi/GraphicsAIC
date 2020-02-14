@@ -410,7 +410,6 @@ public class GameRunner : MonoBehaviour
         if (turnNumber == gameTurns.Count)
         {
             uiController.FireEndGameEvents(_end, _init.graphicMap.kings);
-            StartCoroutine(BackToMenu(5));
             return;
         }
         uiController.canvas.BroadcastMessage("SetPlayers", _init.graphicMap.kings);
@@ -421,9 +420,14 @@ public class GameRunner : MonoBehaviour
         uiController.FireUiEvents(turn);
     }
     
-    private IEnumerator BackToMenu(float delay)
+    public void BackToMenu()
     {
-        yield return new WaitForSeconds(delay);
+        if (GameObject.Find("SoundController") != null)
+        {
+            _audioManager = GameObject.Find("SoundController").GetComponent<AudioManager>();
+            _audioManager.Stop("Game");
+            _audioManager.Play("Menu");
+        }
         SceneManager.LoadScene(0);
     }
 }
