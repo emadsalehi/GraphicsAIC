@@ -1,0 +1,254 @@
+{
+	"gameConstants": {
+		"maxAP": 8,
+		"maxTurns": 100,
+		"turnTimeout": 400,
+		"pickTimeout": 400,
+		"turnsToUpgrade": 23,
+		"turnsToSpell": 10,
+		"damageUpgradeAddition": 5,
+		"rangeUpgradeAddition": 1,
+		"deckSize": 9,
+		"handSize": 6
+	},
+	"map": {
+		"rows": 11,
+		"cols": 11,
+		"kings": [
+			{
+				"playerId": 0,
+				"center": {
+					"row": 1,
+					"col": 1
+				},
+				"hp": 90,
+				"attack": 10,
+				"range": 4
+			},
+			{
+				"playerId": 1,
+				"center": {
+					"row": 9,
+					"col": 1
+				},
+				"hp": 90,
+				"attack": 10,
+				"range": 4
+			},
+			{
+				"playerId": 2,
+				"center": {
+					"row": 1,
+					"col": 9
+				},
+				"hp": 90,
+				"attack": 10,
+				"range": 4
+			},
+			{
+				"playerId": 3,
+				"center": {
+					"row": 9,
+					"col": 9
+				},
+				"hp": 90,
+				"attack": 10,
+				"range": 4
+			}
+		],
+		"paths":[
+		{
+			"cells":[{"row":1,"col":1},{"row":2,"col":1},{"row":3,"col":1},{"row":4,"col":1},{"row":5,"col":1},{"row":6,"col":1},{"row":7,"col":1},{"row":8,"col":1},{"row":9,"col":1}],"id":0
+		},
+		{
+			"cells":[{"row":9,"col":1},{"row":8,"col":1},{"row":7,"col":1},{"row":6,"col":1},{"row":5,"col":1},{"row":4,"col":1},{"row":3,"col":1},{"row":2,"col":1},{"row":1,"col":1}],"id":1
+			
+		},
+		{
+			"cells":[{"row":1,"col":1},{"row":1,"col":2},{"row":1,"col":3},{"row":1,"col":4},{"row":1,"col":5},{"row":1,"col":6},{"row":1,"col":7},{"row":1,"col":8},{"row":1,"col":9}],"id":2
+			
+		},
+		{"cells":[{"row":1,"col":9},{"row":1,"col":8},{"row":1,"col":7},{"row":1,"col":6},{"row":1,"col":5},{"row":1,"col":4},{"row":1,"col":3},{"row":1,"col":2},{"row":1,"col":1}],"id":3
+			
+		},
+		{
+			"cells":[{"row":9,"col":1},{"row":9,"col":2},{"row":9,"col":3},{"row":9,"col":4},{"row":9,"col":5},{"row":9,"col":6},{"row":9,"col":7},{"row":9,"col":8},{"row":9,"col":9}],"id":4
+			
+		},
+		{
+			"cells":[{"row":9,"col":9},{"row":9,"col":8},{"row":9,"col":7},{"row":9,"col":6},{"row":9,"col":5},{"row":9,"col":4},{"row":9,"col":3},{"row":9,"col":2},{"row":9,"col":1}],"id":5
+			
+		},
+		{
+			"cells":[{"row":1,"col":9},{"row":2,"col":9},{"row":3,"col":9},{"row":4,"col":9},{"row":5,"col":9},{"row":6,"col":9},{"row":7,"col":9},{"row":8,"col":9},{"row":9,"col":9}],"id":6
+			
+		},
+		{
+			"cells":[{"row":9,"col":9},{"row":8,"col":9},{"row":7,"col":9},{"row":6,"col":9},{"row":5,"col":9},{"row":4,"col":9},{"row":3,"col":9},{"row":2,"col":9},{"row":1,"col":9}],"id":7
+			
+		},
+		{
+			"cells":[{"row":1,"col":1},{"row":1,"col":2},{"row":1,"col":3},{"row":1,"col":4},{"row":1,"col":5},{"row":2,"col":5},{"row":3,"col":5},{"row":4,"col":5},{"row":5,"col":5},{"row":5,"col":6},{"row":5,"col":7},{"row":5,"col":8},{"row":5,"col":9},{"row":6,"col":9},{"row":7,"col":9},{"row":8,"col":9},{"row":9,"col":9}],"id":8
+			
+		},
+		{
+			"cells":[{"row":9,"col":9},{"row":8,"col":9},{"row":7,"col":9},{"row":6,"col":9},{"row":5,"col":9},{"row":5,"col":8},{"row":5,"col":7},{"row":5,"col":6},{"row":5,"col":5},{"row":4,"col":5},{"row":3,"col":5},{"row":2,"col":5},{"row":1,"col":5},{"row":1,"col":4},{"row":1,"col":3},{"row":1,"col":2},{"row":1,"col":1}],"id":9
+			
+		},
+		{
+			"cells":[{"row":9,"col":1},{"row":8,"col":1},{"row":7,"col":1},{"row":6,"col":1},{"row":5,"col":1},{"row":5,"col":2},{"row":5,"col":3},{"row":5,"col":4},{"row":5,"col":5},{"row":4,"col":5},{"row":3,"col":5},{"row":2,"col":5},{"row":1,"col":5},{"row":1,"col":6},{"row":1,"col":7},{"row":1,"col":8},{"row":1,"col":9}],"id":10
+			
+		},
+		{
+			"cells":[{"row":1,"col":9},{"row":1,"col":8},{"row":1,"col":7},{"row":1,"col":6},{"row":1,"col":5},{"row":2,"col":5},{"row":3,"col":5},{"row":4,"col":5},{"row":5,"col":5},{"row":5,"col":4},{"row":5,"col":3},{"row":5,"col":2},{"row":5,"col":1},{"row":6,"col":1},{"row":7,"col":1},{"row":8,"col":1},{"row":9,"col":1}],"id":11}
+	]
+	},
+	"baseUnits": [
+		{
+			"typeId": 0,
+			"maxHP": 15,
+			"baseAttack": 15,
+			"baseRange": 4,
+			"target": "BOTH",
+			"isFlying": false,
+			"isMultiple": true,
+			"ap": 1
+		},
+		{
+			"typeId": 1,
+			"maxHP": 30,
+			"baseAttack": 5,
+			"baseRange": 4,
+			"target": "GROUND",
+			"isFlying": false,
+			"isMultiple": true,
+			"ap": 1
+		},
+		{
+			"typeId": 2,
+			"maxHP": 20,
+			"baseAttack": 10,
+			"baseRange": 4,
+			"target": "AIR",
+			"isFlying": false,
+			"isMultiple": true,
+			"ap": 1
+		},
+		{
+			"typeId": 3,
+			"maxHP": 25,
+			"baseAttack": 12,
+			"baseRange": 1,
+			"target": "GROUND",
+			"isFlying": false,
+			"isMultiple": false,
+			"ap": 1
+		},
+		{
+			"typeId": 4,
+			"maxHP": 50,
+			"baseAttack": 10,
+			"baseRange": 1,
+			"target": "GROUND",
+			"isFlying": false,
+			"isMultiple": true,
+			"ap": 1
+		},
+		{
+			"typeId": 5,
+			"maxHP": 30,
+			"baseAttack": 5,
+			"baseRange": 4,
+			"target": "AIR",
+			"isFlying": true,
+			"isMultiple": false,
+			"ap": 1
+		},
+		{
+			"typeId": 6,
+			"maxHP": 15,
+			"baseAttack": 5,
+			"baseRange": 4,
+			"target": "BOTH",
+			"isFlying": true,
+			"isMultiple": true,
+			"ap": 1
+		},
+		{
+			"typeId": 7,
+			"maxHP": 30,
+			"baseAttack": 8,
+			"baseRange": 2,
+			"target": "GROUND",
+			"isFlying": false,
+			"isMultiple": true,
+			"ap": 1
+		},
+		{
+			"typeId": 8,
+			"maxHP": 20,
+			"baseAttack": 15,
+			"baseRange": 2,
+			"target": "BOTH",
+			"isFlying": true,
+			"isMultiple": true,
+			"ap": 1
+		}
+	],
+	"spells": [
+		{
+			"type": "HASTE",
+			"typeId": 0,
+			"priority": 3,
+			"duration": 2,
+			"range": 1,
+			"power": 2,
+			"target": "ALLIED"
+		},
+		{
+			"type": "HP",
+			"typeId": 1,
+			"priority": 0,
+			"duration": 1,
+			"range": 1,
+			"power": -3,
+			"target": "ENEMY"
+		},
+		{
+			"type": "HP",
+			"typeId": 2,
+			"priority": 0,
+			"duration": 1,
+			"range": 1,
+			"power": 3,
+			"target": "ALLIED"
+		},
+		{
+			"type": "TELE",
+			"typeId": 3,
+			"priority": 2,
+			"duration": 1,
+			"range": null,
+			"power": null,
+			"target": "SELF"
+		},
+		{
+			"type": "DUPLICATE",
+			"typeId": 4,
+			"priority": 4,
+			"duration": 3,
+			"range": null,
+			"power": 4,
+			"target": "ALLIED"
+		},
+		{
+			"type": "HP",
+			"typeId": 5,
+			"priority": 0,
+			"duration": 3,
+			"range": 1,
+			"power": -1,
+			"target": "ENEMY"
+		}
+	]
+}

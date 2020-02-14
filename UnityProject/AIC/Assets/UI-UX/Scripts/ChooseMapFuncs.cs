@@ -1,35 +1,45 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
-using System;
+using UnityEngine;
 using System.IO;
-using System.Linq;
-using UnityEngine.Events;
+using System;
+using UnityEditor;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class DynamicScrollView : MonoBehaviour
+public class ChooseMapFuncs : MonoBehaviour
 {
+
+    public GameObject mainMenu, chooseMenu, runServer;
     public GameObject Prefab;
     public Transform Container;
     public List<string> files = new List<string>();
-    private bool isFirstTime = false;
 
-  
-    public void LoadLocalLogFiles()
+    private bool isFirstTime = false;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void LoadLocalMaps()
     {
         if (!isFirstTime)
         {
             isFirstTime = true;
-            var path = Application.dataPath + "/Server/Log/";
-            string[] filePaths = Directory.GetFiles(path);
-            List<string> fileList = filePaths.ToList();
-            fileList = fileList.OrderByDescending(q => q).ToList();
-            Debug.Log(filePaths[0]);
+            var path = Application.dataPath + "/Server/Map/";
+            var filePaths = Directory.GetFiles(path);
+            Debug.Log(filePaths.Length);
             for (int i = 0; i < filePaths.Length; i++)
             {
                 // filePaths[i] = filePaths[i].Replace('\\', '/');
-                var pathSplitted = fileList[i].Split('/');
+                var pathSplitted = filePaths[i].Split('/');
                 var fileNameWithODots = pathSplitted[pathSplitted.Length - 1];
                 var fileNameWithODotsSplitted = fileNameWithODots.Split('.');
                 if (fileNameWithODotsSplitted[fileNameWithODotsSplitted.Length - 1] == "meta")
@@ -43,11 +53,11 @@ public class DynamicScrollView : MonoBehaviour
                 go.transform.localPosition = Vector3.zero;
                 go.transform.localScale = Vector3.one;
                 var paths = filePaths[i];
-                go.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(paths));
+                go.GetComponent<Button>().onClick.AddListener(() => ChooseMapOnButtonClick(paths));
             }
         }
     }
-     
+    
     private String TakeFirstPart(String path)
     {
         var fileExtPos = path.LastIndexOf(".", StringComparison.Ordinal);
@@ -55,9 +65,12 @@ public class DynamicScrollView : MonoBehaviour
     }
 
 
-    private void OnButtonClick(String path)
+    private void ChooseMapOnButtonClick(String path)
     {
-        PlayerPrefs.SetString("LogPath", path);
-        SceneManager.LoadScene(1);
+        Debug.Log("called");
+        chooseMenu.SetActive(!chooseMenu.activeSelf);
+        Debug.Log(chooseMenu.activeSelf);
+        runServer.SetActive(!chooseMenu.activeSelf);
+        Debug.Log(runServer.activeSelf);
     }
 }

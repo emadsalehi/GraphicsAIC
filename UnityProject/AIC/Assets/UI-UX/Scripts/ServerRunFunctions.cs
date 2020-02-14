@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
+using System.IO;
 
 public class ServerRunFunctions : MonoBehaviour
 {
+    public string map_path;
+
+    public GameObject afterServer, serverRun;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,17 +30,34 @@ public class ServerRunFunctions : MonoBehaviour
         ProcessStartInfo processStartInfo = new ProcessStartInfo();
         processStartInfo.CreateNoWindow = true;
         processStartInfo.UseShellExecute = false;
-        processStartInfo.FileName = "java";
+        string currentDirectory = Directory.GetCurrentDirectory();
+        Directory.SetCurrentDirectory(workingPath+"/Server/");
+        #if UNITY_EDITOR
+            processStartInfo.FileName = "java";
+        #endif
+        
+        #if UNITY_STANDALONE_OSX
+            processStartInfo.FileName = "java";
+        #endif
+        #if UNITY_STANDALONE_WIN
+            processStartInfo.FileName = "java.exe";
+        #endif
+        #if UNITY_STANDALONE_LINUX
+            processStartInfo.FileName = "java";
+        #endif
         if (timeout == 0)
         {
-            processStartInfo.Arguments = "-jar " + workingPath + "/Server/Server.jar";
+            processStartInfo.Arguments = "-jar " + "server.jar";
         }
         else
         {
-            processStartInfo.Arguments = "-jar " + workingPath + "/Server/Server.jar --extra:" + timeout;
+            processStartInfo.Arguments = "-jar " + "server.jar --extra:" + timeout;
         }
-
+        
         Process serverProcess = Process.Start(processStartInfo);
-        serverProcess.WaitForExit();
+        // serverProcess.WaitForExit();
+        Directory.SetCurrentDirectory(currentDirectory);
+        serverRun.SetActive(!serverRun.activeSelf);
+        afterServer.SetActive(!afterServer.activeSelf);
     }
 }
