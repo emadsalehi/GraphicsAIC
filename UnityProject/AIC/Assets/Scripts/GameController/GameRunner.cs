@@ -317,7 +317,6 @@ public class GameRunner : MonoBehaviour
             var spellAction = _spellActions[_spellActionsPointer];
             if (spellAction.ActionType == SpellActionType.Put)
             {
-                Debug.Log("SpellApply type " + spellAction.TypeId + " on " + spellAction.UnitIds[0] + " on turn " + _turnNumber);
                 foreach (var sec in spellAction.UnitIds.Select(sid => _gameUnitFactory.FindById(sid))
                     .Where(unit => unit != null)
                     .Select(unit => unit.GetComponent<SpellEffectController>()).Where(sec => sec != null))
@@ -327,7 +326,6 @@ public class GameRunner : MonoBehaviour
             }
             else
             {
-                Debug.Log("SpellPick type " + spellAction.TypeId + " on " + spellAction.UnitIds[0] + " on turn " + _turnNumber);
                 foreach (var sec in spellAction.UnitIds.Select(sid => _gameUnitFactory.FindById(sid))
                     .Where(unit => unit != null)
                     .Select(unit => unit.GetComponent<SpellEffectController>()).Where(sec => sec != null))

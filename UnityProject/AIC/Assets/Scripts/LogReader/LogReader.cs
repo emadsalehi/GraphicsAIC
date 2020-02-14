@@ -130,6 +130,7 @@ public class LogReader : MonoBehaviour
         var logPath = PlayerPrefs.GetString("LogPath");
         using (var r = new StreamReader(logPath))
         {
+            Debug.Log(logPath);
             var json = r.ReadToEnd();
             gameLog = JsonUtility.FromJson<Game>(json);
         }
