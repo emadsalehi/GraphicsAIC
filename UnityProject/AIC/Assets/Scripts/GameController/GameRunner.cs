@@ -268,8 +268,24 @@ public class GameRunner : MonoBehaviour
                 }
                 case UnitActionType.Teleport:
                 {
-                    Debug.Log("Teleport on " + unitAction.UnitId + " on turn " + _turnNumber);
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    if (unit == null)
+                    {
+                        Debug.Log("Deploy3 on " + unitAction.UnitId + " on turn " + _turnNumber);
+                        var xOffset = Random.Range(-TileSize / 3, TileSize / 3);
+                        var zOffset = Random.Range(-TileSize / 3, TileSize / 3);
+                        unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
+                            , new Vector3(unitAction.Col + xOffset, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row + zOffset),
+                            Quaternion.identity);
+                        _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
+                        unit.GetComponent<AnimatorController>().DeployDie();
+                        var moveController1 = unit.GetComponent<MoveController>();
+                        var animatorController1 = unit.GetComponent<AnimatorController>();
+                        moveController1.turnTime = turnTime;
+                        animatorController1.SetTurnTime(turnTime);
+                    }
+                    Debug.Log("Teleport on " + unitAction.UnitId + " on turn " + _turnNumber);
+                    unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var animatorController = unit.GetComponent<AnimatorController>();
                     animatorController.Restart();
                     var spellEffectController = unit.GetComponent<SpellEffectController>();
@@ -288,8 +304,24 @@ public class GameRunner : MonoBehaviour
                 }
                 case UnitActionType.Haste:
                 {
-                    Debug.Log("Haste on " + unitAction.UnitId + " on turn " + _turnNumber);
                     var unit = _gameUnitFactory.FindById(unitAction.UnitId);
+                    if (unit == null)
+                    {
+                        Debug.Log("Deploy4 on " + unitAction.UnitId + " on turn " + _turnNumber);
+                        var xOffset = Random.Range(-TileSize / 3, TileSize / 3);
+                        var zOffset = Random.Range(-TileSize / 3, TileSize / 3);
+                        unit = Instantiate(playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId]
+                            , new Vector3(unitAction.Col + xOffset, playerGameObjects[unitAction.PId * unitNumbers + unitAction.TypeId].transform.position.y, unitAction.Row + zOffset),
+                            Quaternion.identity);
+                        _gameUnitFactory.AddGameUnit(unitAction.UnitId, unit);
+                        unit.GetComponent<AnimatorController>().DeployDie();
+                        var moveController1 = unit.GetComponent<MoveController>();
+                        var animatorController1 = unit.GetComponent<AnimatorController>();
+                        moveController1.turnTime = turnTime;
+                        animatorController1.SetTurnTime(turnTime);
+                    }
+                    Debug.Log("Haste on " + unitAction.UnitId + " on turn " + _turnNumber);
+                    unit = _gameUnitFactory.FindById(unitAction.UnitId);
                     var animatorController = unit.GetComponent<AnimatorController>();
                     animatorController.Restart();
                     animatorController.StartMoving();
@@ -301,6 +333,11 @@ public class GameRunner : MonoBehaviour
                     moveController.StopEveryThing();
                     moveController.StartMoving();
                     moveController.speed = unitAction.Value;
+                    var attackEffectController = unit.GetComponent<AttackEffectController>();
+                    if (attackEffectController != null)
+                    {
+                        attackEffectController.StopParticleSystem();
+                    }
                     Debug.Log("Haste on " + unitAction.UnitId + " on turn " + _turnNumber);
                     unit.GetComponent<AudioSource>().Stop();
                     break;
