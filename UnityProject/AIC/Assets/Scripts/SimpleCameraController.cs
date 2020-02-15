@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UnityTemplateProjects
 {
@@ -176,10 +177,13 @@ namespace UnityTemplateProjects
             // Exit Sample  
             if (Input.GetKey(KeyCode.Escape))
             {
-                Application.Quit();
-				#if UNITY_EDITOR
-				UnityEditor.EditorApplication.isPlaying = false; 
-				#endif
+                if (GameObject.Find("SoundController") != null)
+                {
+                    var _audioManager = GameObject.Find("SoundController").GetComponent<AudioManager>();
+                    _audioManager.Stop("Game");
+                    _audioManager.Play("Menu");
+                }
+                SceneManager.LoadScene(0);
             }
 
             // Hide and lock cursor when right mouse button pressed
