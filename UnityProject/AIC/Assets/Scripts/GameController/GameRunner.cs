@@ -66,12 +66,12 @@ public class GameRunner : MonoBehaviour
         _towers.Add(GameObject.FindWithTag("Tower4"));
         GetComponent<UIContoller>().canvas.BroadcastMessage("SetPlayers", game.init.graphicMap.kings);
         var cameras = GetComponent<CameraChanger>().cameras;
-        cameras[0].transform.position = new Vector3(_init.graphicMap.col, 2.7f, -0.3f);
-        foreach (var simpleCameraController in cameras.Select(camera => camera.GetComponent<SimpleCameraController>()))
+        cameras[0].transform.position = new Vector3((float)_init.graphicMap.col / 2, 35.0f, (float)_init.graphicMap.row / 2);
+        foreach (var simpleCameraController in cameras.Select(c => c.GetComponent<SimpleCameraController>()))
         {
             simpleCameraController.xBounds = new[] {-0.5f, 0.5f + _init.graphicMap.col};
-            simpleCameraController.yBounds = new[] {-0.5f, 0.5f + _init.graphicMap.row};
-            simpleCameraController.zBounds = new[] {0.0f, 15.0f};
+            simpleCameraController.zBounds = new[] {-0.5f, 0.5f + _init.graphicMap.row};
+            simpleCameraController.yBounds = new[] {0.0f, 40.0f};
         }
     }
 

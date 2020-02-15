@@ -761,6 +761,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11198247783165468, guid: 286ee24e2c057644a9971b3fe987da85,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 11198247457256753, guid: 286ee24e2c057644a9971b3fe987da85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7727557166450809231, guid: 286ee24e2c057644a9971b3fe987da85,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -775,16 +785,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BackToMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 11198247783165468, guid: 286ee24e2c057644a9971b3fe987da85,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 11198247457256753, guid: 286ee24e2c057644a9971b3fe987da85,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11198247783165464, guid: 286ee24e2c057644a9971b3fe987da85,
         type: 3}
@@ -2270,7 +2270,7 @@ MonoBehaviour:
   - 20
   yBounds:
   - 0
-  - 20
+  - 40
   zBounds:
   - 0
   - 20
@@ -2907,7 +2907,7 @@ MonoBehaviour:
   - 20
   yBounds:
   - 0
-  - 20
+  - 40
   zBounds:
   - 0
   - 20
