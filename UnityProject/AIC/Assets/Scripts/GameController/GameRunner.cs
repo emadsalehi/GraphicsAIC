@@ -66,7 +66,32 @@ public class GameRunner : MonoBehaviour
         _towers.Add(GameObject.FindWithTag("Tower4"));
         GetComponent<UIContoller>().canvas.BroadcastMessage("SetPlayers", game.init.graphicMap.kings);
         var cameras = GetComponent<CameraChanger>().cameras;
-        cameras[0].transform.position = new Vector3((float)_init.graphicMap.col / 2, 35.0f, (float)_init.graphicMap.row / 2);
+        if (_init.graphicMap.row == 40)
+        {
+            if (_init.graphicMap.col == 20)
+            {
+                cameras[0].transform.position = new Vector3(-6.0f, 33.0f, 20.0f);
+                cameras[0].transform.eulerAngles = new Vector3(65.0f, 90.0f, 0.0f);
+            }
+            else
+            {
+                cameras[0].transform.position = new Vector3(-2.5f, 17.0f, 10.0f);
+                cameras[0].transform.eulerAngles = new Vector3(65.0f, 90.0f, 0.0f);
+            }
+        }
+        else
+        {
+            if (_init.graphicMap.row == 20)
+            {
+                cameras[0].transform.position = new Vector3(-5.0f, 25.0f, 10.0f);
+                cameras[0].transform.eulerAngles = new Vector3(61.0f, 90.0f, 0.0f);
+            }
+            else
+            {
+                cameras[0].transform.position = new Vector3(-2.5f, 17.0f, 10.0f);
+                cameras[0].transform.eulerAngles = new Vector3(65.0f, 90.0f, 0.0f);
+            }
+        }
         foreach (var simpleCameraController in cameras.Select(c => c.GetComponent<SimpleCameraController>()))
         {
             simpleCameraController.xBounds = new[] {-0.5f, 0.5f + _init.graphicMap.col};
@@ -445,6 +470,7 @@ public class GameRunner : MonoBehaviour
         if (turnNumber == gameTurns.Count)
         {
             uiController.FireEndGameEvents(_end, _init.graphicMap.kings);
+            StartCoroutine(ExitGame(3));
             return;
         }
         uiController.canvas.BroadcastMessage("SetPlayers", _init.graphicMap.kings);
@@ -453,6 +479,12 @@ public class GameRunner : MonoBehaviour
         uiController.UpdateSlider(turnNumber, _gameTurns.Count - 1);
         var turn = gameTurns[turnNumber];
         uiController.FireUiEvents(turn);
+    }
+    
+    private IEnumerator ExitGame(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        // Application.Quit();
     }
     
     public void BackToMenu()

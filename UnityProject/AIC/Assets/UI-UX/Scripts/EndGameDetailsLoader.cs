@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ArabicSupport;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -20,7 +21,7 @@ public class EndGameDetailsLoader : MonoBehaviour
     {
         foreach (var king in kings)
         {
-            names.Add(king.name);
+            names.Add(ArabicFixer.Fix(king.name, true, true));
         }
     }
     
@@ -41,10 +42,10 @@ public class EndGameDetailsLoader : MonoBehaviour
             draw.SetActive(false);
         }
         var sorted = end.OrderByDescending(o => o.score).ToList();
-        player1.GetComponent<TextMeshProUGUI>().text = names.ElementAt(sorted[0].playerId);
-        player2.GetComponent<TextMeshProUGUI>().text = names.ElementAt(sorted[1].playerId);
-        player3.GetComponent<TextMeshProUGUI>().text = names.ElementAt(sorted[2].playerId);
-        player4.GetComponent<TextMeshProUGUI>().text = names.ElementAt(sorted[3].playerId);
+        player1.GetComponent<Text>().text = names.ElementAt(sorted[0].playerId);
+        player2.GetComponent<Text>().text = names.ElementAt(sorted[1].playerId);
+        player3.GetComponent<Text>().text = names.ElementAt(sorted[2].playerId);
+        player4.GetComponent<Text>().text = names.ElementAt(sorted[3].playerId);
         point1.GetComponent<TextMeshProUGUI>().text = sorted[0].score.ToString();
         point2.GetComponent<TextMeshProUGUI>().text = sorted[1].score.ToString();
         point3.GetComponent<TextMeshProUGUI>().text = sorted[2].score.ToString();

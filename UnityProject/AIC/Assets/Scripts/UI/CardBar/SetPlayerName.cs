@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using System;
+using ArabicSupport;
+using UnityEngine.UI;
 
 public class SetPlayerName : MonoBehaviour
 {
@@ -10,7 +12,7 @@ public class SetPlayerName : MonoBehaviour
     public void SetPlayers(List<InitKing> kings)
     {
         var text = kings[index].name;
-        var textcom = gameObject.GetComponent<TextMeshProUGUI>();
-        textcom.text = text;
+        var textcom = gameObject.GetComponent<Text>();
+        textcom.text = ArabicFixer.Fix(text);
     }
 }
